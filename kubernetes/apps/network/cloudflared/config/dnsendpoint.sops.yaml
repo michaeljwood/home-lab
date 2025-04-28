@@ -1,0 +1,31 @@
+apiVersion: externaldns.k8s.io/v1alpha1
+kind: DNSEndpoint
+metadata:
+  name: cloudflared
+spec:
+  endpoints:
+    - dnsName: external.mjwood.org
+      recordType: CNAME
+      targets:
+        - 95ab3dcc-e442-4133-ad30-fa3453dd544e.cfargotunnel.com
+sops:
+  kms: []
+  gcp_kms: []
+  azure_kv: []
+  hc_vault: []
+  age:
+    - recipient: age1m0lm4afkysxufghhpez3p0wjzchms5gpadc085p3ukqh75hyvanst3lrvr
+      enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBZZ3JtanZYa01GbXdRTVUw
+        aE5qWSt6Z0hCWElwVExTMXNuTGkzdEN3bTFrCit2c0FBMVM4TXNsR0ZjbjBtQzBF
+        Nk5CMmFBeFF5K3VIb0ZoVm1MUHBHblkKLS0tIFd6TGt6S08vRU55UlBsU3c2SWVW
+        bGU2dWx1eGVtcnJiOHpuSFpGdWkwWncKwFClsEWgOUNaz9TO69Jsxpf8qWTQMfCY
+        iECTNn4Qn6HkeyqiB99SeBpQugRv1OeBDGO3JReQyh0AEOhGB04ONw==
+        -----END AGE ENCRYPTED FILE-----
+  lastmodified: "2025-04-28T17:19:07Z"
+  mac: ENC[AES256_GCM,data:NuEyfsXzO2WU03YeLujnEHYFok3FWtnvzFp5g3X0KMpSafjOF5ORAfA415nn8rqO3MKIAtnEmqK3uOKwUs7tBPsCd/4FS6WgyIVyhRQlAorDEX7Gvsivixq2qhvO/93hwzvm5ja/RYzdyP5mBcT4hMBnf3OE+3ylKTn7vLx4q+0=,iv:bw7DXYFOtqi+uHjcUnsCm11oncZ9Vpv/Py0kOw6bIS0=,tag:aeo/jcEs0smbraxbstcW9w==,type:str]
+  pgp: []
+  encrypted_regex: ^(data|stringData)$
+  mac_only_encrypted: true
+  version: 3.9.4

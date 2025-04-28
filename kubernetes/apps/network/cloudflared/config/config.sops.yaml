@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cloudflared-configmap
+data:
+  config.yaml: ENC[AES256_GCM,data:bat+Mqi+xCksPw3W3kqYAMJm8ix0E+yPXSKQEUEcCWoT5+k3WzUJXXuOHFwXT2Qk7dbXIo26hvFVHY2UFKYOdmYed9X51vVOgzijJCxzsTDO7QkOqHkXGfqtEEVgSCvQCe29s96B0aJ/eOK/tYc9V20xkwrT9oCzqD3c8hX9BOUEDkm0XiMvM3mnr/slmFWpelqh78h4TrM87xM2NCt64TniDOhRNe/La+IncHL9IqgEEdBbSnJwpDr76zJ90w6ZND75pR7Lxa33Mcfc9meOH3LUzj/G558/PbrZAnbFY4rF8rS6Ifa4NvIKJjOS1M8p7R0to3nfWW3xVoJt4eY1ji3AdpKokSv1,iv:sGMalUR4YATCfLo43GEIU5VFDxWHRkJ/j2h+s+efqx8=,tag:hdfPDXh1aqFiO2D8H1dCoQ==,type:str]
+sops:
+  kms: []
+  gcp_kms: []
+  azure_kv: []
+  hc_vault: []
+  age:
+    - recipient: age1m0lm4afkysxufghhpez3p0wjzchms5gpadc085p3ukqh75hyvanst3lrvr
+      enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBadWJOUzdDSUFhNHM4UnJp
+        SVBQYzNqUm5WYVgxQVljZVZFR0haWjBSTVZvCnl0ZDVNa1pMdEZjNXdpeFU1ajZW
+        dERlMll1V2lIMU9JY3RjaWMwcHR6Qk0KLS0tIHFzWHhmMmdzSm5meWhPaElXbWgx
+        Q2tuK2I1Q1JrR3V4bDRTM09hNlpNYjgKnjhJfZSrFWSnYiN4hif6SBC3n+L7EyPX
+        kl/Pbhuflw1xiIiHAGID50OG8FMggXiG4IF6h5cEAP91qFES2CnlaQ==
+        -----END AGE ENCRYPTED FILE-----
+  lastmodified: "2025-04-28T17:19:07Z"
+  mac: ENC[AES256_GCM,data:Yp5PhIjIMwA4hxWlh+wxjo/ESqHu72qraxzQ01Jv7yABa4dr+wHR0u34024KJGUBTVPDqt34e3ncx1jSeKJ1zk4Iq/LNCYKQg4nltDCJq3RMZrYK25yBwlF5QTpDKKNkREf0lHFqmEFKHmM146nLZPeT8tVHL/uawv8pEH/eOJI=,iv:SrYnn3IMTshpKmKO/tuzePkZew7BHVoqFtcnZrK9/0A=,tag:5D8WCTJOCHXyebAo5zYI6A==,type:str]
+  pgp: []
+  encrypted_regex: ^(data|stringData)$
+  mac_only_encrypted: true
+  version: 3.9.4

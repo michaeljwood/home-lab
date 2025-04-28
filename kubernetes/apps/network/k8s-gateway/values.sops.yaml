@@ -1,0 +1,33 @@
+fullnameOverride: k8s-gateway
+domain: mjwood.org
+ttl: 1
+service:
+  type: LoadBalancer
+  port: 53
+  annotations:
+    io.cilium/lb-ipam-ips: 10.0.0.98
+  externalTrafficPolicy: Cluster
+watchedResources:
+  - Ingress
+  - Service
+sops:
+  kms: []
+  gcp_kms: []
+  azure_kv: []
+  hc_vault: []
+  age:
+    - recipient: age1m0lm4afkysxufghhpez3p0wjzchms5gpadc085p3ukqh75hyvanst3lrvr
+      enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA5OE5hbnNiNHdBSHhNcU5Z
+        QkZYQnRUUEx4VGdXMGdZdXpQLzdndmRWcGdNClYwb1pSTTZxQ0x5VWZ1Rm9pcmNP
+        dkUwRFFaTDNPUDF4K1gvZy8vT015b0EKLS0tIEUvZzNXR0hVeEl6cCt1Y045YWxv
+        MXlVeXpaWno1Qk9UbU5YV0E3OC8yTzAKjFrvOaGLsRHm+oN/Su1D2HVnIYYbFcmr
+        o6Id//eRDLGJ9j6uem2F1EdZ01FOi8hSUqCKu3UF8lbQmlWRDNppig==
+        -----END AGE ENCRYPTED FILE-----
+  lastmodified: "2025-04-28T17:19:07Z"
+  mac: ENC[AES256_GCM,data:+IcVc8MV7RRQw2XyJpGb0f+9dh8s9jbZYnfcnMZx6j+XriO5PBtP36iJBZeJ55ZAHq5cZ5Rg+Od38T82+ULcV8jRo1rvo8ABZySd1bjOkh+sb6ysPwRGp+3Np8gyVbNXkovK0UaGLz2EG8ntK/guoOoQgTczaBypNjUuU1KQwcQ=,iv:agKje8t+C+Z8zKDko2RniJALdpxbkRuP+IyzkaPcgco=,tag:kCHt6VeWvjpQj08HWunfXw==,type:str]
+  pgp: []
+  encrypted_regex: ^(data|stringData)$
+  mac_only_encrypted: true
+  version: 3.9.4

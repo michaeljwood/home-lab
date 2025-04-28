@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/cert-manager.io/certificate_v1.json
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: mjwood-org-production
+spec:
+  secretName: mjwood-org-production-tls
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  commonName: mjwood.org
+  dnsNames:
+    - mjwood.org
+    - '*.mjwood.org'
+sops:
+  kms: []
+  gcp_kms: []
+  azure_kv: []
+  hc_vault: []
+  age:
+    - recipient: age1m0lm4afkysxufghhpez3p0wjzchms5gpadc085p3ukqh75hyvanst3lrvr
+      enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBpc25kN3VkUFVNZi9VMWlw
+        TE5kOUpSUWg4N0xpam5yejVzZG5abHFtNnhzCm1Rbld4dlk2TGF1NFVyRlJOY05p
+        Q0wxcDA4cnVjM0NpaDNZaEpNdWZlMkEKLS0tIHpqNlNTT29iMmZoNE96Q0Zobm0w
+        OGVISWQrT09TUUpkV1k2M0N2WGdUQWsKJUAXsExduiXGEp00yQiBdq1neBa87QTA
+        12X56/eZYxvaOA4ndFJU/WPeAAX3ihJ7VrrfadcRTRjDXIL9bHoIiA==
+        -----END AGE ENCRYPTED FILE-----
+  lastmodified: "2025-04-28T17:19:07Z"
+  mac: ENC[AES256_GCM,data:qY6kKoC5kh3G4cXI4Ckh6vqoBLlAJh0ZzDM+dG/Pz7zqyf/FUgO4f7c6l0PhvkKpoBoI/JPz0RMHlnuSJ6JVenEbL1IyHcFRWYP/WxQqIaYvfP/4/0qpIk4i/CQeSfIejGMuRCZD/v/rDtNXdVFueJyOtZoJmogxokF0N1/l+F8=,iv:zq1DGgk8jH36p9Z+AcKruaB/N7XfEK8vIXAPzT/TNzY=,tag:Bg+YeryQNauF4DfPqqQm4w==,type:str]
+  pgp: []
+  encrypted_regex: ^(data|stringData)$
+  mac_only_encrypted: true
+  version: 3.9.4

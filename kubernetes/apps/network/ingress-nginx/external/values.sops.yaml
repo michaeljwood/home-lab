@@ -1,0 +1,73 @@
+fullnameOverride: ingress-nginx-external
+controller:
+  service:
+    annotations:
+      external-dns.alpha.kubernetes.io/hostname: external.mjwood.org
+      lbipam.cilium.io/ips: 10.0.0.99
+    externalTrafficPolicy: Cluster
+  ingressClassResource:
+    name: external
+    default: false
+    controllerValue: k8s.io/external
+  admissionWebhooks:
+    objectSelector:
+      matchExpressions:
+        - key: ingress-class
+          operator: In
+          values:
+            - external
+  config:
+    allow-snippet-annotations: true
+    annotations-risk-level: Critical
+    client-body-buffer-size: 100M
+    client-body-timeout: 120
+    client-header-timeout: 120
+    enable-brotli: "true"
+    enable-ocsp: "true"
+    enable-real-ip: "true"
+    force-ssl-redirect: "true"
+    hide-headers: Server,X-Powered-By
+    hsts-max-age: 31449600
+    keep-alive-requests: 10000
+    keep-alive: 120
+    log-format-escape-json: "true"
+    log-format-upstream: |
+      {"time": "$time_iso8601", "remote_addr": "$proxy_protocol_addr", "x_forwarded_for": "$proxy_add_x_forwarded_for", "request_id": "$req_id", "remote_user": "$remote_user", "bytes_sent": $bytes_sent, "request_time": $request_time, "status": $status, "vhost": "$host", "request_proto": "$server_protocol", "path": "$uri", "request_query": "$args", "request_length": $request_length, "duration": $request_time,"method": "$request_method", "http_referrer": "$http_referer", "http_user_agent": "$http_user_agent"}
+    proxy-body-size: 0
+    proxy-buffer-size: 16k
+    ssl-protocols: TLSv1.3 TLSv1.2
+    use-forwarded-headers: "true"
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      namespaceSelector:
+        any: true
+  extraArgs:
+    default-ssl-certificate: network/mjwood-org-production-tls
+  resources:
+    requests:
+      cpu: 100m
+    limits:
+      memory: 500Mi
+sops:
+  kms: []
+  gcp_kms: []
+  azure_kv: []
+  hc_vault: []
+  age:
+    - recipient: age1m0lm4afkysxufghhpez3p0wjzchms5gpadc085p3ukqh75hyvanst3lrvr
+      enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBZdTJaeFhVZFl6YnlmV2dS
+        THVIMlNXV3ppMncrRkM4UU81NWlJeURZZkZjCmwwL3VDdTliS3ZUcVEvdFJnUEtI
+        M2xqZ1NNWmJYa21vRjh2c00rejJxR1EKLS0tIHpkU2xMV3o1NmxXWm52emRXeDAz
+        MVU4akZUeFVPT3dTNWFiamM5b3ZCOTQKvpAv4sVnmJvTISLhL6mfy3mIIgykAbWo
+        H7iDjVD4+F+pW6xOaRAhl1xSsHF8gUKIZ+tovqjWZu1r61QCRg+TJA==
+        -----END AGE ENCRYPTED FILE-----
+  lastmodified: "2025-04-28T17:19:07Z"
+  mac: ENC[AES256_GCM,data:GuQM1dK3GLjXpRNY+/lz4xOTXQX7hqWY4s4STxbAYo0adsC4DFSFyuo3lAo6cvNQjKMKQhQZcqQsWAHTySsA3nPQl2J9MyDCUzu/lnOvircrO9C7pK14YsruPNgbS40nNd3B5eKSyACEJhsi8LWhT3pUDxTO+hDxwKd/4LVwFbc=,iv:GYyR6xkxqzgZ1qnnBPrxrBK6oTizb8M58CDuF34AY88=,tag:ySpo9Sg8+56uWjL8/CKqRA==,type:str]
+  pgp: []
+  encrypted_regex: ^(data|stringData)$
+  mac_only_encrypted: true
+  version: 3.9.4
