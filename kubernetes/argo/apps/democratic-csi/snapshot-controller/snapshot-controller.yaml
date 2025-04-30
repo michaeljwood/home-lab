@@ -17,7 +17,7 @@ spec:
       helm:
         releaseName: snapshot-controller
         valueFiles:
-          - $repo/kubernetes/apps/democratic-csi/snapshot-controller/values.sops.yaml
+          - $repo/kubernetes/apps/democratic-csi/snapshot-controller/values.yaml
   destination:
     name: in-cluster
     namespace: democratic-csi
