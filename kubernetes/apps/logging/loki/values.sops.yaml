@@ -4,6 +4,12 @@ singleBinary:
   # -- Number of replicas for the single binary
   replicas: 1
 # -- Configuration for the minio subchart
+write:
+  replicas: 0
+read:
+  replicas: 0
+backend:
+  replicas: 0
 minio:
   enabled: true
   rootUser: root
