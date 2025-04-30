@@ -17,7 +17,7 @@ spec:
       helm:
         releaseName: truenas-iscsi
         valueFiles:
-          - $repo/kubernetes/apps/democratic-csi/truenas-isci/values.sops.yaml
+          - $repo/kubernetes/apps/democratic-csi/truenas-iscsi/values.sops.yaml
   destination:
     name: in-cluster
     namespace: democratic-csi
