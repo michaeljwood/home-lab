@@ -1,0 +1,306 @@
+ingress:
+  enabled: true
+  ingressClassName: internal
+  labels: {}
+  path: /
+  pathType: Prefix
+  hosts:
+    - grafana.internal.mjwood.org
+resources: {}
+#  limits:
+#    cpu: 100m
+#    memory: 128Mi
+#  requests:
+#    cpu: 100m
+#    memory: 128Mi
+## Enable persistence using Persistent Volume Claims
+## ref: https://kubernetes.io/docs/user-guide/persistent-volumes/
+##
+persistence:
+  type: pvc
+  enabled: true
+  size: 10Gi
+# Administrator credentials when not using an existing secret (see below)
+adminUser: admin
+adminPassword: ENC[AES256_GCM,data:Q+ZDBCTv9xUAUtuWyi7ChG6S2E8UmSwKyHm0H8Owto4kSNE2kMuLcHZWQAzIyxwH+7yp5aQ=,iv:7Ek2hKq2Vyvt+Bt33kSifAkTzL9o7d97nyR8SldP8aA=,tag:8ZCSD+Iia0IzGtfTNWhiLQ==,type:str]
+## Pass the plugins you want installed as a list.
+##
+plugins: []
+# - digrich-bubblechart-panel
+# - grafana-clock-panel
+## You can also use other plugin download URL, as long as they are valid zip files,
+## and specify the name of the plugin after the semicolon. Like this:
+# - https://grafana.com/api/plugins/marcusolsson-json-datasource/versions/1.3.2/download;marcusolsson-json-datasource
+## Configure grafana datasources
+## ref: http://docs.grafana.org/administration/provisioning/#datasources
+##
+datasources: {}
+#  datasources.yaml:
+#    apiVersion: 1
+#    datasources:
+#    - name: Prometheus
+#      type: prometheus
+#      url: http://prometheus-prometheus-server
+#      access: proxy
+#      isDefault: true
+#    - name: CloudWatch
+#      type: cloudwatch
+#      access: proxy
+#      uid: cloudwatch
+#      editable: false
+#      jsonData:
+#        authType: default
+#        defaultRegion: us-east-1
+#    deleteDatasources: []
+#    - name: Prometheus
+## Configure grafana alerting (can be templated)
+## ref: https://docs.grafana.com/alerting/set-up/provision-alerting-resources/file-provisioning/
+##
+alerting: {}
+# policies.yaml:
+#   apiVersion: 1
+#   policies:
+#     - orgId: 1
+#       receiver: first_uid
+#
+# rules.yaml:
+#   apiVersion: 1
+#   groups:
+#     - orgId: 1
+#       name: '{{ .Chart.Name }}_my_rule_group'
+#       folder: my_first_folder
+#       interval: 60s
+#       rules:
+#         - uid: my_id_1
+#           title: my_first_rule
+#           condition: A
+#           data:
+#             - refId: A
+#               datasourceUid: '-100'
+#               model:
+#                 conditions:
+#                   - evaluator:
+#                       params:
+#                         - 3
+#                       type: gt
+#                     operator:
+#                       type: and
+#                     query:
+#                       params:
+#                         - A
+#                     reducer:
+#                       type: last
+#                     type: query
+#                 datasource:
+#                   type: __expr__
+#                   uid: '-100'
+#                 expression: 1==0
+#                 intervalMs: 1000
+#                 maxDataPoints: 43200
+#                 refId: A
+#                 type: math
+#           dashboardUid: my_dashboard
+#           panelId: 123
+#           noDataState: Alerting
+#           for: 60s
+#           annotations:
+#             some_key: some_value
+#           labels:
+#             team: sre_team_1
+#
+# contactpoints.yaml:
+#   secret:
+#     apiVersion: 1
+#     contactPoints:
+#       - orgId: 1
+#         name: cp_1
+#         receivers:
+#           - uid: first_uid
+#             type: pagerduty
+#             settings:
+#               integrationKey: XXX
+#               severity: critical
+#               class: ping failure
+#               component: Grafana
+#               group: app-stack
+#               summary: |
+#                 {{ `{{ include "default.message" . }}` }}
+#
+# templates.yaml:
+#   apiVersion: 1
+#   templates:
+#     - orgId: 1
+#       name: my_first_template
+#       template: |
+#         {{ `
+#         {{ define "my_first_template" }}
+#         Custom notification message
+#         {{ end }}
+#         ` }}
+#
+# mutetimes.yaml
+#   apiVersion: 1
+#   muteTimes:
+#     - orgId: 1
+#       name: mti_1
+#       # refer to https://prometheus.io/docs/alerting/latest/configuration/#time_interval-0
+#       time_intervals: {}
+## Configure notifiers
+## ref: http://docs.grafana.org/administration/provisioning/#alert-notification-channels
+##
+notifiers: {}
+#  notifiers.yaml:
+#    notifiers:
+#    - name: email-notifier
+#      type: email
+#      uid: email1
+#      # either:
+#      org_id: 1
+#      # or
+#      org_name: Main Org.
+#      is_default: true
+#      settings:
+#        addresses: an_email_address@example.com
+#    delete_notifiers:
+## Configure grafana dashboard providers
+## ref: http://docs.grafana.org/administration/provisioning/#dashboards
+##
+## `path` must be /var/lib/grafana/dashboards/<provider_name>
+##
+dashboardProviders: {}
+#  dashboardproviders.yaml:
+#    apiVersion: 1
+#    providers:
+#    - name: 'default'
+#      orgId: 1
+#      folder: ''
+#      type: file
+#      disableDeletion: false
+#      editable: true
+#      options:
+#        path: /var/lib/grafana/dashboards/default
+## Configure grafana dashboard to import
+## NOTE: To use dashboards you must also enable/configure dashboardProviders
+## ref: https://grafana.com/dashboards
+##
+## dashboards per provider, use provider name as key.
+##
+dashboards: {}
+# default:
+#   some-dashboard:
+#     json: |
+#       $RAW_JSON
+#   custom-dashboard:
+#     file: dashboards/custom-dashboard.json
+#   prometheus-stats:
+#     gnetId: 2
+#     revision: 2
+#     datasource: Prometheus
+#   local-dashboard:
+#     url: https://example.com/repository/test.json
+#     token: ''
+#   local-dashboard-base64:
+#     url: https://example.com/repository/test-b64.json
+#     token: ''
+#     b64content: true
+#   local-dashboard-gitlab:
+#     url: https://example.com/repository/test-gitlab.json
+#     gitlabToken: ''
+#   local-dashboard-bitbucket:
+#     url: https://example.com/repository/test-bitbucket.json
+#     bearerToken: ''
+#   local-dashboard-azure:
+#     url: https://example.com/repository/test-azure.json
+#     basic: ''
+#     acceptHeader: '*/*'
+## Reference to external ConfigMap per provider. Use provider name as key and ConfigMap name as value.
+## A provider dashboards must be defined either by external ConfigMaps or in values.yaml, not in both.
+## ConfigMap data example:
+##
+## data:
+##   example-dashboard.json: |
+##     RAW_JSON
+##
+dashboardsConfigMaps: {}
+#  default: ""
+## Grafana's primary configuration
+## NOTE: values in map will be converted to ini format
+## ref: http://docs.grafana.org/installation/configuration/
+##
+grafana.ini:
+  paths:
+    data: ENC[AES256_GCM,data:k25kxMUFsuYZAWGAxYpKnzE=,iv:rj0j4JpqtVAWdRmsPNpqdId41uBHRjbG5cTq+HOZMyU=,tag:mXWrlgnMYPuA2y8V2KOfNA==,type:str]
+    logs: /var/log/grafana
+    plugins: /var/lib/grafana/plugins
+    provisioning: /etc/grafana/provisioning
+  analytics:
+    check_for_updates: true
+  log:
+    mode: console
+  grafana_net:
+    url: https://grafana.net
+  server:
+    domain: '{{ if (and .Values.ingress.enabled .Values.ingress.hosts) }}{{ tpl (.Values.ingress.hosts | first) . }}{{ else }}''''{{ end }}'
+    ## grafana Authentication can be enabled with the following values on grafana.ini
+    # server:
+    # The full public facing url you use in browser, used for redirects and emails
+  #    root_url:
+  # https://grafana.com/docs/grafana/latest/auth/github/#enable-github-in-grafana
+  # auth.github:
+  #    enabled: false
+  #    allow_sign_up: false
+  #    scopes: user:email,read:org
+  #    auth_url: https://github.com/login/oauth/authorize
+  #    token_url: https://github.com/login/oauth/access_token
+  #    api_url: https://api.github.com/user
+  #    team_ids:
+  #    allowed_organizations:
+  #    client_id:
+  #    client_secret:
+  ## LDAP Authentication can be enabled with the following values on grafana.ini
+  ## NOTE: Grafana will fail to start if the value for ldap.toml is invalid
+  # auth.ldap:
+  #   enabled: true
+  #   allow_sign_up: true
+  #   config_file: /etc/grafana/ldap.toml
+  ## Grafana's alerting configuration
+  # unified_alerting:
+  #   enabled: true
+  #   rule_version_record_limit: "5"
+## Grafana's LDAP configuration
+## Templated by the template in _helpers.tpl
+## NOTE: To enable the grafana.ini must be configured with auth.ldap.enabled
+## ref: http://docs.grafana.org/installation/configuration/#auth-ldap
+## ref: http://docs.grafana.org/installation/ldap/#configuration
+ldap:
+  enabled: false
+  # `existingSecret` is a reference to an existing secret containing the ldap configuration
+  # for Grafana in a key `ldap-toml`.
+  existingSecret: ""
+  # `config` is the content of `ldap.toml` that will be stored in the created secret
+  config: ""
+  # config: |-
+  #   verbose_logging = true
+#   [[servers]]
+#   host = "my-ldap-server"
+#   port = 636
+#   use_ssl = true
+#   start_tls = false
+#   ssl_skip_verify = false
+#   bind_dn = "uid=%s,ou=users,dc=myorg,dc=com"
+sops:
+  age:
+    - recipient: age1m0lm4afkysxufghhpez3p0wjzchms5gpadc085p3ukqh75hyvanst3lrvr
+      enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAwVmZVYmtGTTEvUEtlVFdE
+        MGNtVC8rMUdNSGlGa3F3Y0t2dng4VGFPM0dRCkNPNXNhU0d4WmhiQmRrOXVnMVN2
+        ckxqdy9hZDVKbHdTWmw4MnhHaGtzYWMKLS0tIFV4K1JGYWJBUTNJTlRzN1JFNHdw
+        U0FHbzEyUUdkeVRBS2JOWUFnWkdxWDAKna+/1N9NW4ATr4ONRpJX178MFUn3QMtx
+        6AbAYZZ0+jhWzX0Q73I2ApyAKLmcUhhZJJKrs2V0dEiR+wMl8CiG4Q==
+        -----END AGE ENCRYPTED FILE-----
+  lastmodified: "2025-04-30T23:25:17Z"
+  mac: ENC[AES256_GCM,data:VAbNdDjqj8tVN0dWOmm+nv/2JcclfBgYNQobHgX0zlCMvdCau7N/ywzlZIZcV69o2kO5s9+B2q7Z1gMQXIr9ck5r3HpT6US98Gue1V1slfeGShsXTtHcD7QJYbfd8+ceYyEELbAHGOap+DgCPDBuiotjC0OipdSlcJm8Z3SX8gY=,iv:L9ALe8mff02SF0GmlDaupmSSN3n11WbxUcZ2ON7wEJM=,tag:MipnqC4I0+6Q2O5Y3N9OgQ==,type:str]
+  encrypted_regex: ^(data|stringData|apiKey|rootPassword|secretKey|adminPassword)$
+  mac_only_encrypted: true
+  version: 3.10.2
