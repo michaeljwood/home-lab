@@ -1,0 +1,31 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: snapshot-controller
+  namespace: argo-system
+spec:
+  project: kubernetes
+  sources:
+    - repoURL: "https://github.com/michaeljwood/home-lab.git"
+      path: kubernetes/apps/democratic-csi/snapshot-controller
+      targetRevision: main
+      ref: repo
+    - repoURL: "https://democratic-csi.github.io/charts/"
+      chart: snapshot-controller
+      targetRevision: 0.3.0
+      helm:
+        releaseName: snapshot-controller
+        valueFiles:
+          - $repo/kubernetes/apps/democratic-csi/snapshot-controller/values.sops.yaml
+  destination:
+    name: in-cluster
+    namespace: democratic-csi
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
