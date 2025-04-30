@@ -9,6 +9,12 @@ loki:
         index:
           prefix: index_
           period: 24h
+gateway:
+  ingress:
+    enabled: true
+    ingressClassName: "internal"
+    hosts:
+      - host: "loki.mjwood.org"
 # Configuration for the single binary node(s)
 singleBinary:
   # -- Number of replicas for the single binary
