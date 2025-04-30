@@ -1,0 +1,31 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: truenas-iscsi
+  namespace: democratic-csi
+spec:
+  project: kubernetes
+  sources:
+    - repoURL: "https://github.com/michaeljwood/home-lab.git"
+      path: kubernetes/apps/democratic-csi/truenas-iscsi
+      targetRevision: main
+      ref: repo
+    - repoURL: "https://democratic-csi.github.io/charts/"
+      chart: democratic-csi
+      targetRevision: v1.9.4
+      helm:
+        releaseName: truenas-iscsi
+        valueFiles:
+          - $repo/kubernetes/apps/democratic-csi/truenas-isci/values.sops.yaml
+  destination:
+    name: in-cluster
+    namespace: democratic-csi
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true

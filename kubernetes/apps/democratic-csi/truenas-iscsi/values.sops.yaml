@@ -1,0 +1,82 @@
+driver:
+  config:
+    driver: freenas-api-iscsi
+    httpConnection:
+      protocol: https
+      apiKey: ENC[AES256_GCM,data:U5m81PMPHHNLAUMWxgwn7pe4ODR2KCrLoMmhFrB9E1F70VJET+Qh6Qc7ljVFilZOjU9Hlv2eYeQJNIiM/aeFko3+,iv:Ux5UJNaRxsmn3A/6gozh0v11cS4YgDQwpF7uh4sHi5I=,tag:lv/R/sy0bV9lMqW3voB92w==,type:str]
+      host: 10.0.0.9
+      port: 443
+      allowInsecure: true
+    zfs:
+      datasetParentName: nvme/talos/iscsi/volumes
+      detachedSnapshotsDatasetParentName: nvme/talos/iscsi/snapshots
+      zvolCompression: null
+      zvolDedup: null
+      zvolEnableReservation: false
+      zvolBlockSize: null
+    iscsi:
+      targetPortal: 10.0.0.9:3260
+      targetPortals: []
+      interface: null
+      namePrefix: csi-
+      nameSuffix: -talos
+      targetGroups:
+        - targetGroupPortalGroup: 1
+          targetGroupInitiatorGroup: 5
+          targetGroupAuthType: None
+          targetGroupAuthGroup: null
+      extentInsecureTpc: true
+      extentXenCompat: false
+      extentDisablePhysicalBlocksize: true
+      extentBlocksize: 512
+      extentRpm: SSD
+      extentAvailThreshold: 0
+csiDriver:
+  # should be globally unique for a given cluster
+  name: org.democratic-csi.freenas-api-iscsi
+storageClasses:
+  - name: truenas-iscsi
+    defaultClass: true
+    reclaimPolicy: Delete
+    volumeBindingMode: Immediate
+    allowVolumeExpansion: true
+    parameters:
+      fsType: ext4
+      detachedVolumesFromSnapshots: "false"
+    mountOptions: []
+    secrets:
+      provisioner-secret: null
+      controller-publish-secret: null
+      node-stage-secret: null
+      node-publish-secret: null
+      controller-expand-secret: null
+volumeSnapshotClasses:
+  - name: truenas-iscsi
+    parameters:
+      detachedSnapshots: "true"
+node:
+  hostPID: true
+  driver:
+    extraEnv:
+      - name: ISCSIADM_HOST_STRATEGY
+        value: nsenter
+      - name: ISCSIADM_HOST_PATH
+        value: /usr/local/sbin/iscsiadm
+    iscsiDirHostPath: /usr/local/etc/iscsi
+    iscsiDirHostPathType: ""
+sops:
+  age:
+    - recipient: age1m0lm4afkysxufghhpez3p0wjzchms5gpadc085p3ukqh75hyvanst3lrvr
+      enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBXeWRDSjlPS29DOUtVU2cx
+        dmRVZmduYlU2aERRVllFK1FFNVMyclNxQTBnClkrdE5kcFg5Ry92eUdObGNHeWRT
+        VjM2WHVVemVPRzlzVVhVaGJEQ2ZON2sKLS0tIHh3eFl3SDVtdTBEOHJ1U2w4ajU5
+        T3R4Y3BkQllUMkhnR2o3QTU1SklraEkKM+C6wIw+Nd8ikGGn2QJTp384aBScNOel
+        SL0/zjUvu29eUZZzZiZqWFic7t1Ar8se2HfUP7Ps46smK4PitJ8Xyg==
+        -----END AGE ENCRYPTED FILE-----
+  lastmodified: "2025-04-30T01:23:10Z"
+  mac: ENC[AES256_GCM,data:B9MbtpsU437ZR4H6wwmFojY+vQjqKakNR5C27DnfBA40O8BhSjWCgCDuSlIX/2lXVmhnR4tewYaMbpneLWY4Pvef31XzO7eFVDloB5wIXNIUeY1q85X6TVVAbeJwDN7NurMBlYQYN+k4mfSOo3wyrBee6icYp6+vfuOnbA7CvZc=,iv:qQFk2rhmT8lfcTOhrrJcwqIRSWpoaBtOLXgEUHD0QZw=,tag:VxCILMLhhXCMq51dxWbPRw==,type:str]
+  encrypted_regex: ^(data|stringData|apiKey)$
+  mac_only_encrypted: true
+  version: 3.10.2
