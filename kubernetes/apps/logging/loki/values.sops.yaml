@@ -1,6 +1,6 @@
 deploymentMode: SingleBinary
 loki:
-  schema_config:
+  schemaConfig:
     configs:
       - from: 2024-04-01
         object_store: s3
