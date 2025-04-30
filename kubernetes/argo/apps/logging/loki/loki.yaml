@@ -20,7 +20,7 @@ spec:
           - $repo/kubernetes/apps/logging/loki/values.sops.yaml
   destination:
     name: in-cluster
-    namespace: loki
+    namespace: logging
   syncPolicy:
     automated:
       allowEmpty: true
