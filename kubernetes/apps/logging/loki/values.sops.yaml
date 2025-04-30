@@ -1,0 +1,35 @@
+deploymentMode: SingleBinary
+# Configuration for the single binary node(s)
+singleBinary:
+  # -- Number of replicas for the single binary
+  replicas: 1
+# -- Configuration for the minio subchart
+minio:
+  enabled: true
+  rootUser: root
+  rootPassword: ENC[AES256_GCM,data:z8HBn57T+6t8y+4fiUOUj55NXtXYu2n8GcOA/71P3sXwXaL1xTrOU/tVyg==,iv:H0OH8AvNwCTowfPPlHf5BHTh9BgZZ7uacJh9nPBH054=,tag:L/hlFPu80UVENcEvsn8E/g==,type:str]
+  # The first user in the list below is used for Loki/GEL authentication.
+  # You can add additional users if desired; they will not impact Loki/GEL.
+  # `accessKey` = username, `secretKey` = password
+  users:
+    - accessKey: logs
+      secretKey: ENC[AES256_GCM,data:KsKswIcUVe5ZA3nT06a6hyNQbCFgycE+M3Tww8kmAurg/SOqeqbvi3OZVRjuzAw=,iv:I8awEENOGl+th+7MlX1qZpUMtF5zNYkc3ip3uygq0DI=,tag:t4sfW4EZGOmQHWBRNA3yWw==,type:str]
+      policy: readwrite
+  persistence:
+    size: 50Gi
+sops:
+  age:
+    - recipient: age1m0lm4afkysxufghhpez3p0wjzchms5gpadc085p3ukqh75hyvanst3lrvr
+      enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA3OGlOYnE0a1hMS2ZzQU43
+        cnJZMGQ0bW9neUhwWDBQcDcvT3c3MlBPVHhBCnVveFlYWE1XcDN3MnNGT2FjQ3Fq
+        V3pDUlgwVjI4akFXOWZIaW80cEpMTUEKLS0tIG1KR3c0TG1iSzEwanVUa3BhQmtE
+        U2FPNHYxVUR2aDZyZWFlYlFJbHBkOXMKk0JMWfvl8ZNZCEmQ7nZvyuCX+AFjLhdN
+        xYrBoFQE8CZ1KML0vGs3pgkv7k/JC9fWhmrED8OvjNXoBc1ZJk8Rtw==
+        -----END AGE ENCRYPTED FILE-----
+  lastmodified: "2025-04-30T21:00:49Z"
+  mac: ENC[AES256_GCM,data:wNpy6nfpxtVo40lm1nxHh32vZfgRz6deigP9+Uue0QPeSl1jtFCRYkz8Snc0dTvhUsRPpSW3acphluc8APJUaAQwNDG2ACxRWN6rAZlG6MRWbS+J3pG1QGFAaID5VV0d1P+ubAdZ/LzOgk/DJaCybxRILvI8R8h+zvefsQKfKpA=,iv:GDMILqPLwIQ6CfRza0GS/iUdYKod1zjvIyjKr7yj7ag=,tag:emeQ9OTwiAbEHQTdYD5teQ==,type:str]
+  encrypted_regex: ^(data|stringData|apiKey|rootPassword|secretKey)$
+  mac_only_encrypted: true
+  version: 3.10.2

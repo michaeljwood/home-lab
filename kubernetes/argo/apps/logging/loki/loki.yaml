@@ -1,0 +1,31 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: loki
+  namespace: argo-system
+spec:
+  project: kubernetes
+  sources:
+    - repoURL: "https://github.com/michaeljwood/home-lab.git"
+      path: kubernetes/apps/logging/loki
+      targetRevision: main
+      ref: repo
+    - repoURL: "https://grafana.github.io/helm-charts"
+      chart: loki
+      targetRevision: 6.29.0
+      helm:
+        releaseName: loki
+        valueFiles:
+          - $repo/kubernetes/apps/logging/loki/values.sops.yaml
+  destination:
+    name: in-cluster
+    namespace: loki
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
