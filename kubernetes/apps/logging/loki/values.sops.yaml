@@ -14,7 +14,7 @@ gateway:
     enabled: true
     ingressClassName: "internal"
     hosts:
-      - host: "loki.mjwood.org"
+      - host: "loki.internal.mjwood.org"
         paths:
           - path: /
             pathType: Prefix
