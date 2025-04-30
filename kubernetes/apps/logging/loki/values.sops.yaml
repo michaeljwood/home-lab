@@ -15,6 +15,8 @@ gateway:
     ingressClassName: "internal"
     hosts:
       - host: "loki.mjwood.org"
+        paths:
+          - path: /
 # Configuration for the single binary node(s)
 singleBinary:
   # -- Number of replicas for the single binary
