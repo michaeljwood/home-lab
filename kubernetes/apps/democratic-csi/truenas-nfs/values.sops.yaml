@@ -41,7 +41,8 @@ storageClasses:
       - nfsvers=4
 volumeSnapshotClasses:
   - name: truenas
-    parameters: {}
+    parameters:
+      detachedSnapshots: "true"
 sops:
   age:
     - recipient: age1m0lm4afkysxufghhpez3p0wjzchms5gpadc085p3ukqh75hyvanst3lrvr
