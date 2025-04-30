@@ -22,7 +22,7 @@ driver:
       nameSuffix: -talos
       targetGroups:
         - targetGroupPortalGroup: 1
-          targetGroupInitiatorGroup: 5
+          targetGroupInitiatorGroup: 1
           targetGroupAuthType: None
           targetGroupAuthGroup: null
       extentInsecureTpc: true
