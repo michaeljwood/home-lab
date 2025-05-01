@@ -1,0 +1,35 @@
+authentik:
+  secret_key: ENC[AES256_GCM,data:lIAuDl3EQHh7S/HP7OYafDz269rHmB+NrGZrMRtWVa1bedHkHt+1YuU/jrfcZIgaHZhTGUi8G7Hzl1I9tgBM05XNQl+DP+q5ed5l2kANqpLpAjiCuuHslBxYQ/4azQayHi8d9g==,iv:OSo7eA1BLdTxeSmgLXtHQiHcP9TFPUsqj+Fs5SVwUdk=,tag:4ALTDSgi/AWvKhnaJ1kpnA==,type:str]
+  # This sends anonymous usage-data, stack traces on errors and
+  # performance data to authentik.error-reporting.a7k.io, and is fully opt-in
+  error_reporting:
+    enabled: true
+  postgresql:
+    password: ENC[AES256_GCM,data:Jzf/lxTXHEwn5ywE/zQN7NnEJI2AlIkNWLaAAAH17wNZGWepgwmsWN7dR6Ata9vvN9OAWASnaWpjpUnhF69alA==,iv:H8OwZSMolF7iIQRfzbxz1z8c05Kj9Xoh1Dz5j6Q7Nzw=,tag:Spm/9AssWwpEeZmiWpHH1g==,type:str]
+server:
+  ingress:
+    enabled: true
+    hosts:
+      - auth.mjwood.org
+postgresql:
+  enabled: true
+  auth:
+    password: ENC[AES256_GCM,data:6nr4N9pX37hLVgxfgOFDjF9jBvaJImFSCrA5G/a8eWC7SGv5rGyqMKAC5ZWELavbJGH2asrg83kr0I/ExSp4eQ==,iv:+X0FoICq8kOEZn8uZAICexq0s5RdwTALHSLKn8I2atk=,tag:oEJHNRpxkfoBsWeOhOHAbA==,type:str]
+redis:
+  enabled: true
+sops:
+  age:
+    - recipient: age1m0lm4afkysxufghhpez3p0wjzchms5gpadc085p3ukqh75hyvanst3lrvr
+      enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBRTS9VbEFUNk5BU1BYdGs0
+        aTBQSjFoYXgrWEdWT3F6T3YweFJnVEZDZXdNCnZ5aGRRZ0lIcjBSb29YV0V1dktP
+        MGkxak9SM3BJRC9mWmlZK202ZUd2UEUKLS0tIHFTbElHMTNzYWZ4ajdQZkxzeE0y
+        cUEzcUlEMHEvcVk3VXB6cGROK09YeEEKOpPhsELIzgEsoxlAGTyHae6EI/6pPEx7
+        xa68dZ6MXn2qM+NdziX1W5vovBU6eLTW2E566V29fC7Z+1ywHkin3g==
+        -----END AGE ENCRYPTED FILE-----
+  lastmodified: "2025-05-01T20:44:55Z"
+  mac: ENC[AES256_GCM,data:HfK0NCkszM8yIDrOPKlGayYcdt99luJ6bqVTsa++lDq+W+cBqoSHwhZjSOfr6gVDp5VW5wUbXHwLS0MotIBN5skZLEdTAAe06YDokgFxhY5S+vtuIuj3N19LC3n1j6VZ/cr2wV0f6CEwlZGan21+t6GVIEpOLn8yG+DcIBz5Ymk=,iv:zZ6+ZpkkG22QrgU9CB0/1EfcO8g+BBZhz9bRrwJxc/c=,tag:JRE3U8SvTSS7yARggjQrdQ==,type:str]
+  encrypted_regex: ^(data|stringData|apiKey|rootPassword|secretKey|adminPassword|basicAuthPassword|password|secret_key)$
+  mac_only_encrypted: true
+  version: 3.10.2
