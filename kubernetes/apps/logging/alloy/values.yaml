@@ -132,12 +132,13 @@ alloy:
 
         stage.static_labels {
           values = {
-          cluster = "talos",
+            cluster = "talos",
+          }
         }
-      }
 
-      stage.labels {
-        values = {
-          kubernetes_cluster_events = "job",
+        stage.labels {
+          values = {
+            kubernetes_cluster_events = "job",
+          }
         }
       }
