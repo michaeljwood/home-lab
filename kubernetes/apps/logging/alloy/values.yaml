@@ -142,3 +142,18 @@ alloy:
           }
         }
       }
+
+      prometheus.remote_write "default" {
+        endpoint {
+          url = "http://prometheus-prometheus-gateway.logging.svc.cluster.local:9091/api/prom/push"
+        }
+      }
+
+      discovery.kubernetes "pods" {
+        role = "pod"
+      }
+
+      prometheus.scrape "pods" {
+        targets    = discovery.kubernetes.pods.targets
+        forward_to = [prometheus.remote_write.default.receiver]
+      }
