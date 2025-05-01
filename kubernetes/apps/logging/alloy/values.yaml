@@ -108,7 +108,7 @@ alloy:
       loki.process "pod_logs" {
         stage.static_labels {
           values = {
-            cluster = "talos>",
+            cluster = "talos",
           }
         }
 
