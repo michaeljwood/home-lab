@@ -22,7 +22,7 @@ persistence:
   size: 10Gi
 # Administrator credentials when not using an existing secret (see below)
 adminUser: admin
-adminPassword: ENC[AES256_GCM,data:Q+ZDBCTv9xUAUtuWyi7ChG6S2E8UmSwKyHm0H8Owto4kSNE2kMuLcHZWQAzIyxwH+7yp5aQ=,iv:7Ek2hKq2Vyvt+Bt33kSifAkTzL9o7d97nyR8SldP8aA=,tag:8ZCSD+Iia0IzGtfTNWhiLQ==,type:str]
+adminPassword: ENC[AES256_GCM,data:19GLQy8o6tJhc8bbDry9Pb1Z4o1HPXBCI+7V9yv8ULDHOfjERN4t7LIb4uPVhZ0wXkKbXZ0=,iv:KyVvpFQVC7e526FHijZPbBLq5RvO6XtZuBBqmDmn+cE=,tag:zxo5iZ/VAUs/k5CDJJ2nWA==,type:str]
 ## Pass the plugins you want installed as a list.
 ##
 plugins: []
@@ -41,6 +41,10 @@ datasources:
       - name: Loki
         type: loki
         url: http://loki-gateway.logging.svc.cluster.local
+        basicAuth: true
+        basicAuthUser: logs
+        secureJsonData:
+          basicAuthPassword: ENC[AES256_GCM,data:6VD+cW3SDqcHvTtDzq9k+szx8TBLWmskmoCWfdij3Ct8fWKFvv4l6i8LK+a4LQk=,iv:eHwwPFNLUgLwGvn0BUOzVPl8ehAaExb5iKR1zmB3+fw=,tag:bQ4nDUWn7Asl0TVMvKcIbw==,type:str]
 #    - name: Prometheus
 #      type: prometheus
 #      url: http://prometheus-prometheus-server
@@ -232,7 +236,7 @@ dashboardsConfigMaps: {}
 ##
 grafana.ini:
   paths:
-    data: ENC[AES256_GCM,data:k25kxMUFsuYZAWGAxYpKnzE=,iv:rj0j4JpqtVAWdRmsPNpqdId41uBHRjbG5cTq+HOZMyU=,tag:mXWrlgnMYPuA2y8V2KOfNA==,type:str]
+    data: ENC[AES256_GCM,data:bqQn4Ny4E/6dXQDB8amcrwU=,iv:dQBtVfUb1fXmkJ22Cup6GnL67Wcf1UV2a7aoX28FSaM=,tag:X9iCvPKejUwGAb/81RhvvQ==,type:str]
     logs: /var/log/grafana
     plugins: /var/lib/grafana/plugins
     provisioning: /etc/grafana/provisioning
@@ -296,14 +300,14 @@ sops:
     - recipient: age1m0lm4afkysxufghhpez3p0wjzchms5gpadc085p3ukqh75hyvanst3lrvr
       enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAwVmZVYmtGTTEvUEtlVFdE
-        MGNtVC8rMUdNSGlGa3F3Y0t2dng4VGFPM0dRCkNPNXNhU0d4WmhiQmRrOXVnMVN2
-        ckxqdy9hZDVKbHdTWmw4MnhHaGtzYWMKLS0tIFV4K1JGYWJBUTNJTlRzN1JFNHdw
-        U0FHbzEyUUdkeVRBS2JOWUFnWkdxWDAKna+/1N9NW4ATr4ONRpJX178MFUn3QMtx
-        6AbAYZZ0+jhWzX0Q73I2ApyAKLmcUhhZJJKrs2V0dEiR+wMl8CiG4Q==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAyblIxRThGclp2c3lIMm01
+        ZDhsS0pUTzFRSUJLMDVJTWVuTUdUbmZwVnhFClNOajNQbDd6SW1xWnZJNE9pc0hy
+        NnZKSGtUUGFVeUY0SFlpVC9hN25VWE0KLS0tIFhldE1wOWdiSkJ0NTZNaXpGM3da
+        YzRqOEFuRC93RUxqMVM3V2NCVEVOaU0KLhStIOxY1OUeEnlcjmAi6CzMpy4eaNQ9
+        EMoZGdARZfr1RgfvF34mcyO+xBzszvm7h46xLPA5cQiJnwkjru/eKg==
         -----END AGE ENCRYPTED FILE-----
-  lastmodified: "2025-04-30T23:25:17Z"
-  mac: ENC[AES256_GCM,data:VAbNdDjqj8tVN0dWOmm+nv/2JcclfBgYNQobHgX0zlCMvdCau7N/ywzlZIZcV69o2kO5s9+B2q7Z1gMQXIr9ck5r3HpT6US98Gue1V1slfeGShsXTtHcD7QJYbfd8+ceYyEELbAHGOap+DgCPDBuiotjC0OipdSlcJm8Z3SX8gY=,iv:L9ALe8mff02SF0GmlDaupmSSN3n11WbxUcZ2ON7wEJM=,tag:MipnqC4I0+6Q2O5Y3N9OgQ==,type:str]
-  encrypted_regex: ^(data|stringData|apiKey|rootPassword|secretKey|adminPassword)$
+  lastmodified: "2025-05-01T00:02:01Z"
+  mac: ENC[AES256_GCM,data:xkhhRsQihp4Zg9HPka6Yq33g41ee36aWt6BkGK0hf6nRojDLZoc4q0WUefGgDxlanc++nmB+8l81+OeenPOzRvDaVjWAB7FabtltSZARcL4rgaiiDbxaJ7hWDhGlc2eNVZpSvJbqu1g3vgCtR4ItkXwZ97/XRVqM27s8ZdqCB+8=,iv:XuPP4wTEmfkhPa2/K7R+VW+jjH0/nKp6eYkgvVLtOsY=,tag:8Sco8c3FbbrGnkbgvgPuZg==,type:str]
+  encrypted_regex: ^(data|stringData|apiKey|rootPassword|secretKey|adminPassword|basicAuthPassword)$
   mac_only_encrypted: true
   version: 3.10.2
