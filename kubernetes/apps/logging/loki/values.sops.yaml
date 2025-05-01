@@ -12,7 +12,7 @@ loki:
 # Configuration for the single binary node(s)
 singleBinary:
   # -- Number of replicas for the single binary
-  replicas: 1
+  replicas: 3
 # -- Configuration for the minio subchart
 write:
   replicas: 0
