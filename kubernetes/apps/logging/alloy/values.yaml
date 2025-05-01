@@ -6,7 +6,7 @@ alloy:
     content: |-
       loki.write "default" {
         endpoint {
-          url = "http://loki.logging.svc.cluster.local:3100/api/v1/push"
+          url = "http://loki-gateway.logging.svc.cluster.local/api/v1/push"
         }
       }
 
