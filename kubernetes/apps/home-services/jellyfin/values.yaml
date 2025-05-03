@@ -19,7 +19,7 @@ resources: {}
 
 # -- Additional volumes to mount in the Jellyfin pod.
 volumes:
-  - name: media
+  - name: jellyfin-media
     persistentVolumeClaim:
       claimName: jellyfin-media
 # - name: foo
@@ -29,7 +29,7 @@ volumes:
 
 # -- Additional volume mounts for the Jellyfin container.
 volumeMounts:
-  - name: media
+  - name: jellyfin-media
     mountPath: "/data/media"
 # - name: foo
 #   mountPath: "/etc/foo"
