@@ -20,11 +20,8 @@ resources: {}
 # -- Additional volumes to mount in the Jellyfin pod.
 volumes:
   - name: media
-    nfs:
-      server: 10.0.0.16
-      path: "/mnt/main-pool/plex"
-    mountOptions:
-      - nfsvers=4.2
+    persistentVolumeClaim:
+      claimName: jellyfin-media
 # - name: foo
 #   secret:
 #     secretName: mysecret
