@@ -20,7 +20,7 @@ spec:
           - $repo/kubernetes/apps/home-services/jellyfin/values.yaml
   destination:
     name: in-cluster
-    namespace: auth
+    namespace: home-services
   syncPolicy:
     automated:
       allowEmpty: true
