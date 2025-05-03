@@ -1,0 +1,67 @@
+# -- Ingress configuration. See: https://kubernetes.io/docs/concepts/services-networking/ingress/
+ingress:
+  enabled: true
+  className: "external"
+  hosts:
+    - host: media.mjwood.org
+      paths:
+        - path: /
+          pathType: Prefix
+
+# -- Resource requests and limits for the Jellyfin container.
+resources: {}
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+#   memory: 128Mi
+
+# -- Additional volumes to mount in the Jellyfin pod.
+volumes:
+  - name: media
+    nfs:
+      server: 10.0.0.16
+      path: "/mnt/main-pool/plex"
+    mountOptions:
+      - nfsvers=4.2
+# - name: foo
+#   secret:
+#     secretName: mysecret
+#     optional: false
+
+# -- Additional volume mounts for the Jellyfin container.
+volumeMounts:
+  - name: media
+    mountPath: "/data/media"
+# - name: foo
+#   mountPath: "/etc/foo"
+#   readOnly: true
+
+jellyfin:
+  # -- Enable DLNA. Requires host network. See: https://jellyfin.org/docs/general/networking/dlna.html
+  enableDLNA: false
+  # -- Custom command to use as container entrypoint.
+  command: []
+  # -- Additional arguments for the entrypoint command.
+  args: []
+  # -- Additional environment variables for the container.
+  env: []
+
+persistence:
+  config:
+    storageClass: 'freenas-iscsi'
+  media:
+    # -- set to false to use emptyDir
+    enabled: false
+    # -- Type of volume for media storage (pvc, hostPath, emptyDir). If 'enabled' is false, 'emptyDir' is used regardless of this setting.
+    type: pvc
+    # -- PVC specific settings, only used if type is 'pvc'.
+    accessMode: ReadWriteOnce
+    size: 25Gi
+    # -- Custom annotations to be added to the PVC
+    annotations: {}
+    # -- If undefined (the default) or set to null, no storageClassName spec is set, choosing the default provisioner.
+    storageClass: ''
+    ## -- Use an existing PVC for this mount
+    # existingClaim: ''
