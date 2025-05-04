@@ -6,6 +6,8 @@ ingress:
   pathType: Prefix
   hosts:
     - grafana.internal.mjwood.org
+deploymentStrategy:
+  type: Recreate
 resources: {}
 #  limits:
 #    cpu: 100m
@@ -22,7 +24,7 @@ persistence:
   size: 10Gi
 # Administrator credentials when not using an existing secret (see below)
 adminUser: admin
-adminPassword: ENC[AES256_GCM,data:sQnEMLTIymP+qgENQsPXbPDeDipCwOJBEVK6esXaIN8Uv7Arf9SE587xwr1y3+lUIYYC0Lk=,iv:SCDQaz+NvPfyWWxoMQlBoe9N4nMjNN0D8mxVmbhA9y8=,tag:ZkqvxQB11/FrRP3Q9NdR0Q==,type:str]
+adminPassword: ENC[AES256_GCM,data:kJ2+wM0qXpo+6oDPBu4r8iD8Sbo0cPw2yAdO7EuJavf4wC9Yv70+np3Ksibp1TU7VU9+xto=,iv:Qv6STFU51Tlg0OJnhdasITmCgwQcTwQxWjON6iJ/7ho=,tag:ad0IBOb49LzcHE2oFqmzaw==,type:str]
 ## Pass the plugins you want installed as a list.
 ##
 plugins: []
@@ -245,7 +247,7 @@ dashboardsConfigMaps: {}
 ##
 grafana.ini:
   paths:
-    data: ENC[AES256_GCM,data:4j0vJ+7Op8//M/nd1Nbz/to=,iv:V0HkMEiPVQaDgvzCeCc6Kn37jVr4Y54HWMwWVwEwfaQ=,tag:CmM7kPhiZcP3gdqLj+fLnA==,type:str]
+    data: ENC[AES256_GCM,data:zTAGsmOFNlePbP1qE7fSLhM=,iv:uK9mpiP7wsKuKBh35d1EKZ7+cqfFykyGkFKAKLjy5Hg=,tag:6rUK1kMvelfk5Puys0aLRw==,type:str]
     logs: /var/log/grafana
     plugins: /var/lib/grafana/plugins
     provisioning: /etc/grafana/provisioning
@@ -309,14 +311,14 @@ sops:
     - recipient: age1m0lm4afkysxufghhpez3p0wjzchms5gpadc085p3ukqh75hyvanst3lrvr
       enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB3ZFhRdHFZYzdsVmE5a0ZI
-        Y0FKTHZrUldXVmN3YytSb201T3orZHFsZ2tzCkF5MFZrZUxSQW9zZXRjd2kxcVZz
-        WjQ4Mml4ZzVXcDR1MVBzdUQ3UDhEQnMKLS0tIEpYdklNWURvNGphVXh4YWpXNkc0
-        Wlp2V0JrU1Y3VFpYdjQzVXlPZ0NnMzAKv0PHjTE6Prn5iMqL/sIQwdBMfI8LMPOx
-        3f6TtBrqOWkctHUVRwL23rM9f8cT1Bbk++P+WCP1a5fCRWj/nKVpuw==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAxSUZIRlNFZGFxUS9FTGRx
+        TWlCMnNrYTNkT1ZUbjJLWENNSW1pUHBTOVRFCjRsVHM3dCttalNCaENZQmJJc3VG
+        K2tHMldWQitiWURVUlJta3B0NW1Ob2cKLS0tIDFyUUp6ejhxM24rMGdrdDEzWDNR
+        czdtM1FXWWk4N1JOLzJYQVpYN1ZlZzAKh6epnCtKaNOqESG5esfZfK8ymO73ybUs
+        CGtnmKSnR10VSpnkWEeWvli6EIzkIn5Jw6xWldHCNCyjnL2TVd9HTQ==
         -----END AGE ENCRYPTED FILE-----
-  lastmodified: "2025-05-01T18:06:48Z"
-  mac: ENC[AES256_GCM,data:HRvuL/W3rOzovv8Xjqj6jwtos9sPc471eVCnsjeD9sbf/nFiX8Y1819DReLf7xlldEaj5RE57m6924mXEFywzEXaU1hgMr64rkMgSvdxDJXCut18U/OH2kqrft9tqASafhB2P6O83pOxAkeutHJhOOlji9rMEMOANLLRUVLaOaA=,iv:gX8vE1x749m9URCogVm8expAPijCZQuv4+nIQjbc1h4=,tag:rzf4RzhJMtU9TVAhsTFsFw==,type:str]
-  encrypted_regex: ^(data|stringData|apiKey|rootPassword|secretKey|adminPassword|basicAuthPassword)$
+  lastmodified: "2025-05-04T21:53:53Z"
+  mac: ENC[AES256_GCM,data:iew3gPNC1Dnb88ZpdZW9NX1FiS2jymGTPC7VDzbnssJqiEonH0O6ZzTsOm6R8I2yAtMD1hYcNirOjSFj7jrh7jj9csLP9lHVioUX0SQ1pVtytH126KQNaS3LMPngciN5o1OL8p1+h5RlpV3fK1OEOqZhyU8Wu4Y1VXApHMGxF90=,iv:GqNy3uO7R47ZwUWOXh1Aj0g9+kBz6Dh5KP+kwLoVGxs=,tag:batz8jSM8oaRXJ37f/G95w==,type:str]
+  encrypted_regex: ^(data|stringData|apiKey|rootPassword|secretKey|adminPassword|basicAuthPassword|password|secret_key)$
   mac_only_encrypted: true
   version: 3.10.2
