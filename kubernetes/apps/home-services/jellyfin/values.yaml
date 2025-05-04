@@ -17,6 +17,9 @@ resources: {}
   #   cpu: 100m
 #   memory: 128Mi
 
+livenessProbe:
+  initialDelaySeconds: 60
+
 # -- Additional volumes to mount in the Jellyfin pod.
 volumes:
   - name: jellyfin-media
