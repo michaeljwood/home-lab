@@ -26,6 +26,8 @@ serviceMonitor:
   enabled: true
 podAnnotations:
   secret.reloader.stakater.com/reload: external-dns-secret
+livenessProbe:
+  initialDelaySeconds: 30
 sops:
   kms: []
   gcp_kms: []
