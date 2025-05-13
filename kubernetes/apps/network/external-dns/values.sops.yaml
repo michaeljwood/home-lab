@@ -1,3 +1,5 @@
+image:
+  tag: v0.13.4
 fullnameOverride: external-dns
 provider: cloudflare
 env:
