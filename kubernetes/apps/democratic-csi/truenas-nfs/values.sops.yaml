@@ -3,7 +3,7 @@ driver:
     driver: freenas-api-nfs
     httpConnection:
       protocol: https
-      apiKey: ENC[AES256_GCM,data:zdXjUIR+4cpjZo6huvgfMJTcDGt3G5O8qMTL90taPEB0kLujrVitz59Is2zje1iVe4IDEo9w1jbD8sCyR2qFeO/Q,iv:iD4yw6hnh7om/FRaty4A/G7RtSCPI6YxU5eQozZ/92s=,tag:R0OuQI2ns9IjzMiMJyntnQ==,type:str]
+      apiKey: ENC[AES256_GCM,data:KgCyzgAqJBqsB5z2eAQ2l5jdLnMSLHXlmxRv9hMpZvD1XW9dzk/4R9fdgzaQGJm9CVuUgwyd+kXBEYupw78N9MD/,iv:gSesDdDBpCT4HlQ1XBy6qdpv6lYrwlp/sVS2NorKE84=,tag:dIhLpm4vfdL9KR+UEAm5NA==,type:str]
       host: 10.0.0.9
       port: 443
       allowInsecure: true
@@ -48,14 +48,14 @@ sops:
     - recipient: age1m0lm4afkysxufghhpez3p0wjzchms5gpadc085p3ukqh75hyvanst3lrvr
       enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBMeVpFSUZjejY4WU9WSVU4
-        YTBqVWdsZHl2QmdtbGljTE5iMFJKNUJVbG1RCmdEL3FGc3BNWHVJSm1aYU9UZENW
-        QTJ6dnByYXdKenZRZlJlZzlNelNWbzAKLS0tIEJidGhQSjRUeFYwR2s3WE1DQXd3
-        L1poMUVML092OTQyQ3VZOVJZbjVnamcKvl9xcWUhEgSMR5xZOCy+9bWo6SYBx6Qr
-        8BgsgEKVSJJ+G3M0b9DlkX//n/EW/e7mcnzXlSC6O+e042KuekmoxQ==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA4VW9Sc2czRmpFMjEzTDFk
+        QXgxbVhRYjM4ZHlVcGtrTWNmN2V1Skp4RkE4Cm04d1h6VHZVNmwxb2k5Z2puYi9O
+        RklQR2VTQU9ZMVUrT2NoMkVtRmZWR3MKLS0tIHB1RkFmT21yaE1uQlJlaFQ5NGlN
+        dUpUZGRwZ2huMXhCNHF5MHllN2RmZEUKBt7Neee/eppQ1rMIZTyBwjPXuWIN/tAu
+        S3gVI4xQQfS49NEF9U7tscFow5VnwSXtBzBQi9IfV/GLd9L/bUxsYA==
         -----END AGE ENCRYPTED FILE-----
-  lastmodified: "2025-05-14T13:56:35Z"
-  mac: ENC[AES256_GCM,data:8D28Yc2KhWOdjMlWGxIOuHGYq2oXo/9f+2EPHssEMiKOXQXmMsuj0wjlzk5d+SHpbs2hdRjaNT79UVT+PiNtGonBDvmRj4NauhcmKoX3KC0BoJEUcTu6UN1hqG/dbvUPDQqL+A4hDMyz9yD8rWU/nIpTSACB4SB7B3dSQtZPVzE=,iv:TxmB227ooZunWhY726EsYmNaJs+wCFXKZyfQpqapMEc=,tag:QriS95DgYFBqnIV44vqv7Q==,type:str]
+  lastmodified: "2025-05-14T15:17:54Z"
+  mac: ENC[AES256_GCM,data:CrOkMRSZzGzDQ7t7/UwLbAZKF3nYyVYSfo8AjaTqh6uTzWDyaiMwISWXYSDbbyTI2w2tXut/3oVB/blaBWka14ZIQ24d+5Y9qhTBNqwB6/ze+Cl9XVaqblIvMvQ9J7jCq5YXFnrEAP6LtBK/b5T66VUpxCao3RKN069zvfHkwcE=,iv:Y/ZvzwksuU0RD8w5sDGk+Pfe838Nm0+hFz9AY54ZEYg=,tag:oTVTCloF3rGyIlKB9gmtNw==,type:str]
   encrypted_regex: ^(data|stringData|apiKey|rootPassword|secretKey|adminPassword|basicAuthPassword|password|secret_key)$
   mac_only_encrypted: true
   version: 3.10.2
