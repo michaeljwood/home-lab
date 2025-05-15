@@ -2,6 +2,8 @@
 ingress:
   enabled: true
   className: "external"
+  annotations:
+    external-dns.alpha.kubernetes.io/target: external.mjwood.org
   hosts:
     - host: media.mjwood.org
       paths:

@@ -10,6 +10,8 @@ server:
   ingress:
     enabled: true
     ingressClassName: external
+    annotations:
+      external-dns.alpha.kubernetes.io/target: external.mjwood.org
     hosts:
       - auth.mjwood.org
 postgresql:
