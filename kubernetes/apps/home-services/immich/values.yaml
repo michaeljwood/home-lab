@@ -1,0 +1,69 @@
+## This chart relies on the common library chart from bjw-s
+## You can find it at https://github.com/bjw-s-labs/helm-charts/tree/923ef40a39520979c98f354ea23963ee54f54433/charts/library/common
+## Refer there for more detail about the supported values
+
+# These entries are shared between all the Immich components
+
+env:
+  REDIS_HOSTNAME: '{{ printf "%s-redis-master" .Release.Name }}'
+  DB_HOSTNAME: "{{ .Release.Name }}-postgresql"
+#  DB_USERNAME: "{{ .Values.postgresql.global.postgresql.auth.username }}"
+#  DB_DATABASE_NAME: "{{ .Values.postgresql.global.postgresql.auth.database }}"
+#  # -- You should provide your own secret outside of this helm-chart and use `postgresql.global.postgresql.auth.existingSecret` to provide credentials to the postgresql instance
+#  DB_PASSWORD: "{{ .Values.postgresql.global.postgresql.auth.password }}"
+  IMMICH_MACHINE_LEARNING_URL: '{{ printf "http://%s-machine-learning:3003" .Release.Name }}'
+
+image:
+  tag: v1.133.1
+
+immich:
+  metrics:
+    # Enabling this will create the service monitors needed to monitor immich with the prometheus operator
+    enabled: false
+  persistence:
+    # Main data store for all photos shared between different components.
+    library:
+      # Automatically creating the library volume is not supported by this chart
+      # You have to specify an existing PVC to use
+      existingClaim: immich-photos
+  # configuration is immich-config.json converted to yaml
+  # ref: https://immich.app/docs/install/config-file/
+  #
+  configuration: {}
+    # trash:
+    #   enabled: false
+    #   days: 30
+    # storageTemplate:
+    #   enabled: true
+  #   template: "{{y}}/{{y}}-{{MM}}-{{dd}}/{{filename}}"
+
+# Dependencies
+
+# DEPRECATED
+# The postgres subchart is deprecated and will be removed in chart version 0.10.0
+# See https://github.com/immich-app/immich-charts/issues/149 for more detail.
+postgresql:
+  global:
+    postgresql:
+      auth:
+        existingSecret: immich-postgres-user
+
+redis:
+  enabled: true
+
+# Immich components
+
+server:
+  ingress:
+    main:
+      enabled: true
+      className: "external"
+      annotations:
+        external-dns.alpha.kubernetes.io/target: external.mjwood.org
+        # proxy-body-size is set to 0 to remove the body limit on file uploads
+        nginx.ingress.kubernetes.io/proxy-body-size: "0"
+      hosts:
+        - host: photos.mjwood.org
+          paths:
+            - path: "/"
+      tls: []

@@ -1,0 +1,31 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: immich
+  namespace: argo-system
+spec:
+  project: kubernetes
+  sources:
+    - repoURL: "https://github.com/michaeljwood/home-lab.git"
+      path: kubernetes/apps/home-services/immich
+      targetRevision: main
+      ref: repo
+    - repoURL: ghcr.io/immich-app/immich-charts/immich
+      chart: immich
+      targetRevision: 0.9.3
+      helm:
+        releaseName: immich
+        valueFiles:
+          - $repo/kubernetes/apps/home-services/immich/values.yaml
+  destination:
+    name: in-cluster
+    namespace: home-services
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true

@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: immich-photos
+  namespace: home-services
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: "truenas-iscsi"
+  resources:
+    requests:
+      storage: 1Ti
+  volumeName: jellyfin-media
