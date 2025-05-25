@@ -11,7 +11,7 @@ spec:
       path: kubernetes/apps/home-services/immich
       targetRevision: main
       ref: repo
-    - repoURL: ghcr.io/immich-app/immich-charts/immich
+    - repoURL: "https://immich-app.github.io/immich-charts"
       chart: immich
       targetRevision: 0.9.3
       helm:
