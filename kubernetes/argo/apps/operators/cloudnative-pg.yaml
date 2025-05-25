@@ -12,10 +12,10 @@ spec:
       targetRevision: main
       ref: repo
     - repoURL: "https://cloudnative-pg.github.io/charts"
-      chart: cnpg
+      chart: cloudnative-pg
       targetRevision: 1.26.0
       helm:
-        releaseName: cnpg
+        releaseName: cloudnative-pg
         valueFiles:
           - $repo/kubernetes/apps/operators/cloudnative-pg/values.yaml
   destination:
