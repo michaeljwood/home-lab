@@ -11,4 +11,3 @@ spec:
   resources:
     requests:
       storage: 200Gi
-  volumeName: immich-photos
