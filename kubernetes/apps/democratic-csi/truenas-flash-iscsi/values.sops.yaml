@@ -21,8 +21,8 @@ driver:
       namePrefix: csi-
       nameSuffix: -talos
       targetGroups:
-        - targetGroupPortalGroup: 1
-          targetGroupInitiatorGroup: 1
+        - targetGroupPortalGroup: 2
+          targetGroupInitiatorGroup: 2
           targetGroupAuthType: None
           targetGroupAuthGroup: null
       extentInsecureTpc: true
