@@ -67,7 +67,7 @@ server:
   ingress:
     main:
       enabled: true
-      className: "external"
+      ingressClassName: "external"
       annotations:
         external-dns.alpha.kubernetes.io/target: external.mjwood.org
         # proxy-body-size is set to 0 to remove the body limit on file uploads
