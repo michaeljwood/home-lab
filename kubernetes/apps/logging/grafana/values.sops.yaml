@@ -9,6 +9,15 @@ ingress:
 deploymentStrategy:
   type: Recreate
 resources: {}
+
+extraInitContainers:
+  - name: perm-fix
+    image: busybox
+    command:
+      - chmod
+      - '640'
+      - /var/lib/grafana/grafana.db
+
 #  limits:
 #    cpu: 100m
 #    memory: 128Mi
