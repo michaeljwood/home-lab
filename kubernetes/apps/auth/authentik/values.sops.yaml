@@ -16,6 +16,8 @@ server:
       - auth.mjwood.org
 postgresql:
   enabled: true
+  persistence:
+    storageClass: truenas-flash-iscsi
   auth:
     password: ENC[AES256_GCM,data:Q1lNQBvnkyr8L39Btlk13VB8bUvll192+5SuyZP4+UN4dMUTJsD07eVpucLFBQ/QnFbbjZejDyeg5GqxoYGb7A==,iv:5typRlrZTKimtgqI1cUgGwKiUUnrZXwdTeLJT+2lHHw=,tag:fbX2+9wXMLqZCqhQNunQvA==,type:str]
 redis:
