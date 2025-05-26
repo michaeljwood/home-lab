@@ -12,11 +12,29 @@ resources: {}
 
 extraInitContainers:
   - name: perm-fix
-    image: busybox
+    image: docker.io/library/busybox
     command:
       - chmod
       - '640'
       - /var/lib/grafana/grafana.db
+    imagePullPolicy: IfNotPresent
+    resources: { }
+    securityContext:
+      capabilities:
+        add:
+          - CHMOD
+        drop:
+          - ALL
+      readOnlyRootFilesystem: false
+      runAsNonRoot: false
+      runAsUser: 0
+      seccompProfile:
+        type: RuntimeDefault
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+      - mountPath: /var/lib/grafana
+        name: storage
 
 #  limits:
 #    cpu: 100m
