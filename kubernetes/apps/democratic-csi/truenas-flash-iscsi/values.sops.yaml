@@ -3,13 +3,13 @@ driver:
     driver: freenas-api-iscsi
     httpConnection:
       protocol: https
-      apiKey: ENC[AES256_GCM,data:AX5Wv79UV/EK7aMLsXMfCm9fcwP06O3A4CyQBsxbd7mf+rmAUu++ftutv7A0/68t+fQ/AneNlakJXuZbbEr4RG+x,iv:67SnQrzdmcBAXMkmC2IOR15VhGBgVaCOA1FeMnv6U70=,tag:PyHnPg+XHbKR7YWaaMuZZA==,type:str]
+      apiKey: ENC[AES256_GCM,data:QRvR/h29/1LAOH5xMTqsZLrP4nIto+uYXJm1f/jsM01tdgUsQqyyR4QOkK0csIhPZap3Kst5/GDzpEw/7loUR22l,iv:VT1cpTLXE1uGvZKcBAJJGEUW1lqoZLrBAM+rRsyA+4Y=,tag:BRLTPftiYrVP9Kfji0/WBg==,type:str]
       host: 10.0.0.16
       port: 443
       allowInsecure: true
     zfs:
-      datasetParentName: main-pool/talos/iscsi/vol
-      detachedSnapshotsDatasetParentName: main-pool/talos/iscsi/snap
+      datasetParentName: flash/talos/iscsi/vol
+      detachedSnapshotsDatasetParentName: flash/talos/iscsi/snap
       zvolCompression: null
       zvolDedup: null
       zvolEnableReservation: false
@@ -35,8 +35,8 @@ csiDriver:
   # should be globally unique for a given cluster
   name: org.democratic-csi.freenas-api-iscsi
 storageClasses:
-  - name: truenas-iscsi
-    defaultClass: true
+  - name: truenas-flash-iscsi
+    defaultClass: false
     reclaimPolicy: Delete
     volumeBindingMode: Immediate
     allowVolumeExpansion: true
@@ -51,7 +51,7 @@ storageClasses:
       node-publish-secret: null
       controller-expand-secret: null
 volumeSnapshotClasses:
-  - name: truenas-iscsi
+  - name: truenas-flash-iscsi
     parameters:
       detachedSnapshots: "true"
 node:
@@ -69,14 +69,14 @@ sops:
     - recipient: age1m0lm4afkysxufghhpez3p0wjzchms5gpadc085p3ukqh75hyvanst3lrvr
       enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBsSlFiT1YrR0RaME85aUY3
-        andpcTlDNXFwcGFSVG5SbmNGb1kvUWt1Y0NJCmxpUHlwTFhBQTJEbEhONVZ3U1Mr
-        TGx0M3VLNmUrVk15TG5oVXVZWVFrb0UKLS0tIG5YbzhyQUxVWCtwZy8xSnZDUHpz
-        am15OC9oSllEdHV3Q0tIR1VHY240MHcKZP/3UBMl/EhS+Y8GVIOcaLcMNGTF18wc
-        IOSss0jxnuihhzYavxEIULbiS1WbY1kLkBH88ZGwQzzWIwT4BuCsww==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBpZ0RjNWY5MWdWQWlreGFN
+        VTRKT1JRaTFLYU5GUElNVDRUV2pCQW1LMEh3CjJaWlpCdkNIOTQxZ3F0ZzlqRXFI
+        aTBRZEkzeVB2WlROYzA4ZjBvRHVtdWcKLS0tIFJKWFpGM2ZucEx2NzR3d0Ntc3Uw
+        Q05qemwvRXo3QmpzUVJpU0RNaWZnTDgKlEoIjPAj+AWdZdld5c3bf7PCk0pET6q2
+        Un8JaMZV0agG0VH98c2B6+R27yitsBUNqdTNJmP/4Ks2jfqdsrmYEw==
         -----END AGE ENCRYPTED FILE-----
-  lastmodified: "2025-05-26T20:12:43Z"
-  mac: ENC[AES256_GCM,data:rIAnXpFh9Ve4Gxui00haCw3mWacX2TwYDD6CUf9J9HM5J6lmuXaqxJLKfFvv8lFn2tyTqmu9V1SZSdzm2mtev8gr3B0Y8hWCfXHKaujbHcEHMB0rLwOe3JuW0X1P0iMVsnHD4XD1lVqaRPR2UhD+L8j7BnCXL/TOFTvv1DkTTik=,iv:8/WYgQg2a0C4ird4QBn8QpuXZ3qEGO3u5AWaXgYPnJs=,tag:nAxwZfiCU6UeDylt9xcGhQ==,type:str]
+  lastmodified: "2025-05-26T20:12:59Z"
+  mac: ENC[AES256_GCM,data:lKHC4sMReWaCGLYCNfms3aURjVIWsqfJYQwb+2pp9Mun/wBt3A5ACS/GNBexFBm24dk3B9pfd0YXcSaSYwF0zS8wubI+64gGOFoGJHZBu+OYv3Z04OY8Cyd+U5MyF6WjPgjr3yLqS/dPnYyBMI5uRIjSPSfQGuzB9jGZVTdqaNs=,iv:RV9/+/wGOUtLvXD+sMEl9+jAWq4EM1LFbd1Y1ZpZZ+8=,tag:gP78mSJI+dE2EFkBhwnFbA==,type:str]
   encrypted_regex: ^(data|stringData|apiKey|rootPassword|secretKey|adminPassword|basicAuthPassword|password|secret_key)$
   mac_only_encrypted: true
   version: 3.10.2

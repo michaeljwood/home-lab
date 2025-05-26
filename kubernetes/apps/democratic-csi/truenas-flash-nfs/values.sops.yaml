@@ -3,7 +3,7 @@ driver:
     driver: freenas-api-nfs
     httpConnection:
       protocol: https
-      apiKey: ENC[AES256_GCM,data:brRV7WMDIi5d+k3u44Nyd9t5cL7F2AmxlaU+NONDGWOlOd8xnlfnU4BKTzR0VaTy1ny9KbidDxvgLx8I46hun6L3,iv:EFIhKuNJUwRPcuvgmWuihgdxGxZi3t2EvsXxPWGCiuA=,tag:w7ux5o+1UqF6LvHXFxOzWg==,type:str]
+      apiKey: ENC[AES256_GCM,data:PwBMRaesALEpGhucupv5ui8GOzhnA+G2iTGM1nhDCekZlZVjMNnXNBBcZVuCKp2mrvzHSy7oBAgrjT/DkYXuj6mC,iv:h6mUGc7uwRjMyRAkspUfj/vTRx5KuxGFYbPdYlYd0Sw=,tag:a+sMCHNP02EATxoZ1BQ8Gw==,type:str]
       host: 10.0.0.16
       port: 443
       allowInsecure: true
@@ -29,7 +29,7 @@ csiDriver:
   # should be globally unique for a given cluster
   name: org.democratic-csi.freenas-api-nfs
 storageClasses:
-  - name: truenas-nfs
+  - name: truenas-flash-nfs
     defaultClass: false
     reclaimPolicy: Delete
     volumeBindingMode: Immediate
@@ -40,7 +40,7 @@ storageClasses:
       - noatime
       - nfsvers=4
 volumeSnapshotClasses:
-  - name: truenas-nfs
+  - name: truenas-flash-nfs
     parameters:
       detachedSnapshots: "true"
 sops:
@@ -48,14 +48,14 @@ sops:
     - recipient: age1m0lm4afkysxufghhpez3p0wjzchms5gpadc085p3ukqh75hyvanst3lrvr
       enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBwa0Y3QWJiMm5EelltNHg4
-        S29xREsvZ2lUaHp0N1V2c1JPRnVrZEJEL0JzClRwcXpGZmhZdFpNRVBIUjU4QnZC
-        NjFueU1GMENsV2MvbVpaOVBoQzJzcVkKLS0tIGlrMXpJa2hvejVGL0hzU0NtaHlY
-        Ny9LL1hiY3RXYUJWNmZhRWhWU0J3bjQKDZPdbtVpxWaga7aFt+xJuKLm4jSWHIpG
-        8aTtzwAk4BRZOC7SJ6lxbuXjcGGvQeHXYQDBewZY1HsG3g5JC4OC0w==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBaTVZrNmtRa2JlQUREejAx
+        amhVL0ZMNDlFT1p6aXhqT29OODVGSDljUGt3CnlZakRuM2NpdmV2MHNrbjJqR1Q1
+        aGJONHVYZmo1dHNhd1JRMERoeE5iakkKLS0tIFhHRmNXTTRuZzZBRkNxM2RHT3o0
+        VUJ6ZFpQTU1UWmFtQ0RxTkJQcC9zOWMK+D8an+v9Jdw+0jYArD1a8mhrEWAeniyF
+        YZO0y1SGaWulw6fhUbpvmfgzpf8ml7V8OHZONGUD+hoqRH5rFPRFMw==
         -----END AGE ENCRYPTED FILE-----
-  lastmodified: "2025-05-26T20:12:37Z"
-  mac: ENC[AES256_GCM,data:dimlUAdIEx858cCzrn3xlCI4PSNuc922TmqeXExMH2X9TBJxpejObWM4pEMoJ4C8Y39sWxQH5EUhWHHQ25oJ3Bx4M9dCyHshT+VeSyRoTosnjOM3WnzUQ0WtULEkIr4Yb6cG9saSIpWjagSmNqsY/3HRsOEp8ro83oSiDd506Ew=,iv:sqxjmu6bodNjcpjgAe4jzB5KO55CTFSnfwpo/lEWm8k=,tag:nXl/sqabDBjgORwoddIXJQ==,type:str]
+  lastmodified: "2025-05-26T20:13:04Z"
+  mac: ENC[AES256_GCM,data:Km6cvBSKqKSvk8vAr/Pq573Cv8vbnnyvVl8B1n1MmjgxnmpWkNg6R/X0oLvNzwfGgZjmZEQfi3GB8jw8MwTWksYSpUtDnZFQ2MNBqrYtHtignS2Jh5SmxSWLT3fd1YfgKvX1ckLQtjXZuixZrySebujG0su8GDlpBYe8mv+VEps=,iv:moJ0OXddDDPtsxoAp/gqXIUCNMrVbhs0Qnb981WCGkg=,tag:/NxPRdrlPYQkx/Q2VfZ8CQ==,type:str]
   encrypted_regex: ^(data|stringData|apiKey|rootPassword|secretKey|adminPassword|basicAuthPassword|password|secret_key)$
   mac_only_encrypted: true
   version: 3.10.2
