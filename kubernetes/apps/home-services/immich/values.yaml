@@ -10,12 +10,12 @@ env:
   DB_USERNAME:
     valueFrom:
       secretKeyRef:
-        name: immich-postgres-user
+        name: immich-postgresql-user
         key: username
   DB_PASSWORD:
     valueFrom:
       secretKeyRef:
-        name: immich-postgres-user
+        name: immich-postgresql-user
         key: password
 #  DB_USERNAME: "{{ .Values.postgresql.global.postgresql.auth.username }}"
 #  DB_DATABASE_NAME: "{{ .Values.postgresql.global.postgresql.auth.database }}"
