@@ -12,7 +12,7 @@ resources: {}
 
 extraInitContainers:
   - name: perm-fix
-    image: docker.io/library/busybox
+    image: docker.io/library/busybox:1.31.1
     command:
       - chmod
       - '640'
@@ -20,11 +20,6 @@ extraInitContainers:
     imagePullPolicy: IfNotPresent
     resources: { }
     securityContext:
-      capabilities:
-        add:
-          - CHMOD
-        drop:
-          - ALL
       readOnlyRootFilesystem: false
       runAsNonRoot: false
       runAsUser: 0
