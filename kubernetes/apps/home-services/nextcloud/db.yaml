@@ -1,0 +1,23 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: nextcloud-postgresql
+spec:
+  imageName: docker.io/bitnami/postgresql:17
+  instances: 1
+  managed:
+    roles:
+      - name: nextcloud
+        superuser: true
+        login: true
+
+  bootstrap:
+    initdb:
+      database: nextcloud
+      owner: nextcloud
+      secret:
+        name: nextcloud-postgresql-user
+
+  storage:
+    size: 10Gi
+    storageClass: truenas-iscsi

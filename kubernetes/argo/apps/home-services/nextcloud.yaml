@@ -1,0 +1,31 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nextcloud
+  namespace: argo-system
+spec:
+  project: kubernetes
+  sources:
+    - repoURL: "https://github.com/michaeljwood/home-lab.git"
+      path: kubernetes/apps/home-services/nextcloud
+      targetRevision: main
+      ref: repo
+    - repoURL: "https://nextcloud.github.io/helm/"
+      chart: nextcloud
+      targetRevision: 6.6.10
+      helm:
+        releaseName: nextcloud
+        valueFiles:
+          - $repo/kubernetes/apps/home-services/nextcloud/values.sops.yaml
+  destination:
+    name: in-cluster
+    namespace: home-services
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true

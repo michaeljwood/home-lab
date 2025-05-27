@@ -1,0 +1,85 @@
+replicaCount: 1
+ingress:
+  enabled: true
+  ingressClassName: external
+  annotations:
+    external-dns.alpha.kubernetes.io/target: external.mjwood.org
+    # proxy-body-size is set to 0 to remove the body limit on file uploads
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+  hosts:
+    - host: cloud.mjwood.org
+      paths:
+        - path: /
+  tls: []
+nextcloud:
+  host: cloud.mjwood.org
+  username: stromgard
+  password: ENC[AES256_GCM,data:jn4/BIDIhyS1anW29ajdnNoQlcU=,iv:Rtr3OlFI+iHfAob+xELtQdoBcdpQI8suwjjZUY4hBU0=,tag:QFnIM5ntYl2XT9QwEGpPcw==,type:str]
+internalDatabase:
+  enabled: false
+##
+## External database configuration
+##
+externalDatabase:
+  enabled: true
+  ## Supported database engines: mysql or postgresql
+  type: postgresql
+  ## Database host. You can optionally include a colon delimited port like "myhost:1234"
+  host: nextcloud-postgresql-rw
+  ## Database name
+  database: nextcloud
+  ## Use a existing secret
+  existingSecret:
+    enabled: true
+    secretName: nextcloud-postgresql-user
+    usernameKey: username
+    passwordKey: password
+##
+## Redis chart configuration
+## for more options see https://github.com/bitnami/charts/tree/main/bitnami/redis
+##
+redis:
+  enabled: true
+  auth:
+    enabled: true
+    password: ENC[AES256_GCM,data:LjSgsWDRUuBzZcaYoFrU9Wv8EflqYoJ0D4r2CRjTx18PLrM4viANdCOzmRJYm3inDHlqOF+z0OcZ90/IaoqG5g==,iv:w9/CARHLRUnj7SJxUrZdj9HFJUQ5s1/tHhTo6ZUIzQg=,tag:+qBvhton6chPMgo0hOy6dA==,type:str]
+  global:
+    storageClass: truenas-flash-iscsi
+  master:
+    persistence:
+      enabled: true
+  replica:
+    persistence:
+      enabled: true
+## Cronjob to execute Nextcloud background tasks
+## ref: https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/background_jobs_configuration.html#cron
+##
+cronjob:
+  enabled: true
+## Enable persistence using Persistent Volume Claims
+## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
+##
+persistence:
+  enabled: true
+  storageClass: truenas-flash-iscsi
+  nextcloudData:
+    enabled: true
+    storageClass: truenas-nfs
+    accessMode: ReadWriteOnce
+    size: 1Ti
+sops:
+  age:
+    - recipient: age1m0lm4afkysxufghhpez3p0wjzchms5gpadc085p3ukqh75hyvanst3lrvr
+      enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBHZGIyWlRjWDY4RVNVaTBH
+        TzB3d282c0RsUEV0SFhncHd4TWxWSSt4TEJFCjRWbnVxMElhSzMxVmlPdUUvUXFS
+        dkpTN21CNVVxNW5wUGZGY0krTjJKOVkKLS0tIHJQSEhRekgzR2R4Zk9PNzhWMHB0
+        cXU2dW0yQllFWlVkRVZSSTNDVCthdmMKg8a239b49DQoZfpr80aJWWE3VdPSif+M
+        0dtA0pRGpfTmmPE1ivXLgbaVN6w5UtqiDAiWL5sz8Nqy43UjW4eGIw==
+        -----END AGE ENCRYPTED FILE-----
+  lastmodified: "2025-05-27T20:36:16Z"
+  mac: ENC[AES256_GCM,data:28FksexIruuSzGFXJVnw2GmqSAveeEFfXpGw/YBNi4rXHgZOuD3gOVNiH2Y2P3GT348vLhrlBVwAdGBpc1nesCR3W5bu4vhZoblpOv6rK7bnCOrgNknkQtUIwn7GbtMnFEtJNWxQMtnZ+KM2xsdioP+iVzeCzFJ5eO6AuETSyRA=,iv:0WUI34fkIvNbrMmPNfET5B6TPoKJEO/OUJbAaJvaCJw=,tag:B0pva3Ktk0Fz8JJoOf1huQ==,type:str]
+  encrypted_regex: ^(data|stringData|apiKey|rootPassword|secretKey|adminPassword|basicAuthPassword|password|secret_key)$
+  mac_only_encrypted: true
+  version: 3.10.2
