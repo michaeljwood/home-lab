@@ -14,7 +14,7 @@ extraInitContainers:
   - name: perm-fix
     image: docker.io/library/busybox:1.31.1
     command:
-      - 'if [ -f /var/lib/grafana/grafana.db ] ; then chmod 640 /var/lib/grafana.db ; else echo "skipping" ; fi'
+      - 'sh -c "if [ -f /var/lib/grafana/grafana.db ] ; then chmod 640 /var/lib/grafana.db ; else echo skipping ; fi"'
     imagePullPolicy: IfNotPresent
     resources: { }
     securityContext:
