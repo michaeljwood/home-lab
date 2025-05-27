@@ -14,6 +14,8 @@ extraInitContainers:
   - name: perm-fix
     image: docker.io/library/busybox:1.31.1
     command:
+      - '[ -f /var/lib/grafana/grafana.db ]'
+      - '&&'
       - chmod
       - '640'
       - /var/lib/grafana/grafana.db
