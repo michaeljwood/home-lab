@@ -1,0 +1,23 @@
+{
+  "kind": "SealedSecret",
+  "apiVersion": "bitnami.com/v1alpha1",
+  "metadata": {
+    "name": "nextcloud-postgresql-user",
+    "namespace": "home-services",
+    "creationTimestamp": null
+  },
+  "spec": {
+    "template": {
+      "metadata": {
+        "name": "nextcloud-postgresql-user",
+        "namespace": "home-services",
+        "creationTimestamp": null
+      },
+      "type": "generic"
+    },
+    "encryptedData": {
+      "password": "AgCAxa1fbDGM8fq7ZjIta4hmtQqWRoc4+3Yl1T5StExfHE4nV3/dPzY4JQnzqDGMWEoPKxIVUANC1rdWYMsxzzuVVAocp0qgWdKmKkKIoCiyFtJ6aqHgtaNSG7vNe7ioueTgABVQNQkaaN4zWEym6xtcYeiYzzyNJJoO9hXZdxtMfNarmFyRwiokC3afEOccj9iiSbnzVZ+dYlFdt2mYe4l9xGn5deA3ySdMfnErWgPcdkGCFcB8v7R0YW2+ZUXJJ0HWZ1IRD6bv7FjDtwlYtvyd3HQK1rxVsEoqG2c5GddmLKGfk9eIJNLaSf+f8AX7es7sCYdB0ORJR0d8hAJ/ybDVgPbzfykE4UyfMuYFR/dkb50FOAhftmvMospyvA4UZMp/PHafYhtkRuLCP0jfP/hwvMMGKDVV4eenldi6ijWkPBngtAopW1QSd3eWTsy1qds6XHy0IUoM5fVddIY8OSJmHGsy1ZK0L8a8wxKrLNL7eD8bZRFSBkY1imMmfz0XisyuOUcxFz9qbBqifK7D6NNJIoxNm/T7vjIeVy2ZHyMcBy3zt0zAIuzWSP3CoP97IAiX8lgLAIThqpcnkwSbAg4CT/E/nQ1Q7ghIIcI/+dVEmmVTyaJTNBgzBue3urz2QNNXef6ZAllqyJKoxjFatQ0/IUmbI2cMlk4xZOi18MSvaMwPGDg/aucJnPWMfU2PkFtzE2wZBs7k4LHbR9ccfnhQ/804LXDKtSe8tBKRUaRDZGVoU6YTlJt8FsGwLWJ1wC0KuCpOrouuLP+8lqNeEPAT",
+      "username": "AgCWE9qrP7EBHR6b5MUBCY1Fv2+lfLFCL/HT9nbTlrBSTn/5dci+uNu2rsTFo9ImN0K1z6XEydM85FWZxZ0RDGYYQr+b9sRMWuPQ9/rxNvOgeHztE8XcZC8w/U8sEOYpYGGDOXdKxMSrW00hwCOOTac8JcLda+tcJV07H4QckD55JvfoLTKHqGMeXJqXlmJA513EOW0nsgBqXffBbFyBLlu8OwwNlBF+8z1tepdJFHKH8QEaPFX4riNGngdj2Qd7zgQl/yI77x8zhJpswhIyHu/GNWEN2qKbn8RZnfvQOU7WNjLTjt2OID/dGt7c39/KopdlNnpRKne0EoP3rmvo68PtumUhz59bEakx7wcMI1OojQPwhINQ+eLTdDLjfJ9oJOq6JtmPu5p3ZpDeCimyiVXO1KvYXstNBWmYDkGypCZmIfXodYNkfmBHSHyNf6lR8hxOb1xBZjXTPK1cYx8soJpkgN9h3S55gg20NFeUYHiataczz9Gsb6k4TQJc5UqIQbrTdqvCU44JF8PwHq8XspLzld7bzQLG1qc+Fl6iu4ydDRsmkMHA7pVEAFkQzniq/YG/+G5CigKCYQl2HvQp5vfEjrJKoiGYDbRJ0aHpCfr4aPjcdvdTtNJ3U//0yyho7xwLOHgCAMrNTVSyaShbdhUMOprWPR6uWYUvsTC7dSKwQiI0zN68pzgLfBpT0vrtZBy2z9Xzew8F2AU="
+    }
+  }
+}
