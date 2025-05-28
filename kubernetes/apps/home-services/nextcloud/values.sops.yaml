@@ -6,6 +6,7 @@ ingress:
     external-dns.alpha.kubernetes.io/target: external.mjwood.org
     # proxy-body-size is set to 0 to remove the body limit on file uploads
     nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    nginx.ingress.kubernetes.io/affinity: cookie
   hosts:
     - host: cloud.mjwood.org
       paths:
@@ -83,3 +84,6 @@ sops:
   encrypted_regex: ^(data|stringData|apiKey|rootPassword|secretKey|adminPassword|basicAuthPassword|password|secret_key)$
   mac_only_encrypted: true
   version: 3.10.2
+
+phpClientHttpsFix:
+  enabled: true
