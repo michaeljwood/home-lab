@@ -16,6 +16,8 @@ server:
       - auth.mjwood.org
 postgresql:
   enabled: true
+  image:
+    tag: "15"
   persistence:
     storageClass: truenas-flash-iscsi
   auth:
