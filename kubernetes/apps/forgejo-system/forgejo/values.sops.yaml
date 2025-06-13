@@ -49,27 +49,28 @@ persistence:
 gitea:
   admin:
     username: forgejo-admin
-    password: ENC[AES256_GCM,data:bEZ+BDO8IZUF57TF2WFIapspWhQayof7F96BMvOSt61BjmGrl18Orcl0yQtrMtYk+ecIJL6iwamka5p18BiVSw==,iv:z7EqTLKTRGrDxn3pUfzAPUrME2GlmBVRNF4wVjAmDEM=,tag:ELlZWTgP81anZY2/WoztFg==,type:str]
+    password: ENC[AES256_GCM,data:tDRupdVcR3ifH/A6O4x/HWjmHAuACYv00PFJ8nveieDiSu3JuqTbj+HSGiGgNy/nfikN4WINu+0uKYATps5H/g==,iv:pWt93Y0SV5BBTPnI9C5d+o55tnKYWjvPIPDMepiJytQ=,tag:2COIBh57eV/XVNOTsBl2bA==,type:str]
   oauth:
     - name: authentik
       provider: openidConnect
       key: n0znWG5u7HgP2EUEbW6C9aDT28opL4iUHadTL4FU
-      secret: ENC[AES256_GCM,data:6VN/HWyBd6ixh+7Uq+33AXiexCuPgc/ETCz5tE6+jshDsjr/1JGqSduMKr0KZBRkCGovp1dKyMWtmW1fsJg6RZ8mSMlGWOR53hSfW+o7yFngusIcGXHzFqEWa6cqaGK1T93s4o+zN5bGobxNAgGLLkYVnRGED9V7TZPBV/ecM6A=,iv:G3S9Yv3rsKrCsBcUZyIOriGvpbw6FxX30Q5AUjuIr6s=,tag:zRqi0EfnXVsxCMSbrcg2zQ==,type:str]
+      secret: ENC[AES256_GCM,data:S8bmyfhG4BpKt5akt0wR/RaXic1h/yHkuIYyyJRtpodBws8rHkTai6BZU7wQmyoUtwyzItjt0GAoksLry4e24lUCOCsF763qs8PhBQsx4mSUNBT9EYYJ+QzVSyta5eH53qShm7yvNizH+pHHPxN7SmOf7EZKnmEXVN/eFuK1zxw=,iv:nb+L+tq/3Gl+ov/TDb22KGsWZq0HKSi+fDwBWjH9WJM=,tag:iOmlOJTQy6Y4rBLZj9UZlA==,type:str]
       autoDiscoverUrl: https://auth.mjwood.org/application/o/forgejo/.well-known/openid-configuration
       iconUrl: https://auth.mjwood.org/static/dist/assets/icons/icon.png
       scopes: email profile
   config:
     ## @param gitea.config.APP_NAME Application name, used in the page title
     APP_NAME: 'Forgejo: Beyond coding. We forge.'
-    ROOT_URL: https://forge.mjwood.org
-    SSH_DOMAIN: ssh.forge.mjwood.org
+    server:
+      ROOT_URL: https://forge.mjwood.org
+      SSH_DOMAIN: ssh.forge.mjwood.org
 redis-cluster:
   enabled: false
 redis:
   enabled: true
   global:
     redis:
-      password: ENC[AES256_GCM,data:/S16YGtb9APfNhpLsf+zx2C1sL+wzYvSaRlbyaS3kYnFzhnDcoW8kEqnG3qm0hkIeq7953sQ77f/v3UcxKD8Fg==,iv:a0dDwS9dHLSrdVYJ2Wb6tLYDzJgQxgU55pktcPIqVzM=,tag:p3hfSlYYD+1ivK3K0xAtfw==,type:str]
+      password: ENC[AES256_GCM,data:j+zAN+2g+cdzPQ1F4e/COuWscN6shVVt90iKJX59M53HZApnAdym8gaBPJtcRE2IsMSku487N+jNSsrmEQ9djw==,iv:lHHrr98JT0cbpzoShtFRVoeB3dCI1MMVcMHhnNlSlfA=,tag:kV1tN3pzbBgCc6nEeAwe5g==,type:str]
 postgresql-ha:
   enabled: false
 postgresql:
@@ -77,7 +78,7 @@ postgresql:
   global:
     postgresql:
       auth:
-        password: ENC[AES256_GCM,data:+09Hy9uWoG3gBeVuu+S6fPd+ITpjqqJrPTFmj97KCQtEtRRiLmMTU+wYV2g9wC/I02hTjfW40v+N+9tBh1G4Fg==,iv:j+2p8nJ/vYq4cF7dyB5eN5ocFNC6tXHmHrzs9j80WY4=,tag:zvL++Gi0P9hbDmt2BDZN4g==,type:str]
+        password: ENC[AES256_GCM,data:PXAf/9KBvbPOTUN6ucyzM4PANtZKUUHcrzLi2mYunKKG+Gd8LjUvPBGdwkZ3LcufoetANHd/CUSXp/wtAHKzbQ==,iv:EcZ8EOJPgNmTEc3ziiQ8KbyXBjWYesA462gUgNlAhaE=,tag:eGHN8AGCfWO0eNhyrGn55A==,type:str]
         database: gitea
         username: gitea
   primary:
@@ -88,14 +89,14 @@ sops:
     - recipient: age1m0lm4afkysxufghhpez3p0wjzchms5gpadc085p3ukqh75hyvanst3lrvr
       enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBNTjZtN3A4ZDhaem9RdWFC
-        N2NQN3J4T2g4SVFscXFjV3grVjB3ckQzeUVVCkZ4OGZWaVhGYUJWdGFpanIySDk1
-        ZWR2LzVZcE1oeWxYc3plRG1vT0VWOTQKLS0tIDlBMnZlQkxkRkZnMGxBSDM5b0Rq
-        UXdYZFJLcFRCZEhIaVNIbXBEU3ZTNXMKLYZvr4uCnvbjz2fEuHWYk6jnTfnYzrzc
-        U+2bHb5/4NJvLeUQ+TlogEtU9vBONFWRGcJJ5NpsYx1+YZIW1aZGhg==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAvNVNvYmZCTDJONWJBQzJR
+        aVFJRVhQSjhoRzNFalBYQjd3S2cyeE5uUVdnCnZ5Z3VOck16enZzOGwrNk0yV3lo
+        MWt2bE5HMERjMWZ3WDlvZDZQTEhhYlUKLS0tIFYvbFEvUmdISDBwdUdrYWl6aUxt
+        dW50V0lBb05NVFowb0dJWHEvMWpVWHcKVMGFVzEyYxGEAH9kAZ0Sff2t16YiztEd
+        tt01ntfFXm5AgPQZeSjlX19HCUnNFrwzjg+d1o+fiPayOAiErc5wpQ==
         -----END AGE ENCRYPTED FILE-----
-  lastmodified: "2025-06-13T18:02:20Z"
-  mac: ENC[AES256_GCM,data:wZJ+WSwrZfcs0ztlisPMUpXf/GsX7vTvoqyeJ1mkkwkcpYrCb0fj3zQVwooNhgUwZ3OQWOdRB66IeHOf/AAFiOXAeXYeoFDqaZUgPBza9bZ9KYNrwsTBTJjvRh7DybGhdYEIFwq+4B+0l6nqSJAUkZJpQZ5Orx44nMplFjJk924=,iv:4/DepCsW1k0Gjz0aFLrBGbqvASO3lMhTrjesfs2PANU=,tag:NE8DC7WbzPtJnjYAzV93Pw==,type:str]
+  lastmodified: "2025-06-13T19:57:54Z"
+  mac: ENC[AES256_GCM,data:VJFcWLa1RUqC3b5EKV8jiTTGs/0+NwXN6G5c6t3OjHCNeZGSECjHcdAfB6B0wHnMGGnTygVq+3is/mm2+ny5Pzk8DSD7EoTXBtDEfoOCPyDjSg6W/pr128BIADiwr+aW7OpGIgdgA7YC/Hi7AD+f3HDOyChpWfMhOY+sM3HsfxE=,iv:Vv4RQGRIATdtBMbsSUpEMM2wqmx7DDJnEtJhW8Ar8nU=,tag:PjL6g1/G9pu+Vcw+2SJk5g==,type:str]
   encrypted_regex: ^(data|stringData|apiKey|rootPassword|secretKey|adminPassword|basicAuthPassword|password|secret_key|secret)$
   mac_only_encrypted: true
   version: 3.10.2
