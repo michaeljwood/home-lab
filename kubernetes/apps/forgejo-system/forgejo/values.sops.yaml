@@ -20,11 +20,12 @@ service:
     #    loadBalancerIP:
     #    nodePort:
     externalTrafficPolicy: Local
-    externalIPs: 10.0.0.88
-    #    ipFamilyPolicy:
-    #    ipFamilies:
-    #    hostPort:
-    #    loadBalancerSourceRanges: []
+    externalIPs:
+      - 10.0.0.88
+      #    ipFamilyPolicy:
+      #    ipFamilies:
+      #    hostPort:
+      #    loadBalancerSourceRanges: []
     annotations:
       io.cilium/lb-ipam-ips: 10.0.0.88
 #    labels: {}
@@ -49,12 +50,12 @@ persistence:
 gitea:
   admin:
     username: forgejo-admin
-    password: ENC[AES256_GCM,data:tDRupdVcR3ifH/A6O4x/HWjmHAuACYv00PFJ8nveieDiSu3JuqTbj+HSGiGgNy/nfikN4WINu+0uKYATps5H/g==,iv:pWt93Y0SV5BBTPnI9C5d+o55tnKYWjvPIPDMepiJytQ=,tag:2COIBh57eV/XVNOTsBl2bA==,type:str]
+    password: ENC[AES256_GCM,data:hJBV5TtKcPf61DqPXsAtL7lT+pey92Ds512+mulZ00lAzSbtf4Ve/+8OZkOJyRKH1rav9lmM/yJp7RV8xK+cfQ==,iv:7NA2+Oj3tD+wbhN8Tek91jgkSA0suXpyBO8KooEwPgI=,tag:3DDHfqIVdpTwbKM7c2R2kg==,type:str]
   oauth:
     - name: authentik
       provider: openidConnect
       key: n0znWG5u7HgP2EUEbW6C9aDT28opL4iUHadTL4FU
-      secret: ENC[AES256_GCM,data:S8bmyfhG4BpKt5akt0wR/RaXic1h/yHkuIYyyJRtpodBws8rHkTai6BZU7wQmyoUtwyzItjt0GAoksLry4e24lUCOCsF763qs8PhBQsx4mSUNBT9EYYJ+QzVSyta5eH53qShm7yvNizH+pHHPxN7SmOf7EZKnmEXVN/eFuK1zxw=,iv:nb+L+tq/3Gl+ov/TDb22KGsWZq0HKSi+fDwBWjH9WJM=,tag:iOmlOJTQy6Y4rBLZj9UZlA==,type:str]
+      secret: ENC[AES256_GCM,data:8YfnvYNIfm31YYhycsHWanTUZVNLwu9mRumTL7k8QLNaOqob1UhPkm0uuNBQlN4Z06eYUs0txyV16MQBveGMgHug9XEsJKp6rX0aDlk9NPwvZEjyD/JyYY9oneCb9dhKRcJlBrUFZKgW4ychzL3DeXlNruetm4wv9+/bQARbjGs=,iv:3TE67o04AFTbTIVKWpYiXux0NE9m05x6tchP68gUugM=,tag:ZlMzyzPTSoL/eRu/MD9Gfw==,type:str]
       autoDiscoverUrl: https://auth.mjwood.org/application/o/forgejo/.well-known/openid-configuration
       iconUrl: https://auth.mjwood.org/static/dist/assets/icons/icon.png
       scopes: email profile
@@ -70,7 +71,7 @@ redis:
   enabled: true
   global:
     redis:
-      password: ENC[AES256_GCM,data:j+zAN+2g+cdzPQ1F4e/COuWscN6shVVt90iKJX59M53HZApnAdym8gaBPJtcRE2IsMSku487N+jNSsrmEQ9djw==,iv:lHHrr98JT0cbpzoShtFRVoeB3dCI1MMVcMHhnNlSlfA=,tag:kV1tN3pzbBgCc6nEeAwe5g==,type:str]
+      password: ENC[AES256_GCM,data:M0HqSxTJ07JGKNH4HFNidUzdjPgsAQhS65r9ebN+rorZl9a3INSIl7DhrjrM4Yzpc0OJtWP5drAfsDGDZGpEdw==,iv:ytBM+VmQznhWzJdub4MnOSR43G4eExE/NMp1uHlvw/c=,tag:MyrN4dJa7CVPSShU91QjjQ==,type:str]
 postgresql-ha:
   enabled: false
 postgresql:
@@ -78,7 +79,7 @@ postgresql:
   global:
     postgresql:
       auth:
-        password: ENC[AES256_GCM,data:PXAf/9KBvbPOTUN6ucyzM4PANtZKUUHcrzLi2mYunKKG+Gd8LjUvPBGdwkZ3LcufoetANHd/CUSXp/wtAHKzbQ==,iv:EcZ8EOJPgNmTEc3ziiQ8KbyXBjWYesA462gUgNlAhaE=,tag:eGHN8AGCfWO0eNhyrGn55A==,type:str]
+        password: ENC[AES256_GCM,data:vjLiEJvuwCEpjsPXwh+Aqdfh55P2Do7iVGP+DydStI8U1PUTJD1PGYniFqQx2+IE4Umz2pgXBxAqaC8vdhrxew==,iv:g94HI3SaEM/gmg3CXhNFhEGEHbheM/M5dC3wd8h069Q=,tag:1HFkg8LLnHa8nczYUKK7Bw==,type:str]
         database: gitea
         username: gitea
   primary:
@@ -89,14 +90,14 @@ sops:
     - recipient: age1m0lm4afkysxufghhpez3p0wjzchms5gpadc085p3ukqh75hyvanst3lrvr
       enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAvNVNvYmZCTDJONWJBQzJR
-        aVFJRVhQSjhoRzNFalBYQjd3S2cyeE5uUVdnCnZ5Z3VOck16enZzOGwrNk0yV3lo
-        MWt2bE5HMERjMWZ3WDlvZDZQTEhhYlUKLS0tIFYvbFEvUmdISDBwdUdrYWl6aUxt
-        dW50V0lBb05NVFowb0dJWHEvMWpVWHcKVMGFVzEyYxGEAH9kAZ0Sff2t16YiztEd
-        tt01ntfFXm5AgPQZeSjlX19HCUnNFrwzjg+d1o+fiPayOAiErc5wpQ==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBwcHVTNGZ1d0VDdUMzeDlk
+        K1FNT1ZjQWlzaG5rSDZ3R3B2VzhyVUM3dkdJCnNFVldhOENJLzlhTWhZbTZBUlRp
+        c0VuMmVkOWx2czc3MnFwc1dQSjdUNzQKLS0tIDBHT2w1bmE0b0VYNFFQNkduQ1Vz
+        bFVKZkVYaXpNZ2sySzNIKzh5MU8vVEEKwTsyx3NkQiNqKQ+5FIqVTGlf0YJuTTRT
+        oDlqmDWBfzp1hJ6I0XaJd3xaR7y9+r71tFgLVWYsMeZO3xAVKtL4wA==
         -----END AGE ENCRYPTED FILE-----
-  lastmodified: "2025-06-13T19:57:54Z"
-  mac: ENC[AES256_GCM,data:VJFcWLa1RUqC3b5EKV8jiTTGs/0+NwXN6G5c6t3OjHCNeZGSECjHcdAfB6B0wHnMGGnTygVq+3is/mm2+ny5Pzk8DSD7EoTXBtDEfoOCPyDjSg6W/pr128BIADiwr+aW7OpGIgdgA7YC/Hi7AD+f3HDOyChpWfMhOY+sM3HsfxE=,iv:Vv4RQGRIATdtBMbsSUpEMM2wqmx7DDJnEtJhW8Ar8nU=,tag:PjL6g1/G9pu+Vcw+2SJk5g==,type:str]
+  lastmodified: "2025-06-13T20:00:16Z"
+  mac: ENC[AES256_GCM,data:9Q+ovXe5XjxEnBAkcW7SNc0cQkrOccoef1JdWWGKJ4M6hZkOdUYhiW9dgXTBia1pveCHxag2znjPlqQAj7FF1Miaz/Q/Odu/gkTcaOFS7Dn888WqgZpkpI1ESi1vt/0zzkzfGgM3c4879MAhH8zOKC92YsSubSXPwNe4Cwvf5bQ=,iv:ry1PzXHZoMLWhppIALewmh16dpyzSJRw2WcBuQXtaOM=,tag:RY+QnsUW+A1CLZ0QI0S5/w==,type:str]
   encrypted_regex: ^(data|stringData|apiKey|rootPassword|secretKey|adminPassword|basicAuthPassword|password|secret_key|secret)$
   mac_only_encrypted: true
   version: 3.10.2
