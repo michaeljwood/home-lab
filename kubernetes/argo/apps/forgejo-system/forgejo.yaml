@@ -11,7 +11,7 @@ spec:
       path: kubernetes/apps/forgejo-system/forgejo
       targetRevision: main
       ref: repo
-    - repoURL: code.forgejo.org/forgejo-helm/forgejo
+    - repoURL: code.forgejo.org/forgejo-helm
       chart: forgejo
       targetRevision: 12.5.1
       helm:
