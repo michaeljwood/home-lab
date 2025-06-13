@@ -1,0 +1,31 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: harbor
+  namespace: argo-system
+spec:
+  project: kubernetes
+  sources:
+    - repoURL: "https://github.com/michaeljwood/home-lab.git"
+      path: kubernetes/apps/harbor-system/harbor
+      targetRevision: main
+      ref: repo
+    - repoURL: "https://helm.goharbor.io"
+      chart: harbor
+      targetRevision: 1.17.1
+      helm:
+        releaseName: harbor
+        valueFiles:
+          - $repo/kubernetes/apps/harbor-system/harbor/values.sops.yaml
+  destination:
+    name: in-cluster
+    namespace: harbor-system
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true

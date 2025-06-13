@@ -1,0 +1,76 @@
+expose:
+  ingress:
+    hosts:
+      core: harbor.mjwood.org
+    className: external
+    annotations:
+      external-dns.alpha.kubernetes.io/target: external.mjwood.org
+      # note different ingress controllers may require a different ssl-redirect annotation
+      # for Envoy, use ingress.kubernetes.io/force-ssl-redirect: "true" and remove the nginx lines below
+      ingress.kubernetes.io/ssl-redirect: "true"
+      ingress.kubernetes.io/proxy-body-size: "0"
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    # ingress-specific labels
+    labels: {}
+externalURL: https://harbor.mjwood.org
+# The persistence is enabled by default and a default StorageClass
+# is needed in the k8s cluster to provision volumes dynamically.
+# Specify another StorageClass in the "storageClass" or set "existingClaim"
+# if you already have existing persistent volumes to use
+#
+# For storing images and charts, you can also use "azure", "gcs", "s3",
+# "swift" or "oss". Set it in the "imageChartStorage" section
+persistence:
+  enabled: true
+  persistentVolumeClaim:
+    registry:
+      storageClass: truenas-iscsi
+      size: 250Gi
+    jobservice:
+      jobLog:
+        storageClass: truenas-flash-iscsi
+        size: 50Gi
+    # If external database is used, the following settings for database will
+    # be ignored
+    database:
+      storageClass: truenas-flash-iscsi
+      size: 10Gi
+    # If external Redis is used, the following settings for Redis will
+    # be ignored
+    redis:
+      storageClass: truenas-flash-iscsi
+      size: 5Gi
+    trivy:
+      storageClass: truenas-iscsi
+      size: 10Gi
+  imageChartStorage:
+    disableredirect: false
+    type: filesystem
+    filesystem:
+      rootdirectory: /storage
+harborAdminPassword: 1fab28a73d99bf0e34aa7da7f93a9b99da82e4118a780f51b09349130f42a55b
+# The secret key used for encryption. Must be a string of 16 chars.
+secretKey: ENC[AES256_GCM,data:tnU7pGs4114Ik0tZaHN7zTOn5IcuEYipvh3Qidf2k5c=,iv:5ZtGldL4m5daBzrXiklldQ4k0yy1vEf2wT0FDT2UxPk=,tag:fRzWeXF8gbE/fqKJ+g6rrA==,type:str]
+registry:
+  credentials:
+    username: harbor
+    password: ENC[AES256_GCM,data:gcfpCfEGVzW9H+Ksple8Ae9+n28ppEJdxTKf1tz6r1v7nDO3JLnwPoeS7rcpYoW7jAo+Prjmukzt0Dd2tB8UUQ==,iv:oUX2zk5//iemHJSznHGmXAsFjT4TAxowErogyiqt49w=,tag:K5Q0GDt+wONHyDBONwnAOA==,type:str]
+database:
+  password: ENC[AES256_GCM,data:FQVejdh9QRIjk+wS0nWM2xWf1acTfmAedN1iG6HfsjNRx6wbr22B2rvEwRCk+oNgorP30xHMjmsxnidOWjuBuw==,iv:CQmWOLm3mUk9e4/DLahVRrm77PJETV4FJqZLbBZoYtk=,tag:KUs/IMNVfj223WIUUakt7w==,type:str]
+sops:
+  age:
+    - recipient: age1m0lm4afkysxufghhpez3p0wjzchms5gpadc085p3ukqh75hyvanst3lrvr
+      enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBWRU5LWVlNTm9aMmx1SndF
+        QUs3TFRPejdVbmN6N243aDFyRDdZekQ0MkZ3CjQvbkxxTVIyeHVCVTlwa1hZUEFY
+        a2U1WFhYTWJtamhEZnNKaWlVeldFOGcKLS0tIGJqUTNBZmZ0Z3Fwdi9LQWhsVHBW
+        SkZ5N2V6Ny9DVUh2SlQ5V05HK3lITTAKY0PKyziguddSNfoYJsdcW5hoFjnRUNVQ
+        YJcfnhsqPV7xZOdejgkVbAkNCY3cxG8GOuk/ykk+FmzBgCBbtRh1lw==
+        -----END AGE ENCRYPTED FILE-----
+  lastmodified: "2025-06-13T00:46:54Z"
+  mac: ENC[AES256_GCM,data:PN22pYofcdDtouygqqnpb4vOlXrp66cEdmdEB2graDZ5eLiGb2Gy4KzrsYSEgPif6//iNzguygJ/qpiS8uFD68FMbU1CMt3DZfvtiG6Toqfg2PM418h2HDc1F0R5R/uZHNkQgnIwiFpiK50Wsq5SabUTmJG2xmYyWBO8PGIxWgA=,iv:J66UlmG+VncDUpcvLMtkTuqIUeSJxCZphZLa8ytUI7c=,tag:aD3SlJDQTkMQargvcCh9ZQ==,type:str]
+  encrypted_regex: ^(data|stringData|apiKey|rootPassword|secretKey|adminPassword|basicAuthPassword|password|secret_key)$
+  mac_only_encrypted: true
+  version: 3.10.2
