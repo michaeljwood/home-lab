@@ -13,7 +13,7 @@ spec:
       ref: repo
     - repoURL: "https://prometheus-community.github.io/helm-charts"
       chart: prometheus
-      targetRevision: 27.29.0
+      targetRevision: 27.29.1
       helm:
         releaseName: prometheus
         valueFiles:
