@@ -13,7 +13,7 @@ spec:
       ref: repo
     - repoURL: code.forgejo.org/forgejo-helm
       chart: forgejo
-      targetRevision: 13.0.1
+      targetRevision: 14.0.0
       helm:
         releaseName: forgejo
         valueFiles:
