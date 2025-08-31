@@ -1,0 +1,23 @@
+{
+  "kind": "SealedSecret",
+  "apiVersion": "bitnami.com/v1alpha1",
+  "metadata": {
+    "name": "gitea-postgresql-user",
+    "namespace": "forgejo-system",
+    "creationTimestamp": null
+  },
+  "spec": {
+    "template": {
+      "metadata": {
+        "name": "gitea-postgresql-user",
+        "namespace": "forgejo-system",
+        "creationTimestamp": null
+      },
+      "type": "generic"
+    },
+    "encryptedData": {
+      "password": "AgAhC1pZrtQx+MBCggv7FVOOSr4VMoZo7vsXutlFc5grQa3qIVob7LJzmPDRcHfJrjCaayAIVtyyydZfFsaufhohmeVxgXP2bc3djjR/TiJDRz5u89oQGaXwDDwI1A+kTNk0uOIxI+F7V82dzzIZyVUnMlQ0h1q5WBy6rT454A0HvEkV42x89rAtacTvdwIgBRgJ7eUrihGlClad0Y11klbZqLI8cGa5Up4xfxp5WnIalQhVmGbGn/AARDeLjqJvOOx6jpry2sPtgWCbspgJQvtDagM9YwQXDH5OIbNa3cB8j0QD8mhXnV0zbYHqtq03Rs5Q94ppdfNYDs5PcBIjSDdfKriw/xLQf4KUcw76ev9dSj1ibXRAoUurjm4hh/Yw4NjRm3pvZZ4PAIpAjGOykHd+yWXvPs4aDPcSG3M7ejlM+vZtNQWVmUgorUqeHM/BtVG0yimUQqBWJPz8bh4gu783vrbZNaqw5VnFm/XIJ8tVpO1xj+bWxP4g0wngb2BDp2u2PaHW+Iom1qBBeTxNeGCLcshthA3YI0hwPQSjA8X+Q9TyQe7A3M7mEgBAg9XdfgSlvPeDatOzvQt0lOyYr+FzPkphJOtwo0VhKoNtIlGwv9Q9lZnej/E4+1X+UpwIUmssykARHSrISrVdo0YxuIfs6PmhXZWcaFwwWTUL8TSGoHYnt+x/N8mjgwiLlgAb6pv0Xz5+iZhDYm6Lh4X94cTbXUkLa+W5aQkdJ55YrZhqHXHJxCYsbS32JIV6cJAdK703OXb83lMRjHThBHaclmC6",
+      "username": "AgDBT1alJoq4gA7vYnRl/NkDUoO51LMSiNjLMAmHyiZl6kg1ptNSWfyKUhzzhhRRxSDdy3vLT4AAacxqP8KbVHRKyvsjWD3zt5FKNDlzr4FO5VqfZXzQUB5i7qlsFtCknaigX/Ij+MiA4FGaajQaqF72jtXk3iTJf6CmOtQUZY0MKC2vJGfEAGnV//DsEhOCae1nAjiRc5chohUf20k6VDiBhFbOEaFv0fh48gLTi0FZSMfpJsx+d/T+x9OYpRzSPhtpJ+zXPiv4qLQqFngFBkq/sIBZsr4KDniKe3NtZ6kASjpL7iGfSatEP4C+pu1uuNQVlB1geZNJ6snTq5WiBJm4Jo2i28VE2Zzf20xyIS4qAvUgkp4BP8ZtthJiIh6sWteWiEZauCLaA/bnmLVa9yU7KUUyiGiG32pyX4ooWkrFa3Zrthu4j3VlWIQeB8CQtVRtWz4iXhpQZEr1PL6kE1LNVqpfnZBuRtIp30DRJYPkuZMLt5Wen/V2Oc4262QKIqNQenjeoAT21poIK6ccg0O2husAnzJ/ENCtMQmNT4/ZPF2dpS2/LvClfdg9d5eg/CjM5sQEHa45q0DxXzH8nODJQeXmG33K6hSWQoEnxbGsMsY1iFkgqrhkQpjLD/MSBxh1hLMJ7E3nlnNxW5JVuDkei/O8RN9cOfXGfhx32AeeulNCmnc5TQft7th+EdrcW15PMgjHyw=="
+    }
+  }
+}
