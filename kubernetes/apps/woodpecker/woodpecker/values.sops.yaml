@@ -1,0 +1,44 @@
+agent:
+  persistence:
+    size: 20Gi
+    storageClass: truenas-flash-nfs
+server:
+  # -- Enable the server component
+  enabled: true
+  # -- Add environment variables for the server component
+  env:
+    WOODPECKER_ADMIN: woodpecker,admin,mike
+    WOODPECKER_HOST: https://woodpecker.mjwood.org
+  persistentVolume:
+    storageClass: truenas-iscsi
+  service:
+    port: 80
+  ingress:
+    enabled: true
+    className: external
+    annotations:
+      external-dns.alpha.kubernetes.io/target: external.mjwood.org
+    ingressClassName: external
+    hosts:
+      - host: woodpecker.mjwood.org
+        paths:
+          - path: /
+            backend:
+              serviceName: woodpecker-server
+              servicePort: 80
+sops:
+  age:
+    - recipient: age1m0lm4afkysxufghhpez3p0wjzchms5gpadc085p3ukqh75hyvanst3lrvr
+      enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB5T2dOUDJTdm9WMi9PRitP
+        clh5QjBZRWl3L2RDdGNTaXgzZFVVbzVTcEJ3CnQyTklYbWdSQ3dldy9IbjJmZmg0
+        YnJ6YkYwU0NWck1CTURmOXR6dXpuZXMKLS0tIExtQlBrS1RBUjNBWjlMVko2STdx
+        d0pvUEZtMmpDUm40SE53RlorQVlTeWMK+uWukVp6RetOKzkLNW3j/AAOHfh0cgK9
+        boElbq0p51asMwoXRm4qjSsGlwPPlGxI6JwxPXICZtkof32mqshpNw==
+        -----END AGE ENCRYPTED FILE-----
+  lastmodified: "2025-09-01T15:03:48Z"
+  mac: ENC[AES256_GCM,data:7NFigLFXI7mZpv7NgKOvcM5WpVv3BwxCch6/4ff79zX8WkrJQ5tKQBR1QhEz8Umh/OCKKy5gjpBamkBOcIkPyi3kVRRKqB5hOBdNOfk0iIKcmwFxXLsF9V5FtLEdXyWMrCcpqw4soqhg0ZxXuuI+vroAP+liCBTzPVyMdUqsE34=,iv:PSPql+/j0Dl2w+K8ClvJeYsiWq+6uJjyw6ku2tVdFIU=,tag:9xnyXNzd9tQJXHuWM2S0xg==,type:str]
+  encrypted_regex: ^(data|stringData|apiKey|rootPassword|secretKey|adminPassword|basicAuthPassword|password|secret_key|secret)$
+  mac_only_encrypted: true
+  version: 3.10.2
