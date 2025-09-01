@@ -13,7 +13,7 @@ spec:
       ref: repo
     - repoURL: oci://ghcr.io/woodpecker-ci/helm
       chart: woodpecker
-      targetRevision: 3.3.0
+      targetRevision: 3.2.1
       helm:
         releaseName: woodpecker
         valueFiles:
