@@ -11,9 +11,9 @@ spec:
       path: kubernetes/apps/woodpecker/woodpecker
       targetRevision: main
       ref: repo
-    - repoURL: oci://ghcr.io/woodpecker-ci/helm
+    - repoURL: oci://ghcr.io/woodpecker-ci/helm/woodpecker
       chart: woodpecker
-      targetRevision: 3.2.1
+      targetRevision: 3.3.0
       helm:
         releaseName: woodpecker
         valueFiles:
