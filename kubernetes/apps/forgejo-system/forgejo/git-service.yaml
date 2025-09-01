@@ -8,14 +8,11 @@ spec:
   allocateLoadBalancerNodePorts: true
   externalTrafficPolicy: Cluster
   internalTrafficPolicy: Cluster
-  externalIPs:
-    - 10.0.0.88
   ipFamilies:
     - IPv4
   ipFamilyPolicy: SingleStack
   ports:
     - name: ssh
-      nodePort: 31222
       port: 22
       protocol: TCP
       targetPort: ssh
