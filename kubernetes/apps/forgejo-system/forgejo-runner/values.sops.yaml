@@ -1,15 +1,15 @@
 replicaCount: 1
-image:
-  registry: harbor.mjwood.org
-  repository: hub/forgejo/runner
-  pullPolicy: Always
+#image:
+#  registry: harbor.mjwood.org
+#  repository: hub/forgejo/runner
+#  pullPolicy: Always
 runner:
   config:
     # -- create a secret by run: forgejo-runner register --no-interactive --token {TOKEN} --name runner --instance https://next.forgejo.org
     create: true
     instance: https://forge.mjwood.org
     name: kube-runner
-    token: ENC[AES256_GCM,data:jTl5egVLG5r9GYjFBw0jV1BFuwCdEmLqRrGmJmjyYqlvaCuTHORLlA==,iv:ddDDH5b1wNpVXeaKuKsaoHx8kyWvi/waLLFsACG5wvM=,tag:ll9p4iIXIIenAvlinGP6ug==,type:str]
+    token: ENC[AES256_GCM,data:t1L5qBQNtKZr/sktOcjDhFHo0+/U80mqTJAA+1baf9sfFnXO192lOg==,iv:LQ0A3v6Clezi+/BcMznmQKWgUYS1lRNT0fqpaI3wcY8=,tag:g4wsyXB5ATgLcWRdUgomgQ==,type:str]
     # based on https://code.forgejo.org/forgejo/runner/commit/1139bb7d12ff7889694b24731707e153678ab960
     file:
       log:
@@ -87,14 +87,14 @@ sops:
     - recipient: age1m0lm4afkysxufghhpez3p0wjzchms5gpadc085p3ukqh75hyvanst3lrvr
       enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBmZk1hSkFOUVpKZ1YxZ1Jw
-        VERqWkJlaVQ0SUhxMXgycW44OW4vMEJzMndBCk0yM1JmbUVDR3JoSTlJaFNTaWht
-        eW1JU212SzQ0UVZJb053YjBHbkJ5WjQKLS0tIEJyZENRa3RCLyt4cHJtY0NrMG5V
-        TlhlWm1uK3Q5NG44TU9JQThqSXh2ZDgKQ6hD7qMK0sruEcrLnUTvu08coKwvU21e
-        kFk3PKRVY4y8piumEIwm1ub9gUINpEmXTz9FWX+qV9AY2ccIvWsPbw==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA1ZkJmSWEycVV5K3BIaXNp
+        NEpDS0NWS1JhbmV2M1hLVTJBOUtNcWpFMENRCkJoQStWbkZ1VEtjdmFlK05WbjVJ
+        Ny9qTkl1clJsbzh6QkxIZHhxUGlNYU0KLS0tIGczdmY1c1cyTnF2SXJUamNEcy8w
+        YTdqMzU1UUZxUDFSWUp3Q2NVTjU2Y28KAW3MAO/hlyNPZnDNOeIg/UMIhVfKI9ez
+        h/TAZNozjgtaeGndJ8nSRZZ9YdCuJbdsW3v6F4J/VQk2+hP17zh83A==
         -----END AGE ENCRYPTED FILE-----
-  lastmodified: "2025-09-12T20:09:09Z"
-  mac: ENC[AES256_GCM,data:MzS1v2LDeeUZ3UhL/zIs5FQ4jXvAvheORGdq2oh/eUOTmMn2CBUfpXr4eid3SWc9Qm2iN878ykBLp1Oz2to/QVbju3pdx8dd6g59n3DQDjvi0eNdbKts5S1r7T7PNsxJMCYx2Hnc7yeXdvSnWu5TtBLWBayNz53Yx2wGPZvPX3Y=,iv:2dqJBIGPXwo13NDFFbdezh/NJnfQ7n5hss58qG5mx28=,tag:fxyxNds/DuNKt5gZfPLf/w==,type:str]
+  lastmodified: "2025-09-12T23:36:36Z"
+  mac: ENC[AES256_GCM,data:BnQn7tBUMtDbl0YguNnT7+VsenQkAJDpjME6f/zGz5Yuh1kPVzKSLaypHEH/7RxD0cNlN0Eyz21AQ407FYtHApPbtWezwt9MDuqQmkCewstcgJazopeph0tWi21LatiW/tpJDZmbReDvXJwCBVzYCEDN7wxAnNNo7q4XTn1WPY8=,iv:B11o+WbytfqtitTuBr/eVIm9Np6a9aN8+cxcLoT+Ynw=,tag:hmtCMTbjWgT4e4BWsLBTDw==,type:str]
   encrypted_regex: ^(data|stringData|apiKey|rootPassword|secretKey|adminPassword|basicAuthPassword|password|secret_key|secret|WOODPECKER_FORGEJO_SECRET|token)$
   mac_only_encrypted: true
   version: 3.10.2
