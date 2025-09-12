@@ -11,7 +11,7 @@ spec:
       path: kubernetes/apps/forgejo-system/forgejo-runner
       targetRevision: main
       ref: repo
-    - repoURL: codeberg.org/wrenix/helm-charts/forgejo-runner
+    - repoURL: oci://codeberg.org/wrenix/helm-charts/forgejo-runner
       chart: forgejo-runner
       targetRevision: 0.6.6
       helm:
