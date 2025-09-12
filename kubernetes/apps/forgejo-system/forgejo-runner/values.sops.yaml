@@ -1,0 +1,100 @@
+replicaCount: 1
+image:
+  registry: harbor.mjwood.org
+  repository: hub/forgejo/runner
+  pullPolicy: Always
+runner:
+  config:
+    # -- create a secret by run: forgejo-runner register --no-interactive --token {TOKEN} --name runner --instance https://next.forgejo.org
+    create: true
+    instance: https://forge.mjwood.org
+    name: kube-runner
+    token: ENC[AES256_GCM,data:jTl5egVLG5r9GYjFBw0jV1BFuwCdEmLqRrGmJmjyYqlvaCuTHORLlA==,iv:ddDDH5b1wNpVXeaKuKsaoHx8kyWvi/waLLFsACG5wvM=,tag:ll9p4iIXIIenAvlinGP6ug==,type:str]
+    # based on https://code.forgejo.org/forgejo/runner/commit/1139bb7d12ff7889694b24731707e153678ab960
+    file:
+      log:
+        # -- The level of logging, can be trace, debug, info, warn, error, fatal
+        # @section -- Configuration yaml of runner (see: https://code.forgejo.org/forgejo/runner/src/branch/main/internal/pkg/config/config.example.yaml)
+        level: info
+        # -- The level of logging for jobs, can be trace, debug, info, earn, error, fatal
+        # @section -- Configuration yaml of runner (see: https://code.forgejo.org/forgejo/runner/src/branch/main/internal/pkg/config/config.example.yaml)
+        job_level: info
+      runner:
+        # -- Extra environment variables to run jobs.
+        # @section -- Configuration yaml of runner (see: https://code.forgejo.org/forgejo/runner/src/branch/main/internal/pkg/config/config.example.yaml)
+        envs:
+          A_TEST_ENV_NAME_1: a_test_env_value_1
+          A_TEST_ENV_NAME_2: a_test_env_value_2
+        fetch_timeout: 5s
+        fetch_interval: 2s
+        # -- The labels of a runner are used to determine which jobs the runner can run, and how to run them.
+        # Like: ["macos-arm64:host", "ubuntu-latest:docker://node:16-bullseye", "ubuntu-22.04:docker://node:16-bullseye"]
+        # If it's empty when registering, it will ask for inputting labels.
+        # If it's empty when execute `deamon`, will use labels in `.runner` file.
+        # @section -- Configuration yaml of runner (see: https://code.forgejo.org/forgejo/runner/src/branch/main/internal/pkg/config/config.example.yaml)
+        labels:
+          - docker
+          - ubuntu-latest:docker://node:16-bullseye
+          - ubuntu-22.04:docker://node:16-bullseye
+      cache:
+        # -- Enable cache server to use actions/cache.
+        # @section -- Configuration yaml of runner (see: https://code.forgejo.org/forgejo/runner/src/branch/main/internal/pkg/config/config.example.yaml)
+        enabled: false
+        # -- The directory to store the cache data.
+        # If it's empty, the cache data will be stored in $HOME/.cache/actcache.
+        # @section -- Configuration yaml of runner (see: https://code.forgejo.org/forgejo/runner/src/branch/main/internal/pkg/config/config.example.yaml)
+        dir: ""
+        # -- The host of the cache server.
+        # It's not for the address to listen, but the address to connect from job containers.
+        # So 0.0.0.0 is a bad choice, leave it empty to detect automatically.
+        # @section -- Configuration yaml of runner (see: https://code.forgejo.org/forgejo/runner/src/branch/main/internal/pkg/config/config.example.yaml)
+        host: ""
+        # -- The port of the cache server.
+        # 0 means to use a random available port.
+        # @section -- Configuration yaml of runner (see: https://code.forgejo.org/forgejo/runner/src/branch/main/internal/pkg/config/config.example.yaml)
+        port: 0
+        # -- The external cache server URL. Valid only when enable is true.
+        # If it's specified, act_runner will use this URL as the ACTIONS_CACHE_URL rather than start a server by itself.
+        # The URL should generally end with "/".
+        # @section -- Configuration yaml of runner (see: https://code.forgejo.org/forgejo/runner/src/branch/main/internal/pkg/config/config.example.yaml)
+        external_server: ""
+dind:
+  image:
+    registry: harbor.mjwood.org
+    repository: hub/library/docker
+    pullPolicy: Always
+    tag: 28.3.3-dind
+  # -- We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # @section -- Docker in Docker
+  resources: {}
+kubectl:
+  image:
+    registry: harbor.mjwood.org
+    repository: hub/bitnami/kubectl
+    pullPolicy: Always
+    tag: 1.33.4
+sops:
+  age:
+    - recipient: age1m0lm4afkysxufghhpez3p0wjzchms5gpadc085p3ukqh75hyvanst3lrvr
+      enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBmZk1hSkFOUVpKZ1YxZ1Jw
+        VERqWkJlaVQ0SUhxMXgycW44OW4vMEJzMndBCk0yM1JmbUVDR3JoSTlJaFNTaWht
+        eW1JU212SzQ0UVZJb053YjBHbkJ5WjQKLS0tIEJyZENRa3RCLyt4cHJtY0NrMG5V
+        TlhlWm1uK3Q5NG44TU9JQThqSXh2ZDgKQ6hD7qMK0sruEcrLnUTvu08coKwvU21e
+        kFk3PKRVY4y8piumEIwm1ub9gUINpEmXTz9FWX+qV9AY2ccIvWsPbw==
+        -----END AGE ENCRYPTED FILE-----
+  lastmodified: "2025-09-12T20:09:09Z"
+  mac: ENC[AES256_GCM,data:MzS1v2LDeeUZ3UhL/zIs5FQ4jXvAvheORGdq2oh/eUOTmMn2CBUfpXr4eid3SWc9Qm2iN878ykBLp1Oz2to/QVbju3pdx8dd6g59n3DQDjvi0eNdbKts5S1r7T7PNsxJMCYx2Hnc7yeXdvSnWu5TtBLWBayNz53Yx2wGPZvPX3Y=,iv:2dqJBIGPXwo13NDFFbdezh/NJnfQ7n5hss58qG5mx28=,tag:fxyxNds/DuNKt5gZfPLf/w==,type:str]
+  encrypted_regex: ^(data|stringData|apiKey|rootPassword|secretKey|adminPassword|basicAuthPassword|password|secret_key|secret|WOODPECKER_FORGEJO_SECRET|token)$
+  mac_only_encrypted: true
+  version: 3.10.2

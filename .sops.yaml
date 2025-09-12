@@ -8,7 +8,7 @@ creation_rules:
     mac_only_encrypted: true
     age: "age1m0lm4afkysxufghhpez3p0wjzchms5gpadc085p3ukqh75hyvanst3lrvr"
   - path_regex: (bootstrap|kubernetes)/.*\.ya?ml
-    encrypted_regex: "^(data|stringData|apiKey|rootPassword|secretKey|adminPassword|basicAuthPassword|password|secret_key|secret|WOODPECKER_FORGEJO_SECRET)$"
+    encrypted_regex: "^(data|stringData|apiKey|rootPassword|secretKey|adminPassword|basicAuthPassword|password|secret_key|secret|WOODPECKER_FORGEJO_SECRET|token)$"
     mac_only_encrypted: true
     age: "age1m0lm4afkysxufghhpez3p0wjzchms5gpadc085p3ukqh75hyvanst3lrvr"
 stores:
