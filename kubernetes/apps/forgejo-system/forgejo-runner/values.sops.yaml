@@ -9,7 +9,7 @@ runner:
     create: true
     instance: https://forge.mjwood.org
     name: kube-runner
-    token: ENC[AES256_GCM,data:qk+XtvZFrCsbh5ASMinXNPPYAFGfpY6HLU9ytGXSxxxRexgvh45ONA==,iv:+jrk5Ix0EkSWW5vANX0Weu016b6OOypioXcn/4Td+94=,tag:T3t4fuvxHOYIxOT5A2SIzw==,type:str]
+    token: ENC[AES256_GCM,data:Bew6nW55Blp5E9cvX63dJwwgelHHgEm6wwHdH7e2f73lFw1Ioxuo/g==,iv:8YSYpraX9HYoRzWZU+0f+DzoDMz7osCIkM9YW+9XJkU=,tag:khXP9AuCA9QQhaktD3cJEw==,type:str]
     # based on https://code.forgejo.org/forgejo/runner/commit/1139bb7d12ff7889694b24731707e153678ab960
     file:
       log:
@@ -23,8 +23,8 @@ runner:
         # -- Extra environment variables to run jobs.
         # @section -- Configuration yaml of runner (see: https://code.forgejo.org/forgejo/runner/src/branch/main/internal/pkg/config/config.example.yaml)
         envs:
-          A_TEST_ENV_NAME_1: a_test_env_value_1
-          A_TEST_ENV_NAME_2: a_test_env_value_2
+          DOCKER_HOST: tcp://localhost:2376
+          DOCKER_TLS_VERIFY: "0"
         fetch_timeout: 5s
         fetch_interval: 2s
         # -- The labels of a runner are used to determine which jobs the runner can run, and how to run them.
@@ -87,14 +87,14 @@ sops:
     - recipient: age1m0lm4afkysxufghhpez3p0wjzchms5gpadc085p3ukqh75hyvanst3lrvr
       enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBGZThYcTRZT1k0R3dKd1Fs
-        OW9mTmVCQVlaV0pBdWJicEFERDRWYzUrT0NVCnltUXgwMmFEQi9uUC9SWk5oVzRy
-        SG83aGtONU40OXNHT3Y3bThRV1dXc0EKLS0tIHhobGR4cFdwNzZZdm1lUThjVjBa
-        U1VoZ01veGE1M1EwRmE0N0JjdDRKWkkKjfIFIhZiLieaU+Loap3jBfpi5MrwH8ib
-        CQXv8/7OqqavJ/h6Mf06JjB22lyak3be7/gh2QgItWAcg1sJxOmX+A==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBIZzEwZTVud0JEUHVzMHJX
+        RGJrYklHS1dSQUpFQktuUEl4MDFyM2wwcFI4CllKVVJWeUV6NGQzeU5nTFVSZXo0
+        VEhkY1diSkJNYVRiazA5UklqZkNSYncKLS0tIGN6L1YrekFVN0h6dnJSOGloRWlI
+        Q2JHaTN5WWl2M2krZVoyMnJiTnBiRWcKCwtbXK7QlzFv1PaC6RXBtAJ6ULRcnVy9
+        vFdhH7pFEkLQWBejIxVOIpJKY83Gw9R6ut8FDW4UcbU+GFjriJkJ4Q==
         -----END AGE ENCRYPTED FILE-----
-  lastmodified: "2025-09-12T23:50:01Z"
-  mac: ENC[AES256_GCM,data:vKhksMGSbXuWZO61u+/HVjT8CHBxFyXrKqBDF/6/ii/3WOtKXH4S+bP8dPb+TsXEEuFZ6MdaZKTzfu4HrvVCjm/TjnIYj2ZWrPgrq/KgXeuMqyElbKh9pn3idxaM0e+GRkEI/f1ki0pzSuQJ9qmcEEKY7T2tgBlaqBtVJLLZxaM=,iv:o3vDtB9eYMXD4BB04+jBge+rATgTawif8VayBv14c8E=,tag:TobMkWz4iMxx+2GruuNgUQ==,type:str]
+  lastmodified: "2025-09-13T22:57:05Z"
+  mac: ENC[AES256_GCM,data:g54n3f8pBLCzPIbd7aLFN4nPI1JqZnh852r99Q8qcpbcuPxsjgxjgcg5zXJZfnVTAOSex1x49s8DJfHI32NCn+OazlMvcKzARuBiekgXyde1Gr4OqHYSquko9RTk78+Txe5dWn3cfFc+yPBXscFyvOBIKvo9d490rS7IvpguePk=,iv:WJTjZSk65d7cArTmzvksbz8vdRy7pLBjojsFmSltgRA=,tag:j3LdiAN1ojGrZlfXljPmgQ==,type:str]
   encrypted_regex: ^(data|stringData|apiKey|rootPassword|secretKey|adminPassword|basicAuthPassword|password|secret_key|secret|WOODPECKER_FORGEJO_SECRET|token)$
   mac_only_encrypted: true
   version: 3.10.2
