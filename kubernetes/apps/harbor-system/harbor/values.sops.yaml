@@ -16,6 +16,7 @@ expose:
     # ingress-specific labels
     labels: {}
 externalURL: https://harbor.mjwood.org
+caSecretName: dummy
 # The persistence is enabled by default and a default StorageClass
 # is needed in the k8s cluster to provision volumes dynamically.
 # Specify another StorageClass in the "storageClass" or set "existingClaim"
@@ -53,26 +54,26 @@ persistence:
       rootdirectory: /storage
 harborAdminPassword: 1fab28a73d99bf0e34aa7da7f93a9b99da82e4118a780f51b09349130f42a55b
 # The secret key used for encryption. Must be a string of 16 chars.
-secretKey: ENC[AES256_GCM,data:1/24pxsp2ewdt6sfjVbyytAttENR+iXI4SBt95qGv3c=,iv:gqwOvkYYU+1D6etcSJtAlrJoZsMqJBk7WgI9ug5DZ3k=,tag:gossilu92TvVYQlRCilcjg==,type:str]
+secretKey: ENC[AES256_GCM,data:ED9YL1NSxFGPJxLWNfV9j2a3KDmd2oE5GUAqYXMKvo0=,iv:jdSNsTTElin9Rf2VMe59dYvboPZGokwWPTiQ1z6VgE8=,tag:/N+j6y9ebdzRLLEsgdX9Kg==,type:str]
 registry:
   credentials:
     username: harbor
-    password: ENC[AES256_GCM,data:g6QJVS9MqvfyKglL+FiqIpG/qdfF7NK1YvqffCitv1/QZvpD0UZLZZfYLDrQfnPYXoDTRHE6karNeQx44/1wlg==,iv:aCwHPtnvXz6pbOh9ji4rR9uAEYsSV119vNCWusMUByM=,tag:JkjVA0K4N5UHS4LTRCtv+A==,type:str]
+    password: ENC[AES256_GCM,data:EDaOFSddHf8WFTB+FOTCvwi71XjxXvBecbOyPw+0lBKgzIu12Rh90S+2ipAod2httj/kNHyD2hv11CGahYgFFA==,iv:gJr6QwRIn6PELP0aCgCyW1PEPvqMOv5zt2IjfJjmOIQ=,tag:a/lc2Vjr6bWZKmPrztz87g==,type:str]
 database:
-  password: ENC[AES256_GCM,data:MWqX+1omHcrwU82OTx8rmMESR0MnukAsWpvo2ZYCN1eSeb4evT1oSlbzibXPpCkPOXqCm0B3p/xRTi12sgd0HQ==,iv:GhkDloA6OHrkq41PMX4yeatd5FbCUDQuue4+e7D330E=,tag:3l00Zho6HVEIDy+PqY5sRA==,type:str]
+  password: ENC[AES256_GCM,data:R/ZN97p53R3cFfXbqljTfYOEcI8uQCzUbpZZe1/9K/M5KXxwRYR7OeU6ehpxQ+mClSHfn78XM8TENfTNDQyN9w==,iv:lrO7n0NO2JPYWylJAA1hBM3+j3Xl3vef5f49zFqVl5Q=,tag:Wnc4fgf9MI0HR62we1vPJg==,type:str]
 sops:
   age:
     - recipient: age1m0lm4afkysxufghhpez3p0wjzchms5gpadc085p3ukqh75hyvanst3lrvr
       enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBNdTdUd0V4Zkw5ZHA2Q1hX
-        a20vMW9iUUNwM3FtaDFCQ0ZrRXprZkNEdlE4CkJXREhRR1EzSTFQbkhQbldkdXhp
-        ZHptK1JjeVEwVk5GdHpVclVKK3pidU0KLS0tIFN6bC94OVNINE1oV1JxVTVMMEJX
-        R0xKTm8weFVFZERLMU9YRVVSNDZkTU0Kbgd3L/NH3A+7embDsC26ZMV2e1s9lanf
-        spHbOyQa0wfLDe/1iKXyFjjoFZZiJtRb7LTHwCdhY52Hc/SzPCeWCA==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB5SWtHODg4SCtpV21yQ0dq
+        MFFJSUYveWVYZWVkcTduNHRPQWdUeGZqSkJ3Ck5odmFaK2F6MkZPUmFqUkNoa01G
+        UDBNa1BIWkViQ1duQmNGb1RsVkpiSXMKLS0tIGh4MjV1U3psRGFtUDJ3ZmJPUzJG
+        eVo1U0tUWlJkTExXU2wxajdBNzRnMG8KSs/00XktKHizDS5lSE6bKAj8JU5y+827
+        KSykeebFexGqrdZbhOail1eiwuPWREon2buC95zjsTBRTc3JIzpaRw==
         -----END AGE ENCRYPTED FILE-----
-  lastmodified: "2025-09-14T00:03:09Z"
-  mac: ENC[AES256_GCM,data:9bWECcuu0Yi3L16AzZA5J8PSAuQ8RkIw6cBlKHL+mrgW4KDgT2FvuNxZSrvmCqWiEbveowCPzLvaYABBshQfDZ3WdV0aj9JvkcShLAhYHrfcIuA3qASgooHo/Y5/JmM9MvMTXN7gSZhDyEJ8uM7nLpKHTvwzwSWJb/KQXw46G4Y=,iv:EPR2eN3RvbxPHIS0tL4gycwbywHNabWKFWgl0ScsCSQ=,tag:8eBhGEMSya6E40l2pXtgFQ==,type:str]
+  lastmodified: "2025-09-14T02:13:50Z"
+  mac: ENC[AES256_GCM,data:lhBm6ixCitoGluNr0T/RCVAwoynPnwrdWn0ys4cvjlYHwsz/JUAJEhLe8FIyVOMHbbve9VCEEZxmL5mcicVf9prIO2yj3EzKpJ2OrTx8kD3T53wL1iEw2e46+uMvk0kEcnV+bA57EL7srtyO9GHp+mG08KAO2B6s4Qi8F3JlglM=,iv:+8CI+ETusDZVBEmwqCL3ab6sDJBDB6dnrfphSE7lMbk=,tag:uGpNCfv0/sPXvXGTePjWxg==,type:str]
   encrypted_regex: ^(data|stringData|apiKey|rootPassword|secretKey|adminPassword|basicAuthPassword|password|secret_key|secret|WOODPECKER_FORGEJO_SECRET|token)$
   mac_only_encrypted: true
   version: 3.10.2
