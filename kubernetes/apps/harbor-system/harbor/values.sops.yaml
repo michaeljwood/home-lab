@@ -1,4 +1,6 @@
 expose:
+  tls:
+    certSource: none
   ingress:
     hosts:
       core: harbor.mjwood.org
@@ -51,26 +53,26 @@ persistence:
       rootdirectory: /storage
 harborAdminPassword: 1fab28a73d99bf0e34aa7da7f93a9b99da82e4118a780f51b09349130f42a55b
 # The secret key used for encryption. Must be a string of 16 chars.
-secretKey: ENC[AES256_GCM,data:tnU7pGs4114Ik0tZaHN7zTOn5IcuEYipvh3Qidf2k5c=,iv:5ZtGldL4m5daBzrXiklldQ4k0yy1vEf2wT0FDT2UxPk=,tag:fRzWeXF8gbE/fqKJ+g6rrA==,type:str]
+secretKey: ENC[AES256_GCM,data:1/24pxsp2ewdt6sfjVbyytAttENR+iXI4SBt95qGv3c=,iv:gqwOvkYYU+1D6etcSJtAlrJoZsMqJBk7WgI9ug5DZ3k=,tag:gossilu92TvVYQlRCilcjg==,type:str]
 registry:
   credentials:
     username: harbor
-    password: ENC[AES256_GCM,data:gcfpCfEGVzW9H+Ksple8Ae9+n28ppEJdxTKf1tz6r1v7nDO3JLnwPoeS7rcpYoW7jAo+Prjmukzt0Dd2tB8UUQ==,iv:oUX2zk5//iemHJSznHGmXAsFjT4TAxowErogyiqt49w=,tag:K5Q0GDt+wONHyDBONwnAOA==,type:str]
+    password: ENC[AES256_GCM,data:g6QJVS9MqvfyKglL+FiqIpG/qdfF7NK1YvqffCitv1/QZvpD0UZLZZfYLDrQfnPYXoDTRHE6karNeQx44/1wlg==,iv:aCwHPtnvXz6pbOh9ji4rR9uAEYsSV119vNCWusMUByM=,tag:JkjVA0K4N5UHS4LTRCtv+A==,type:str]
 database:
-  password: ENC[AES256_GCM,data:FQVejdh9QRIjk+wS0nWM2xWf1acTfmAedN1iG6HfsjNRx6wbr22B2rvEwRCk+oNgorP30xHMjmsxnidOWjuBuw==,iv:CQmWOLm3mUk9e4/DLahVRrm77PJETV4FJqZLbBZoYtk=,tag:KUs/IMNVfj223WIUUakt7w==,type:str]
+  password: ENC[AES256_GCM,data:MWqX+1omHcrwU82OTx8rmMESR0MnukAsWpvo2ZYCN1eSeb4evT1oSlbzibXPpCkPOXqCm0B3p/xRTi12sgd0HQ==,iv:GhkDloA6OHrkq41PMX4yeatd5FbCUDQuue4+e7D330E=,tag:3l00Zho6HVEIDy+PqY5sRA==,type:str]
 sops:
   age:
     - recipient: age1m0lm4afkysxufghhpez3p0wjzchms5gpadc085p3ukqh75hyvanst3lrvr
       enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBWRU5LWVlNTm9aMmx1SndF
-        QUs3TFRPejdVbmN6N243aDFyRDdZekQ0MkZ3CjQvbkxxTVIyeHVCVTlwa1hZUEFY
-        a2U1WFhYTWJtamhEZnNKaWlVeldFOGcKLS0tIGJqUTNBZmZ0Z3Fwdi9LQWhsVHBW
-        SkZ5N2V6Ny9DVUh2SlQ5V05HK3lITTAKY0PKyziguddSNfoYJsdcW5hoFjnRUNVQ
-        YJcfnhsqPV7xZOdejgkVbAkNCY3cxG8GOuk/ykk+FmzBgCBbtRh1lw==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBNdTdUd0V4Zkw5ZHA2Q1hX
+        a20vMW9iUUNwM3FtaDFCQ0ZrRXprZkNEdlE4CkJXREhRR1EzSTFQbkhQbldkdXhp
+        ZHptK1JjeVEwVk5GdHpVclVKK3pidU0KLS0tIFN6bC94OVNINE1oV1JxVTVMMEJX
+        R0xKTm8weFVFZERLMU9YRVVSNDZkTU0Kbgd3L/NH3A+7embDsC26ZMV2e1s9lanf
+        spHbOyQa0wfLDe/1iKXyFjjoFZZiJtRb7LTHwCdhY52Hc/SzPCeWCA==
         -----END AGE ENCRYPTED FILE-----
-  lastmodified: "2025-06-13T00:46:54Z"
-  mac: ENC[AES256_GCM,data:PN22pYofcdDtouygqqnpb4vOlXrp66cEdmdEB2graDZ5eLiGb2Gy4KzrsYSEgPif6//iNzguygJ/qpiS8uFD68FMbU1CMt3DZfvtiG6Toqfg2PM418h2HDc1F0R5R/uZHNkQgnIwiFpiK50Wsq5SabUTmJG2xmYyWBO8PGIxWgA=,iv:J66UlmG+VncDUpcvLMtkTuqIUeSJxCZphZLa8ytUI7c=,tag:aD3SlJDQTkMQargvcCh9ZQ==,type:str]
-  encrypted_regex: ^(data|stringData|apiKey|rootPassword|secretKey|adminPassword|basicAuthPassword|password|secret_key)$
+  lastmodified: "2025-09-14T00:03:09Z"
+  mac: ENC[AES256_GCM,data:9bWECcuu0Yi3L16AzZA5J8PSAuQ8RkIw6cBlKHL+mrgW4KDgT2FvuNxZSrvmCqWiEbveowCPzLvaYABBshQfDZ3WdV0aj9JvkcShLAhYHrfcIuA3qASgooHo/Y5/JmM9MvMTXN7gSZhDyEJ8uM7nLpKHTvwzwSWJb/KQXw46G4Y=,iv:EPR2eN3RvbxPHIS0tL4gycwbywHNabWKFWgl0ScsCSQ=,tag:8eBhGEMSya6E40l2pXtgFQ==,type:str]
+  encrypted_regex: ^(data|stringData|apiKey|rootPassword|secretKey|adminPassword|basicAuthPassword|password|secret_key|secret|WOODPECKER_FORGEJO_SECRET|token)$
   mac_only_encrypted: true
   version: 3.10.2
