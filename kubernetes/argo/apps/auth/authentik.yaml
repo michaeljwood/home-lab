@@ -13,7 +13,7 @@ spec:
       ref: repo
     - repoURL: "https://charts.goauthentik.io"
       chart: authentik
-      targetRevision: 2025.8.1
+      targetRevision: 2025.8.3
       helm:
         releaseName: authentik
         valueFiles:
