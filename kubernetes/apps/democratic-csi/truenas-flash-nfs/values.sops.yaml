@@ -1,3 +1,7 @@
+controller:
+  driver:
+    image:
+      tag: next
 driver:
   config:
     driver: freenas-api-nfs
