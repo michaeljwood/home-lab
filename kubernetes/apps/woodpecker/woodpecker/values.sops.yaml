@@ -3,6 +3,8 @@ agent:
   persistence:
     size: 20Gi
     storageClass: truenas-flash-nfs
+  env:
+    WOODPECKER_LOG_LEVEL: debug
 server:
   # -- Enable the server component
   enabled: true
@@ -13,8 +15,9 @@ server:
     WOODPECKER_FORGEJO: "true"
     WOODPECKER_FORGEJO_URL: https://forge.mjwood.org
     WOODPECKER_FORGEJO_CLIENT: dd8bc1b3-ea3b-409f-988c-5f7eac1bd078
-    WOODPECKER_FORGEJO_SECRET: ENC[AES256_GCM,data:IeHGspoLfEfo6zIPM2PIXbpot8++TwupZdwSgz3V8Tzu4kP8IBqrjMQsJ7CK8/wJQno6yCKP0oE=,iv:6eS5J3YAGNGnZAYybYwC0qU2ZP115asT3DB0pqcAUfM=,tag:mlDDfnV6iKbEfg0ZG88LLQ==,type:str]
+    WOODPECKER_FORGEJO_SECRET: ENC[AES256_GCM,data:ru25VD07JZ6gVe4oAy9PSsQZsZHS59WXzZzZyn3lrYQXdsGpLTwSeRnIpmtdmdWpe/zz8xLiUrs=,iv:eAWm4kh0C9q20Y8Axo4KwPz8L2cYEhRKvOnkV01rLis=,tag:PEygom2dWefNkom3l33HLg==,type:str]
     WOODPECKER_PLUGINS_PRIVILEGED: docker.io/woodpeckerci/plugin-docker-buildx:latest
+    WOODPECKER_LOG_LEVEL: debug
   persistentVolume:
     storageClass: truenas-iscsi
   service:
@@ -37,14 +40,14 @@ sops:
     - recipient: age1m0lm4afkysxufghhpez3p0wjzchms5gpadc085p3ukqh75hyvanst3lrvr
       enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB3dWtuYnVVRk8zeklDWDZY
-        Y2RiZFNrYjJIcTRHZVZjYk8yL2tPd2RaY0hBCm9YbEI3cUVpSTRWUi85ZFBZcDVX
-        NDVNSXVtZXVFeld5V0g0YnpEcWpqdDQKLS0tIGNUNFNsMzBjTm1UMkhxaG1pQXlJ
-        TE5PMlE3cmg4NGpHUHpuVjhucDROSmcK8C3cxCI4PcHxlGy19CDpwqssZKjHwCnh
-        gbKkuB1smkeDuGEOJ7SwyFir8cbISmnoWQKbQO7i1ZKYI223kp/sZQ==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBLNmpRRFpjS0k2MDZVZXd2
+        WlUydS9mNUlRM2VFOWhYM1pFUXBZaHRaNkRnCm5OL1hMYkt4RVR1bmlxdFBLeVpa
+        M0NndjBLWmRsK0FQSVZxa1NsNW9yeWsKLS0tIFI1WWtGTDhFdTNBZWpWc0h6WlQ5
+        L0FhZmNacjdsQ1YvQTVJZUZhL1FDcVkKqM6QmR16kuP5AoNZqcJHwuxRjpnl3xJj
+        HI82B6Ygp/wVlnSdnlPhahDRRmLN7RVO9HC57FtgW3KFDoypnREDfQ==
         -----END AGE ENCRYPTED FILE-----
-  lastmodified: "2025-09-28T23:33:23Z"
-  mac: ENC[AES256_GCM,data:/5b2o6Tt8Xu7i2+Zg+/5dkHH2iLpFkAqH8mtXgNvZYbif04Ez+j1BnGQWsaSH7oXthlD/TWKEcIA4aQWAHtkIsQHAegXLEsMR5IHjRVwHWM2JhG6gwluR9ltnyfxjjfGpol+r+gNwopGEzVBKtCru7ocrDmuve4cVq7NM2SG9X4=,iv:XkFCaQeuwX2L2ufCInhzQN14Ike/S6DrC5p1Q3Kc6Tw=,tag:uAgDJnkfqTQW2vncEV5pXw==,type:str]
+  lastmodified: "2025-09-29T20:02:14Z"
+  mac: ENC[AES256_GCM,data:iOxiPqzIo4AVCpP2seQF5HcBpiZAx6aQdP/TMFYBfyTmuAUbPDMug71bXOHCOUza/T9x9QhKw4ZSjjG2LrANIEpD7KGgXMxM7VdUnMk6n15Ha/u+CMdWZmToiX1UKI5X6JZmqIn+UuSXwbwH1X0gakEKopULmziWmWx5nH80ktM=,iv:gIpFoEYdMwRR8BvMZCy+CY2eahF0BoY56a3eMhjXYaQ=,tag:SJ+GXhfrFcMZpTXNe4hOmg==,type:str]
   encrypted_regex: ^(data|stringData|apiKey|rootPassword|secretKey|adminPassword|basicAuthPassword|password|secret_key|secret|WOODPECKER_FORGEJO_SECRET|token)$
   mac_only_encrypted: true
   version: 3.10.2
