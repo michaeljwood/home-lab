@@ -38,3 +38,5 @@ run = [
 "aqua:yannh/kubeconform" = "0.7.0"
 "asdf:janpieper/asdf-ksops" = "4.3.3"
 "kubeseal" = "0.29.0"
+uv = "latest"
+k9s = "latest"
