@@ -14,20 +14,20 @@ service:
   ## @param service.ssh.labels SSH service additional labels
   ## @param service.ssh.loadBalancerClass Loadbalancer class
   ssh:
-    type: LoadBalancer
+    #type: LoadBalancer
     port: 22
     #    clusterIP:
     #    loadBalancerIP:
     #    nodePort:
-    externalTrafficPolicy: Local
+    externalTrafficPolicy: Cluster
     externalIPs:
       - 10.0.0.88
       #    ipFamilyPolicy:
       #    ipFamilies:
       #    hostPort:
       #    loadBalancerSourceRanges: []
-    annotations:
-      io.cilium/lb-ipam-ips: 10.0.0.88
+    #annotations:
+    #  io.cilium/lb-ipam-ips: 10.0.0.88
 #    labels: {}
 #    loadBalancerClass:
 ingress:
@@ -35,6 +35,7 @@ ingress:
   className: external
   annotations:
     external-dns.alpha.kubernetes.io/target: external.mjwood.org
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "180s"
   hosts:
     - host: forge.mjwood.org
       paths:
