@@ -13,7 +13,7 @@ spec:
       ref: repo
     - repoURL: "https://jellyfin.github.io/jellyfin-helm"
       chart: jellyfin
-      targetRevision: 2.3.0
+      targetRevision: 2.4.0
       helm:
         releaseName: jellyfin
         valueFiles:
