@@ -49,7 +49,7 @@ immich:
 
 # Dependencies
 
-redis:
+valkey:
   enabled: true
 
 # Immich components
