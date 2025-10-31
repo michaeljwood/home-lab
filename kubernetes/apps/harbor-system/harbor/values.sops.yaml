@@ -29,7 +29,7 @@ persistence:
   enabled: true
   persistentVolumeClaim:
     registry:
-      storageClass: truenas-iscsi
+      storageClass: truenas-flash-iscsi
       size: 250Gi
     jobservice:
       jobLog:
