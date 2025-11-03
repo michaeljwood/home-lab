@@ -7,7 +7,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: "truenas-flash-iscsi"
+  storageClassName: "truenas-nfs"
   resources:
     requests:
       storage: 500Gi
