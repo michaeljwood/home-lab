@@ -51,7 +51,7 @@ controller:
     requests:
       cpu: 100m
     limits:
-      memory: 500Mi
+      memory: 1Gi
 sops:
   kms: []
   gcp_kms: []
