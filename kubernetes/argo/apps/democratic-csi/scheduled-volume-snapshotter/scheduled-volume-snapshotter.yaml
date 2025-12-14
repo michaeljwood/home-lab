@@ -1,0 +1,31 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: scheduled-volume-snapshotter
+  namespace: argo-system
+spec:
+  project: kubernetes
+  sources:
+    - repoURL: "https://github.com/michaeljwood/home-lab.git"
+      path: kubernetes/apps/democratic-csi/scheduled-volume-snapshotter
+      targetRevision: main
+      ref: repo
+    - repoURL: "https://raw.githubusercontent.com/ryaneorth/k8s-scheduled-volume-snapshotter/main/repo"
+      chart: scheduled-volume-snapshotter
+      targetRevision: v0.18.0
+      helm:
+        releaseName: scheduled-volume-snapshotter
+        valueFiles:
+          - $repo/kubernetes/apps/democratic-csi/scheduled-volume-snapshotter/values.yaml
+  destination:
+    name: in-cluster
+    namespace: democratic-csi
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
