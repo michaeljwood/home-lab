@@ -1,10 +1,10 @@
-apiVersion: k8s.ryanorth.io/v1beta1
-kind: ScheduledVolumeSnapshot
-metadata:
-  name: authentik-postgres-snapshot
-  namespace: auth
-spec:
-  snapshotClassName: truenas-iscsi
-  persistentVolumeClaimName: data-authentik-postgres-0
-  snapshotFrequency: 1d
-  snapshotRetention: 30d
+#apiVersion: k8s.ryanorth.io/v1beta1
+#kind: ScheduledVolumeSnapshot
+#metadata:
+#  name: authentik-postgres-snapshot
+#  namespace: auth
+#spec:
+#  snapshotClassName: truenas-iscsi
+#  persistentVolumeClaimName: data-authentik-postgres-0
+#  snapshotFrequency: 1d
+#  snapshotRetention: 30d

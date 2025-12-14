@@ -1,33 +1,33 @@
----
-apiVersion: k8s.ryanorth.io/v1beta1
-kind: ScheduledVolumeSnapshot
-metadata:
-  name: nextcloud-config-snapshot
-  namespace: home-services
-spec:
-  snapshotClassName: truenas-flash-iscsi
-  persistentVolumeClaimName: nextcloud-nextcloud
-  snapshotFrequency: 1d
-  snapshotRetention: 30d
----
-apiVersion: k8s.ryanorth.io/v1beta1
-kind: ScheduledVolumeSnapshot
-metadata:
-  name: nextcloud-data-snapshot
-  namespace: home-services
-spec:
-  snapshotClassName: truenas-nfs
-  persistentVolumeClaimName: nextcloud-nextcloud-data
-  snapshotFrequency: 1d
-  snapshotRetention: 30d
----
-apiVersion: k8s.ryanorth.io/v1beta1
-kind: ScheduledVolumeSnapshot
-metadata:
-  name: nextcloud-postgres-snapshot
-  namespace: home-services
-spec:
-  snapshotClassName: truenas-iscsi
-  persistentVolumeClaimName: nextcloud-postgresql-1
-  snapshotFrequency: 1d
-  snapshotRetention: 30d
+#---
+#apiVersion: k8s.ryanorth.io/v1beta1
+#kind: ScheduledVolumeSnapshot
+#metadata:
+#  name: nextcloud-config-snapshot
+#  namespace: home-services
+#spec:
+#  snapshotClassName: truenas-flash-iscsi
+#  persistentVolumeClaimName: nextcloud-nextcloud
+#  snapshotFrequency: 1d
+#  snapshotRetention: 30d
+#---
+#apiVersion: k8s.ryanorth.io/v1beta1
+#kind: ScheduledVolumeSnapshot
+#metadata:
+#  name: nextcloud-data-snapshot
+#  namespace: home-services
+#spec:
+#  snapshotClassName: truenas-nfs
+#  persistentVolumeClaimName: nextcloud-nextcloud-data
+#  snapshotFrequency: 1d
+#  snapshotRetention: 30d
+#---
+#apiVersion: k8s.ryanorth.io/v1beta1
+#kind: ScheduledVolumeSnapshot
+#metadata:
+#  name: nextcloud-postgres-snapshot
+#  namespace: home-services
+#spec:
+#  snapshotClassName: truenas-iscsi
+#  persistentVolumeClaimName: nextcloud-postgresql-1
+#  snapshotFrequency: 1d
+#  snapshotRetention: 30d
