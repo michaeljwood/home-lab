@@ -31,7 +31,7 @@ driver:
       shareMapallGroup: ""
 csiDriver:
   # should be globally unique for a given cluster
-  name: org.democratic-csi.freenas-api-nfs
+  name: org.democratic-csi.freenas-api-nfs-flash
 storageClasses:
   - name: truenas-flash-nfs
     defaultClass: false
