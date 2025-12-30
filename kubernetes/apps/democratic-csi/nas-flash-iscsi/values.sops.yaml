@@ -7,13 +7,13 @@ driver:
     driver: freenas-api-iscsi
     httpConnection:
       protocol: https
-      apiKey: ENC[AES256_GCM,data:AX5Wv79UV/EK7aMLsXMfCm9fcwP06O3A4CyQBsxbd7mf+rmAUu++ftutv7A0/68t+fQ/AneNlakJXuZbbEr4RG+x,iv:67SnQrzdmcBAXMkmC2IOR15VhGBgVaCOA1FeMnv6U70=,tag:PyHnPg+XHbKR7YWaaMuZZA==,type:str]
+      apiKey: ENC[AES256_GCM,data:rJC4FkLtvM9D97hqwsJ+W/znKckZa1a9Pr3qwqrcyxC4EDKewl+Lk0cEgYBH5QiFmF6Bo2MGNTB8+k4x0i+chAsO,iv:RUOxBTZhpfGTZuMZjMNWWW2jGV30srZUXpz0DqirIY0=,tag:UOmQJgYoAIKYtcgn+wGIOA==,type:str]
       host: 10.0.0.16
       port: 443
       allowInsecure: true
     zfs:
-      datasetParentName: main-pool/talos/iscsi/vol
-      detachedSnapshotsDatasetParentName: main-pool/talos/iscsi/snap
+      datasetParentName: flash/k8s/iscsi/vol
+      detachedSnapshotsDatasetParentName: flash/k8s/iscsi/snap
       zvolCompression: null
       zvolDedup: null
       zvolEnableReservation: false
@@ -23,7 +23,7 @@ driver:
       targetPortals: []
       interface: null
       namePrefix: csi-
-      nameSuffix: -talos
+      nameSuffix: -k8s
       targetGroups:
         - targetGroupPortalGroup: 2
           targetGroupInitiatorGroup: 2
@@ -37,9 +37,9 @@ driver:
       extentAvailThreshold: 0
 csiDriver:
   # should be globally unique for a given cluster
-  name: org.democratic-csi.freenas-api-iscsi
+  name: org.democratic-csi.freenas-k8s-iscsi-flash
 storageClasses:
-  - name: truenas-iscsi
+  - name: nas-flash-iscsi
     defaultClass: false
     reclaimPolicy: Delete
     volumeBindingMode: Immediate
@@ -55,7 +55,7 @@ storageClasses:
       node-publish-secret: null
       controller-expand-secret: null
 volumeSnapshotClasses:
-  - name: truenas-iscsi
+  - name: nas-flash-iscsi
     parameters:
       detachedSnapshots: "true"
 node:
@@ -73,14 +73,14 @@ sops:
     - recipient: age1m0lm4afkysxufghhpez3p0wjzchms5gpadc085p3ukqh75hyvanst3lrvr
       enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBsSlFiT1YrR0RaME85aUY3
-        andpcTlDNXFwcGFSVG5SbmNGb1kvUWt1Y0NJCmxpUHlwTFhBQTJEbEhONVZ3U1Mr
-        TGx0M3VLNmUrVk15TG5oVXVZWVFrb0UKLS0tIG5YbzhyQUxVWCtwZy8xSnZDUHpz
-        am15OC9oSllEdHV3Q0tIR1VHY240MHcKZP/3UBMl/EhS+Y8GVIOcaLcMNGTF18wc
-        IOSss0jxnuihhzYavxEIULbiS1WbY1kLkBH88ZGwQzzWIwT4BuCsww==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA5WFJkeEowWmoweGV6Mi9p
+        L3dEY1czZzJQejJ0bENvTk1xdTh2UGswTEVZClFxRERmM1BHOTA4UHJFdllmVktx
+        cmg2Vk93MFpGNDJDWTlpZ0pndG1qdnMKLS0tIElRWHpnWmxveit5dXZkVlBXRnY0
+        QUVuQThBR2xpMjhwSUYrS3V2TEg1Q28K3GcGcoT0eE5ygmVtSNRe/9yO1ycA4eyh
+        ke6b6HBcOsPbO0H4jwIbRkjz1SKfJE5lRigb0zODg18eH1mM25htPg==
         -----END AGE ENCRYPTED FILE-----
-  lastmodified: "2025-05-26T20:12:43Z"
-  mac: ENC[AES256_GCM,data:rIAnXpFh9Ve4Gxui00haCw3mWacX2TwYDD6CUf9J9HM5J6lmuXaqxJLKfFvv8lFn2tyTqmu9V1SZSdzm2mtev8gr3B0Y8hWCfXHKaujbHcEHMB0rLwOe3JuW0X1P0iMVsnHD4XD1lVqaRPR2UhD+L8j7BnCXL/TOFTvv1DkTTik=,iv:8/WYgQg2a0C4ird4QBn8QpuXZ3qEGO3u5AWaXgYPnJs=,tag:nAxwZfiCU6UeDylt9xcGhQ==,type:str]
-  encrypted_regex: ^(data|stringData|apiKey|rootPassword|secretKey|adminPassword|basicAuthPassword|password|secret_key)$
+  lastmodified: "2025-12-30T18:39:02Z"
+  mac: ENC[AES256_GCM,data:ze7Rm46hCbgo168z2zzZF3ko5DQWSe3zTGOrLExcjFDNyjzW5vYVkRZKBTrOGzQP1XjGp5QvTnVK8kK55tyL5P3+ZGorwUWwFGa5klQdP3W2PjYjBZ6bi26XQ39lcTafpENa/XbElC8mFNlniOirVz0CF0Yd+AdAK8eqYxwxt70=,iv:vTJ9WedwbF1juUNNPnTSf2eAkLFeuzcDkDaHekKEwtg=,tag:RYhkHtJjUncJRCjUu8vmaA==,type:str]
+  encrypted_regex: ^(data|stringData|apiKey|rootPassword|secretKey|adminPassword|basicAuthPassword|password|secret_key|secret|WOODPECKER_FORGEJO_SECRET|token)$
   mac_only_encrypted: true
-  version: 3.10.2
+  version: 3.11.0

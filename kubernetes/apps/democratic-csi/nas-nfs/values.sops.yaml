@@ -1,0 +1,65 @@
+controller:
+  driver:
+    image:
+      tag: next
+driver:
+  config:
+    driver: freenas-api-nfs
+    httpConnection:
+      protocol: https
+      apiKey: ENC[AES256_GCM,data:pUtWWt2nIY3PPcCGbWzMqMpbeprfdyB1WtQj/otMUlUqrEGkHZBJATkxu4EiaHSS3YEpAMczFuwuXU3MVqpG2EmS,iv:bgb8LIr9bXEAVZ1HlumqzSyR4MQCMvp3bPb7O/hLz4E=,tag:pwFAezL1orAqjXqDRAGD/g==,type:str]
+      host: 10.0.0.16
+      port: 443
+      allowInsecure: true
+    zfs:
+      datasetParentName: main-pool/k8s/nfs/vol
+      detachedSnapshotsDatasetParentName: main-pool/k8s/nfs/snap
+      datasetEnableQuotas: true
+      datasetEnableReservation: false
+      datasetPermissionsMode: "0777"
+      datasetPermissionsUser: 0
+      datasetPermissionsGroup: 0
+    nfs:
+      shareCommentTemplate: '{{ parameters.[csi.storage.k8s.io/pvc/namespace] }}-{{ parameters.[csi.storage.k8s.io/pvc/name] }}'
+      shareHost: 10.0.0.16
+      shareAlldirs: false
+      shareAllowedHosts: []
+      shareAllowedNetworks: []
+      shareMaprootUser: root
+      shareMaprootGroup: root
+      shareMapallUser: ""
+      shareMapallGroup: ""
+csiDriver:
+  # should be globally unique for a given cluster
+  name: org.democratic-csi.freenas-k8s-nfs
+storageClasses:
+  - name: nas-nfs
+    defaultClass: false
+    reclaimPolicy: Delete
+    volumeBindingMode: Immediate
+    allowVolumeExpansion: true
+    parameters:
+      fsType: nfs
+    mountOptions:
+      - noatime
+      - nfsvers=4
+volumeSnapshotClasses:
+  - name: nas-nfs
+    parameters:
+      detachedSnapshots: "true"
+sops:
+  age:
+    - recipient: age1m0lm4afkysxufghhpez3p0wjzchms5gpadc085p3ukqh75hyvanst3lrvr
+      enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBMbjN6Y1RBRlpzelpmVWU3
+        N1J0dnNnMHhuK1B0bS8zSnBuV013cElQNFhnCndyOTdZVkhkOGQ3YUxhY3E4bGpv
+        TVB2Sml3V1FlSWtBUFZOVnMxZnJBc0UKLS0tIFVFOGw4WjR1d1dENUhpeFVwWVpl
+        VlEvUCtoNHZKVXQwNlRqSittREZJSjgKId1NeQve5x/nmNg16M4FEthIpBRugK38
+        +HGdZrfOX9cYNluaBDWLUvLPw836ej37gzjz6Q8AxpgtHREDIZy8bw==
+        -----END AGE ENCRYPTED FILE-----
+  lastmodified: "2025-12-30T18:44:38Z"
+  mac: ENC[AES256_GCM,data:jPnySAm6SYURaeyHklxN6LvQ1S8y3xEmiTFqI/g8Wc5mrrQeRyX31PbqVlWYy+Nh7QzkYp/KiTSYENAymA2J3/BIeaaQ4ZT5h9dN1zHLOojpMVCWvWc6Q7LA1KNU5jrnAlW8PAAV5ZtF3LYXyn7fMfEfJzQjArfziE15wfq3oag=,iv:qYV2kgtzZZZJI1Cy/noKPfaD4LVS4JThE0t1DziSwqc=,tag:Ne601TQdlTgr5pyRjD0t8A==,type:str]
+  encrypted_regex: ^(data|stringData|apiKey|rootPassword|secretKey|adminPassword|basicAuthPassword|password|secret_key|secret|WOODPECKER_FORGEJO_SECRET|token)$
+  mac_only_encrypted: true
+  version: 3.11.0
