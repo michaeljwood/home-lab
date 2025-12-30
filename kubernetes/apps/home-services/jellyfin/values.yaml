@@ -52,7 +52,7 @@ jellyfin:
 
 persistence:
   config:
-    storageClass: 'truenas-iscsi'
+    storageClass: 'nas-iscsi'
     size: 25Gi
   media:
     # -- set to false to use emptyDir

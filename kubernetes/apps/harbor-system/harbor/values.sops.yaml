@@ -29,24 +29,24 @@ persistence:
   enabled: true
   persistentVolumeClaim:
     registry:
-      storageClass: truenas-flash-iscsi
+      storageClass: nas-iscsi
       size: 250Gi
     jobservice:
       jobLog:
-        storageClass: truenas-flash-iscsi
+        storageClass: nas-flash-iscsi
         size: 50Gi
     # If external database is used, the following settings for database will
     # be ignored
     database:
-      storageClass: truenas-flash-iscsi
+      storageClass: nas-flash-iscsi
       size: 10Gi
     # If external Redis is used, the following settings for Redis will
     # be ignored
     redis:
-      storageClass: truenas-flash-iscsi
+      storageClass: nas-flash-iscsi
       size: 5Gi
     trivy:
-      storageClass: truenas-iscsi
+      storageClass: nas-iscsi
       size: 10Gi
   imageChartStorage:
     disableredirect: false
@@ -55,26 +55,26 @@ persistence:
       rootdirectory: /storage
 harborAdminPassword: 1fab28a73d99bf0e34aa7da7f93a9b99da82e4118a780f51b09349130f42a55b
 # The secret key used for encryption. Must be a string of 16 chars.
-secretKey: ENC[AES256_GCM,data:wuBnl+/rIP0wYbPY0RXYqRbxYxFnNULf1wCAXW01SEI=,iv:cSX799O7wEHdqxuf7WnvAmIoBQUbKONVSRzqx8hxI+s=,tag:o8wfBC9mQDAmcQYnTX2ZVQ==,type:str]
+secretKey: ENC[AES256_GCM,data:zJN7sDGfIQsZseEcCUleGjBLcQjqecOGu9GRtIR+do8=,iv:PMi/6I9B9MaEOof7/3GnIqd5dXBwpRDaWmZz0jk1b20=,tag:WIIofE3NUsVWcq/22ZcNqg==,type:str]
 registry:
   credentials:
     username: harbor
-    password: ENC[AES256_GCM,data:OsJVM4C//z1sKMd6TefM1xsdvb3tofvdAv6MRscHWzQS50N7+Eu7VLMBi9PcbFOcorS4YTkJVdCCVsb8KgkwrA==,iv:LOSx0Uq6g0X7WuOB/yAqM5+fwuzb4qqgnA1X/vikK3A=,tag:ZJMW3ziySmSA2rYwfjuliw==,type:str]
+    password: ENC[AES256_GCM,data:uMAzn3r/pDK+Bs3VsCWJ2Nnc5QHhrbnjooue+9r7fUgydEG/RtWI62yUs4UgFHLvi7B8vvHPiSzaw8KrmVqLLg==,iv:ofEZyK+q8X8aPjsFI+V69U1VeG6TNjOP+XGqbcX1Abg=,tag:MNCFpV3i4wmW8TbHG2eacA==,type:str]
 database:
-  password: ENC[AES256_GCM,data:59siGj3YuzHZzK4M1178sf1iyaY9kHwb2m1sc6+m11tL4JYF0oNZgp4NdWQGKYYaEhaM4z0nG8zVVrTvRP4PhA==,iv:EV6zpG45vZFOaSWdkSFttaQqy/KnMGqbPyJ9Ee7ejDE=,tag:Mh2YH96LvmyrRVjf1HjwDA==,type:str]
+  password: ENC[AES256_GCM,data:ooz0oDWiL0nCW+B67llCG4OkaENVqpJ1fh6BZ55hI2zolsNupeu9ATTqA+39H+/pmchqGrv+JeNaKhBrtlhW+w==,iv:YYC/amDPFMHuBFlTTlFhq8qSxqlRfDf9sPnE31ArIBc=,tag:muZb2vLWNxQqxoUXgiWnhw==,type:str]
 sops:
   age:
     - recipient: age1m0lm4afkysxufghhpez3p0wjzchms5gpadc085p3ukqh75hyvanst3lrvr
       enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBoKzhCbkRyQkE0dnhicWpT
-        cFhmYjFOVzZwUUVXQmFUSFF0a0tWNm5hWWxFCjRRM2xOUEpIRXJ2NEJXai9DUnR6
-        ZStUN3FCK2ZybGhvVzRXMi8wWDJ0U3MKLS0tIGU1ZU9CWDlNREh5Q21kOG9HZDl6
-        aHBldGNPdS96RWdOOWduVDI2aThzVHMKmsLvmi1zIUZKBZuNtUhdsNNCw5mj2iOD
-        f3cIS49/TbN1Q++5xO8rnwpGmGIP2mYmYRIr26fCEYOyvAus7cagdw==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB2ZEtvNFhKWlB0dm5YTHAw
+        dVR6S2tZUXphTHRENEwxb0gzTzhWSnA4R0RNCkRpTmNqZWwyTHVVV1JneHZ4QmFM
+        cGZHK09FSlhHbzBqeWxFNjk1OGRuRlUKLS0tIFJXanJUVnVUeW4yaGVkOFZyV3RE
+        Y1NmSnBKc0VuK3pnb2dUMlIwTUVGdDQK7A2Cbkh15wSvam/f3N74nQm0Uhawtx0Z
+        aEC0tPrBnCUNCv2DWOBuxgcWRSpIz9i7lmnpHCmjw61cPwIXasxMMA==
         -----END AGE ENCRYPTED FILE-----
-  lastmodified: "2025-10-01T19:15:19Z"
-  mac: ENC[AES256_GCM,data:mrJu6jAr+gbx6x49b72twKmWZXXr3Pg8sdAZmAjUj28GZaBToJe5WWjllcLuRaSt388+SPuU0WSlrdPNH5B9eIqNn7dSvNflDKqogT/GcokrPXYN0fFFigCH/sb9HUaoqdZo3vgRuixyemerX8fZzlvcuNE3NpTEvSkHxhFR9jM=,iv:FYBBKLhKyjDS+Rrz31DAe04qLecs452tXrqGpwQJTWU=,tag:HAIjfNOOazics3VMV+kE5Q==,type:str]
+  lastmodified: "2025-12-30T19:59:22Z"
+  mac: ENC[AES256_GCM,data:PbskM5qIN7AXqCzkTRQHhggz1o1sURJ2as01eo7e/xV41iegUAj7xaTszJM+iaIWQ9U0OY9npaS1wxkvQ4P+B+wgN44BUNZ4OBi05PVuToi1+iXHPQ3hPyxOCVfUTgXxH79Hja5e5557CZG+WLVEsg1YI12rw11VWoTusu4AJpM=,iv:XKf1xbODZCMUGl2d+zLwRP90O3k9Z/eZK0XMfld721I=,tag:DGIw+Fg6rECXynGCe5sq3A==,type:str]
   encrypted_regex: ^(data|stringData|apiKey|rootPassword|secretKey|adminPassword|basicAuthPassword|password|secret_key|secret|WOODPECKER_FORGEJO_SECRET|token)$
   mac_only_encrypted: true
-  version: 3.10.2
+  version: 3.11.0

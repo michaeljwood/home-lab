@@ -5,7 +5,7 @@
 #  name: immich-photos-snapshot
 #  namespace: home-services
 #spec:
-#  snapshotClassName: truenas-nfs
+#  snapshotClassName: nas-nfs
 #  persistentVolumeClaimName: immich-photos
 #  snapshotFrequency: 1d
 #  snapshotRetention: 30d
@@ -16,7 +16,7 @@
 #  name: immich-postgres-snapshot
 #  namespace: home-services
 #spec:
-#  snapshotClassName: truenas-iscsi
+#  snapshotClassName: nas-iscsi
 #  persistentVolumeClaimName: immich-postgresql-1
 #  snapshotFrequency: 1d
 #  snapshotRetention: 30d

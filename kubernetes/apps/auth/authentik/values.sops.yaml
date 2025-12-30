@@ -1,11 +1,11 @@
 authentik:
-  secret_key: ENC[AES256_GCM,data:46xGnR/L4Cs8Mx/ZK7aj1K8YMKxMR6W7PgBIUgNYWfv1WMaInKy4YAbASkYoSg79CJcSDyysBx58s4y5sbLcm4tCbWzhtAeuPENBvj0VFhg4G/TIdOf3Bht1RrbZSCPRxdsfrA==,iv:BakxOeWTJKRpusICfZcPNcvRWkzR8l9zngYurKRQ7dk=,tag:b2+tSEpl6CiFypYltWwswg==,type:str]
+  secret_key: ENC[AES256_GCM,data:k2zGTPKx4O57fzG1zl9rA6N9V27ESWZTkGXP0uUCFrFI1Tb4Je6DQ0hrVJguDGkikaHckv9SyAUcs3gmPmpNW263g+W61XktUnIqGK+304tEcpGZeLE0F0BPpZuqbjVB7FpDzA==,iv:IEP79QDCQD7nRfAL04+x87bA1QifgiHNXUISSP20XU8=,tag:YEI05kQYyhTVBbtEpdqqrA==,type:str]
   # This sends anonymous usage-data, stack traces on errors and
   # performance data to authentik.error-reporting.a7k.io, and is fully opt-in
   error_reporting:
     enabled: true
   postgresql:
-    password: ENC[AES256_GCM,data:VOx3cvt0oyYZiSXPRDMDWnE/WsKyBFGCj+tcGbMtnx8UrTnF02GeR/2KUyfxRNeXYqwTqZ+xoH6ydQ8iayh7ig==,iv:/EgBlRfgy6wpk2xvglL/oJkQ9DDQPe/yrfmy90MYPsU=,tag:IlDXicO5FS+pQGdtGVr2ZA==,type:str]
+    password: ENC[AES256_GCM,data:tttknIBlm6ekZtwjjgYELJlQaN5d+OouFGnKC8xi4E/3/oUXiEdccqmaPrQ8OxBvpB4fmrOtqqq4KiPh48KSBA==,iv:N8Txs4SHzGx0gyoZ0RM7TOPoGXK5iUA4UYI6dcb001s=,tag:g4phoJKQJHmVxBo8oGU+mg==,type:str]
 server:
   ingress:
     enabled: true
@@ -19,9 +19,9 @@ postgresql:
   image:
     tag: "15"
   persistence:
-    storageClass: truenas-flash-iscsi
+    storageClass: nas-flash-iscsi
   auth:
-    password: ENC[AES256_GCM,data:Q1lNQBvnkyr8L39Btlk13VB8bUvll192+5SuyZP4+UN4dMUTJsD07eVpucLFBQ/QnFbbjZejDyeg5GqxoYGb7A==,iv:5typRlrZTKimtgqI1cUgGwKiUUnrZXwdTeLJT+2lHHw=,tag:fbX2+9wXMLqZCqhQNunQvA==,type:str]
+    password: ENC[AES256_GCM,data:ezIizvdPBcpNxt0/4PPwb3RPAVEgd9zbMifVr2hXbyiaQ6+50+vXSagIz7YeU7wWojiB6a9ub0YsyapzV833RQ==,iv:vG9kP/qRZpFDExMwQ5bEMHw1G7G95wCsOwl5ZLMnwWk=,tag:fX+jkwK5MhVqAFUVQIEPdA==,type:str]
 redis:
   enabled: true
 sops:
@@ -29,14 +29,14 @@ sops:
     - recipient: age1m0lm4afkysxufghhpez3p0wjzchms5gpadc085p3ukqh75hyvanst3lrvr
       enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAvRU9aREJjenBJL0twSnJ0
-        V2wxTkFvNHVOU2tvTkw4TGFIeHluOFZtWFgwClc1YmYvWVZLTmtWU285QTRLbVpY
-        VGxoSzI4cmdlTzlrL2d1VVVZUWQ4eGMKLS0tIHVqclhlMjd3akE4Qm9TK0FydEpZ
-        MzVkSTZjSmZlSWxGVyt0QUwvL2Y4ZDQKz/oJx5yCkQFtHzv2s02U0ocvHVCHcSFZ
-        Pj7pwS8WGK80yaTha0Ut6u5XEufB0q7EM4hPR+dd3B9BfDcuBeu95A==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBTb1lOMnF1M2tUYUl2U3ZV
+        MTlZbzExS1VwUGdvV2c3dG56ckZ2NmtKTUVvCjRMbU15Uyt4T081SUpXbmdHYTNV
+        TXJPSlV1cGs1b2g0aUtmTW13cy9Sb3MKLS0tIDFYVXdwc3FXcE51VVNYb3JLWVN6
+        bFB5Y1pyVi95Z095R1cvRXVYU0grUWMKy0lNOuHZA3ZAQb6uc5KoZj/njA+WMLBP
+        lc0fXPJiLmjjsS9oooHZLyqRq8zWeQYG0OWiV7O0bcRbjT/IV7g49A==
         -----END AGE ENCRYPTED FILE-----
-  lastmodified: "2025-05-01T20:55:31Z"
-  mac: ENC[AES256_GCM,data:5TUjTH6Evwy+B198O8O7Es1RTA5OqhoflkAhJfG4N7qril9ij6zIw5Ff5ehn1EkW4WUvQ5tiz3Cp++JUB7pKIQmgfKL6RoRuDqwZlDWZ2wcZ4MGYKqH76qABMx+NSg8HceK60bsOJSZrmNxWKucVxU3JFFGYI00VlH/+H4vxBek=,iv:F0byUuaRGW9k1pRY9B0IzQZ/sO/8V9En11vurcw829E=,tag:JqfeOW3/yLjjn/0dY8meCg==,type:str]
-  encrypted_regex: ^(data|stringData|apiKey|rootPassword|secretKey|adminPassword|basicAuthPassword|password|secret_key)$
+  lastmodified: "2025-12-30T23:13:03Z"
+  mac: ENC[AES256_GCM,data:oHDFbUlxnlUR9VqEu6abgH01q3384DK+ws8SuFtFHqUipiKueSz8KioIcrYzwYZTCZrORE7XPWp2BaJpW0XZqqVd0tZp00jAM0VgXeCDQxupxEja3CD+rp+R99Ku2iBzb6YYV2cUNENxvMqLSQdpdZtQ2oFY0QNfLURT5fv658A=,iv:7egKxOlfbzHBUrB4Bj7cDsaMQqdC24xCgzeB8gWVooU=,tag:vz+OKHjo22elwveKY9FJ4w==,type:str]
+  encrypted_regex: ^(data|stringData|apiKey|rootPassword|secretKey|adminPassword|basicAuthPassword|password|secret_key|secret|WOODPECKER_FORGEJO_SECRET|token)$
   mac_only_encrypted: true
-  version: 3.10.2
+  version: 3.11.0

@@ -5,7 +5,7 @@
 #  name: nextcloud-config-snapshot
 #  namespace: home-services
 #spec:
-#  snapshotClassName: truenas-flash-iscsi
+#  snapshotClassName: nas-flash-iscsi
 #  persistentVolumeClaimName: nextcloud-nextcloud
 #  snapshotFrequency: 1d
 #  snapshotRetention: 30d
@@ -16,7 +16,7 @@
 #  name: nextcloud-data-snapshot
 #  namespace: home-services
 #spec:
-#  snapshotClassName: truenas-nfs
+#  snapshotClassName: nas-nfs
 #  persistentVolumeClaimName: nextcloud-nextcloud-data
 #  snapshotFrequency: 1d
 #  snapshotRetention: 30d
@@ -27,7 +27,7 @@
 #  name: nextcloud-postgres-snapshot
 #  namespace: home-services
 #spec:
-#  snapshotClassName: truenas-iscsi
+#  snapshotClassName: nas-iscsi
 #  persistentVolumeClaimName: nextcloud-postgresql-1
 #  snapshotFrequency: 1d
 #  snapshotRetention: 30d

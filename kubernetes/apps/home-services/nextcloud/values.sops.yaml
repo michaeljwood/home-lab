@@ -15,7 +15,7 @@ ingress:
 nextcloud:
   host: cloud.mjwood.org
   username: stromgard
-  password: ENC[AES256_GCM,data:jn4/BIDIhyS1anW29ajdnNoQlcU=,iv:Rtr3OlFI+iHfAob+xELtQdoBcdpQI8suwjjZUY4hBU0=,tag:QFnIM5ntYl2XT9QwEGpPcw==,type:str]
+  password: ENC[AES256_GCM,data:sFwgAXemROzpQkasW9S1s2y8EYU=,iv:ng5SHtjy1LWmaYZtcdLIecVr1EmEtTuhO5b/f8quvdY=,tag:wn5kiSOyhIJlAikTw3aiYw==,type:str]
 internalDatabase:
   enabled: false
 ##
@@ -43,9 +43,9 @@ redis:
   enabled: true
   auth:
     enabled: true
-    password: ENC[AES256_GCM,data:LjSgsWDRUuBzZcaYoFrU9Wv8EflqYoJ0D4r2CRjTx18PLrM4viANdCOzmRJYm3inDHlqOF+z0OcZ90/IaoqG5g==,iv:w9/CARHLRUnj7SJxUrZdj9HFJUQ5s1/tHhTo6ZUIzQg=,tag:+qBvhton6chPMgo0hOy6dA==,type:str]
+    password: ENC[AES256_GCM,data:cEs4i1bcLaW3uka5AdHeP3xxtL4q0j5K704c1fkRG5O/WqblJ0tRPK7e6IxVoTMbSdH6PXSeZRCAughMRNfe0Q==,iv:Jd8tiUhPzo8DJhiCEB4n6UIubKmzgmleGh94Wehc3lE=,tag:TB2dO1rs7MZGEXeQT9WbKg==,type:str]
   global:
-    storageClass: truenas-flash-iscsi
+    storageClass: nas-flash-iscsi
   master:
     persistence:
       enabled: true
@@ -62,28 +62,27 @@ cronjob:
 ##
 persistence:
   enabled: true
-  storageClass: truenas-flash-iscsi
+  storageClass: nas-flash-iscsi
   nextcloudData:
     enabled: true
-    storageClass: truenas-nfs
+    storageClass: nas-nfs
     accessMode: ReadWriteOnce
     size: 1Ti
+phpClientHttpsFix:
+  enabled: true
 sops:
   age:
     - recipient: age1m0lm4afkysxufghhpez3p0wjzchms5gpadc085p3ukqh75hyvanst3lrvr
       enc: |
         -----BEGIN AGE ENCRYPTED FILE-----
-        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBHZGIyWlRjWDY4RVNVaTBH
-        TzB3d282c0RsUEV0SFhncHd4TWxWSSt4TEJFCjRWbnVxMElhSzMxVmlPdUUvUXFS
-        dkpTN21CNVVxNW5wUGZGY0krTjJKOVkKLS0tIHJQSEhRekgzR2R4Zk9PNzhWMHB0
-        cXU2dW0yQllFWlVkRVZSSTNDVCthdmMKg8a239b49DQoZfpr80aJWWE3VdPSif+M
-        0dtA0pRGpfTmmPE1ivXLgbaVN6w5UtqiDAiWL5sz8Nqy43UjW4eGIw==
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBta2NmV2pkVFpKWXF0U3hr
+        c3kwSkNqQ0s4dmpjM0phME40ZGtZbTdrYjNjClFJWkx4TEpUUitnbHQ1eXlOSG5i
+        Z0xEcjdta1J0T0lLbElkWDc2azdmREEKLS0tIHVab2lSeE1TSk1nQmM2Mm00MnZ0
+        MEJWemNlY2pjd1pVL3JtTzk4ZHJvRDgKW83pKoyN6C7oKzSkPHYchtQIipydBSTV
+        WHb6Ou5QQ+/eDw0Nc2yb58cRJP6YZ6B9oZV5TMA2QuPq+FVjs7CVuw==
         -----END AGE ENCRYPTED FILE-----
-  lastmodified: "2025-05-27T20:36:16Z"
-  mac: ENC[AES256_GCM,data:28FksexIruuSzGFXJVnw2GmqSAveeEFfXpGw/YBNi4rXHgZOuD3gOVNiH2Y2P3GT348vLhrlBVwAdGBpc1nesCR3W5bu4vhZoblpOv6rK7bnCOrgNknkQtUIwn7GbtMnFEtJNWxQMtnZ+KM2xsdioP+iVzeCzFJ5eO6AuETSyRA=,iv:0WUI34fkIvNbrMmPNfET5B6TPoKJEO/OUJbAaJvaCJw=,tag:B0pva3Ktk0Fz8JJoOf1huQ==,type:str]
-  encrypted_regex: ^(data|stringData|apiKey|rootPassword|secretKey|adminPassword|basicAuthPassword|password|secret_key)$
+  lastmodified: "2025-12-30T23:13:26Z"
+  mac: ENC[AES256_GCM,data:MqgPgKgMkdu4DV2pfDjjDk8aBp79PiGrJF7pRa9jSYZWxjBFjQcaULc++HhDzPL6/RiwYx88InDvaedy/Fq4SueY3VDnD0n9NTvLuGx2RGLImEQX++Pv40pn/Ubbta5pS2hZtIt7RoHbs2oRsYa6xRQ5Y6G5uzcE9Da+scJLdYs=,iv:Gk7Ne/+wI9lS/JO2kiZ1AK6Ve/R0gYbtQSnz/KxEGss=,tag:wuHSFTaXGCWbZxDPffq/hw==,type:str]
+  encrypted_regex: ^(data|stringData|apiKey|rootPassword|secretKey|adminPassword|basicAuthPassword|password|secret_key|secret|WOODPECKER_FORGEJO_SECRET|token)$
   mac_only_encrypted: true
-  version: 3.10.2
-
-phpClientHttpsFix:
-  enabled: true
+  version: 3.11.0

@@ -53,7 +53,7 @@ spec:
         name: mc-bedrock
       spec:
         accessModes: [ "ReadWriteOnce" ]
-        storageClassName: "truenas-flash-iscsi"
+        storageClassName: "nas-flash-iscsi"
         resources:
           requests:
             storage: 5Gi

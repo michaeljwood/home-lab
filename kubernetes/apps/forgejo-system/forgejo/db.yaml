@@ -21,4 +21,4 @@ spec:
 
   storage:
     size: 10Gi
-    storageClass: truenas-iscsi
+    storageClass: nas-iscsi

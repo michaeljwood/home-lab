@@ -5,7 +5,7 @@
 #  name: jellyfin-config-snapshot
 #  namespace: home-services
 #spec:
-#  snapshotClassName: truenas-iscsi
+#  snapshotClassName: nas-iscsi
 #  persistentVolumeClaimName: jellyfin-config
 #  snapshotFrequency: 1d
 #  snapshotRetention: 30d
