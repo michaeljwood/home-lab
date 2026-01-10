@@ -13,7 +13,7 @@ spec:
       ref: repo
     - repoURL: "https://democratic-csi.github.io/charts/"
       chart: democratic-csi
-      targetRevision: 0.15.0
+      targetRevision: 0.15.1
       helm:
         releaseName: nas-iscsi
         valueFiles:
