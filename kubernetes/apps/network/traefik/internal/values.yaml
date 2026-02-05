@@ -34,14 +34,14 @@ ports:
   web:
     http:
       middlewares:
-        - "robots-txt@kubernetescrd"
+        - "bot-wrangler@kubernetescrd"
   websecure:
     http:
       middlewares:
-        - "robots-txt@kubernetescrd"
+        - "bot-wrangler@kubernetescrd"
 
 experimental:
   plugins:
-    robots-txt:
-      moduleName: "github.com/solution-libre/traefik-plugin-robots-txt"
-      version: "v0.2.2"
+    bot-wrangler:
+      moduleName: github.com/holysoles/bot-wrangler-traefik-plugin
+      version: v0.10.1
