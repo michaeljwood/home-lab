@@ -10,7 +10,7 @@ spec:
   project: kubernetes
   sources:
     - repoURL: "https://github.com/michaeljwood/home-lab.git"
-      path: kubernetes/apps/network/traefik/internal
+      path: kubernetes/apps/network/traefik/common
       targetRevision: main
       ref: repo
     - repoURL: https://traefik.github.io/charts

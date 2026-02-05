@@ -34,24 +34,14 @@ ports:
   web:
     http:
       middlewares:
-        - "robotstxt@kubernetescrd"
+        - "robots-txt@kubernetescrd"
   websecure:
     http:
       middlewares:
-        - "robotstxt@kubernetescrd"
+        - "robots-txt@kubernetescrd"
 
 experimental:
   plugins:
-    robotstxt:
+    robots-txt:
       moduleName: "github.com/solution-libre/traefik-plugin-robots-txt"
       version: "v0.2.2"
-
-extraObjects:
-  - apiVersion: traefik.io/v1alpha1
-    kind: Middleware
-    metadata:
-      name: "robotstxt"
-    spec:
-      plugin:
-        robotstxt:
-          aiRobotsTxt: true
