@@ -32,15 +32,15 @@ tlsStore:
     defaultCertificate:
       secretName: "mjwood-org-production-tls"
 
-#ports:
-#  web:
-#    http:
-#      middlewares:
-#        - "bot-wrangler@kubernetescrd"
-#  websecure:
-#    http:
-#      middlewares:
-#        - "bot-wrangler@kubernetescrd"
+ports:
+  web:
+    http:
+      middlewares:
+        - "network-bot-wrangler@kubernetescrd"
+  websecure:
+    http:
+      middlewares:
+        - "network-bot-wrangler@kubernetescrd"
 
 experimental:
   plugins:
