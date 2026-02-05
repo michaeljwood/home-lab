@@ -7,6 +7,8 @@ gatewayClass:
   name: "internal"
 
 providers:
+  kubernetesCRD:
+    enabled: true
   kubernetesIngress:
     enabled: true
   kubernetesGateway:
