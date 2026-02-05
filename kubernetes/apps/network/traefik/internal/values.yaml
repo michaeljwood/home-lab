@@ -34,14 +34,19 @@ ports:
   web:
     http:
       middlewares:
-        - "wrangler@kubernetescrd"
+        - "bot-wrangler@kubernetescrd"
   websecure:
     http:
       middlewares:
-        - "wrangler@kubernetescrd"
+        - "bot-wrangler@kubernetescrd"
 
 experimental:
   plugins:
     wrangler:
       moduleName: github.com/holysoles/bot-wrangler-traefik-plugin
       version: v0.10.1
+
+volumes:
+  - name: botwrangler-robots-template
+    mountPath: /etc/traefik/bot-wrangler/
+    type: configMap
