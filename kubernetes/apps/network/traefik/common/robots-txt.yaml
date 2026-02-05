@@ -4,5 +4,5 @@ metadata:
   name: "robots-txt"
 spec:
   plugin:
-    robotstxt:
+    robots-txt:
       aiRobotsTxt: true
