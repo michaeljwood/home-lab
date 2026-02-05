@@ -1,9 +1,9 @@
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
-  name: "bot-wrangler"
+  name: "wrangler"
 spec:
   plugin:
-    bot-wrangler:
+    wrangler:
       logLevel: INFO
       botAction: BLOCK
