@@ -6,6 +6,15 @@ ingressClass:
 gatewayClass:
   name: "traefik-internal"
 
+providers:
+  kubernetesIngress:
+    enabled: true
+  kubernetesGateway:
+    enabled: true
+
+gateway:
+  namespacePolicy: All
+
 logs:
   access:
     enabled: true
