@@ -1,11 +1,11 @@
 ingress:
   enabled: true
-  ingressClassName: traefik-internal
+  ingressClassName: internal
   labels: {}
   path: /
   pathType: Prefix
   hosts:
-    - grafana.traefik.mjwood.org
+    - grafana.internal.mjwood.org
 deploymentStrategy:
   type: Recreate
 resources: {}
