@@ -52,3 +52,10 @@ volumes:
   - name: botwrangler-robots-template
     mountPath: /etc/traefik/bot-wrangler/
     type: configMap
+
+ingressRoute:
+  dashboard:
+    enabled: true
+    matchRule: Host(`traefik.internal.mjwood.org`)
+    entryPoints:
+      - web
