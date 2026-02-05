@@ -18,3 +18,12 @@ gateway:
 logs:
   access:
     enabled: true
+
+service:
+  annotations:
+    lbipam.cilium.io/ips: 10.0.0.86
+
+tlsStore:
+  default:
+    defaultCertificate:
+      secretName: "mjwood-org-production-tls"
