@@ -1,0 +1,12 @@
+## File values.yaml ##
+
+providers:
+  ingressClass:
+    name: "traefik-internal"
+    isDefaultClass: false
+  gatewayClass:
+    name: "traefik-internal"
+
+logs:
+  access:
+    enabled: true
