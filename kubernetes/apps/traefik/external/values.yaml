@@ -37,11 +37,11 @@ ports:
   web:
     http:
       middlewares:
-        - "network-bot-wrangler@kubernetescrd"
+        - "traefik-bot-wrangler@kubernetescrd"
   websecure:
     http:
       middlewares:
-        - "network-bot-wrangler@kubernetescrd"
+        - "traefik-bot-wrangler@kubernetescrd"
 
 experimental:
   plugins:
