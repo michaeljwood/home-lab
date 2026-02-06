@@ -13,6 +13,9 @@ spec:
       path: kubernetes/apps/traefik/common
       targetRevision: main
       ref: repo
+    - repoURL: https://github.com/michaeljwood/home-lab.git
+      path: kubernetes/apps/traefik/tls
+      targetRevision: main
     - repoURL: https://traefik.github.io/charts
       chart: traefik
       targetRevision: 39.0.0
