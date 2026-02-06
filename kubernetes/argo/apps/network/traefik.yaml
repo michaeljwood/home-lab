@@ -20,6 +20,13 @@ spec:
         releaseName: traefik-internal
         valueFiles:
           - $repo/kubernetes/apps/network/traefik/internal/values.yaml
+    - repoURL: https://traefik.github.io/charts
+      chart: traefik
+      targetRevision: 39.0.0
+      helm:
+        releaseName: traefik-external
+        valueFiles:
+          - $repo/kubernetes/apps/network/traefik/external/values.yaml
   destination:
     name: in-cluster
     namespace: network

@@ -1,0 +1,55 @@
+## File values.yaml ##
+
+ingressClass:
+  name: "external"
+  isDefaultClass: false
+gatewayClass:
+  name: "external"
+
+providers:
+  kubernetesCRD:
+    enabled: true
+  kubernetesIngress:
+    enabled: true
+  kubernetesGateway:
+    enabled: true
+
+gateway:
+  namespacePolicy: All
+
+logs:
+  access:
+    enabled: true
+
+service:
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: external.mjwood.org
+    lbipam.cilium.io/ips: 10.0.0.99
+  spec:
+    loadBalancerIP: 10.0.0.99
+
+tlsStore:
+  default:
+    defaultCertificate:
+      secretName: "mjwood-org-production-tls"
+
+ports:
+  web:
+    http:
+      middlewares:
+        - "network-bot-wrangler@kubernetescrd"
+  websecure:
+    http:
+      middlewares:
+        - "network-bot-wrangler@kubernetescrd"
+
+experimental:
+  plugins:
+    wrangler:
+      moduleName: github.com/holysoles/bot-wrangler-traefik-plugin
+      version: v0.10.1
+
+volumes:
+  - name: botwrangler-robots-template
+    mountPath: /etc/traefik/bot-wrangler/
+    type: configMap
