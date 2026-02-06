@@ -8,14 +8,10 @@ metadata:
     argocd.argoproj.io/sync-wave: '0'
 spec:
   project: kubernetes
-  sources:
-    - repoURL: "https://github.com/michaeljwood/home-lab.git"
-      path: kubernetes/apps/traefik/tls
-      targetRevision: main
-      ref: repo
     - repoURL: "https://github.com/michaeljwood/home-lab.git"
       path: kubernetes/apps/traefik/plugins
       targetRevision: main
+      ref: repo
     - repoURL: https://traefik.github.io/charts
       chart: traefik
       targetRevision: 39.0.0
