@@ -9,7 +9,7 @@ metadata:
 spec:
   project: kubernetes
     - repoURL: "https://github.com/michaeljwood/home-lab.git"
-      path: kubernetes/apps/traefik/plugins
+      path: kubernetes/apps/traefik/common
       targetRevision: main
       ref: repo
     - repoURL: https://traefik.github.io/charts
