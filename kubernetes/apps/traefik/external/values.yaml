@@ -53,3 +53,6 @@ volumes:
   - name: botwrangler-robots-template
     mountPath: /etc/traefik/bot-wrangler/
     type: configMap
+
+additionalArguments:
+  - "--providers.kubernetescrd.ingressclass=external"

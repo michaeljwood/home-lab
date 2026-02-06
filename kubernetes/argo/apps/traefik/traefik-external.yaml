@@ -16,13 +16,13 @@ spec:
     - repoURL: https://github.com/michaeljwood/home-lab.git
       path: kubernetes/apps/traefik/tls
       targetRevision: main
-#    - repoURL: https://traefik.github.io/charts
-#      chart: traefik
-#      targetRevision: 39.0.0
-#      helm:
-#        releaseName: traefik-external
-#        valueFiles:
-#          - $repo/kubernetes/apps/traefik/external/values.yaml
+    - repoURL: https://traefik.github.io/charts
+      chart: traefik
+      targetRevision: 39.0.0
+      helm:
+        releaseName: traefik-external
+        valueFiles:
+          - $repo/kubernetes/apps/traefik/external/values.yaml
   destination:
     name: in-cluster
     namespace: traefik
