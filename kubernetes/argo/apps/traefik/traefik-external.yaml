@@ -13,6 +13,8 @@ spec:
       path: kubernetes/apps/traefik/tls
       targetRevision: main
       ref: repo
+    - path: $repo/kubernetes/apps/traefik/plugins
+      targetRevision: main
     - repoURL: https://traefik.github.io/charts
       chart: traefik
       targetRevision: 39.0.0
