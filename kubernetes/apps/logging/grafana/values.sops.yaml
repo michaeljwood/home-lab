@@ -217,6 +217,14 @@ dashboardProviders:
         editable: true
         options:
           path: /var/lib/grafana/dashboards/grafana-dashboards-kubernetes
+      - name: 'grafana-dashboards-loki'
+        orgId: 1
+        folder: 'Logging'
+        type: file
+        disableDeletion: true
+        editable: true
+        options:
+          path: /var/lib/grafana/dashboards/grafana-dashboards-loki
 #  dashboardproviders.yaml:
 #    apiVersion: 1
 #    providers:
@@ -253,6 +261,10 @@ dashboards:
       token: ''
     k8s-views-pods:
       url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-pods.json
+      token: ''
+  grafana-dashboards-loki:
+    loki-logs:
+      url: https://grafana.com/api/dashboards/13639/revisions/2/download
       token: ''
 # default:
 #   some-dashboard:
