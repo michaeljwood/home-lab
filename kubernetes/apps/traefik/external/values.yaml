@@ -55,4 +55,3 @@ volumes:
 additionalArguments:
   - --entryPoints.web.http.redirections.to=websecure
   - --entryPoints.web.http.redirections.scheme=https
-  - --entryPoints.web.http.redirections.permanent=true
