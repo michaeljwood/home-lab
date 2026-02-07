@@ -30,11 +30,6 @@ service:
   spec:
     loadBalancerIP: 10.0.0.99
 
-tlsStore:
-  default:
-    defaultCertificate:
-      secretName: "mjwood-org-production-tls"
-
 ports:
   websecure:
     http:
