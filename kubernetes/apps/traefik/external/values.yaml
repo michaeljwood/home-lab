@@ -54,5 +54,5 @@ volumes:
 
 additionalArguments:
   - --entryPoints.web.http.redirections.entryPoint.to=:443
-  - --entryPoints.web.http.redirections.entryPont.scheme=https
+  - --entryPoints.web.http.redirections.entryPoint.scheme=https
   - --entryPoints.web.http.redirections.entryPoint.permanent=true
