@@ -36,12 +36,6 @@ tlsStore:
       secretName: "mjwood-org-production-tls"
 
 ports:
-  web:
-    redirections:
-      entryPoint:
-        to: websecure
-        scheme: https
-        permanent: true
   websecure:
     http:
       middlewares:
@@ -57,3 +51,8 @@ volumes:
   - name: botwrangler-robots-template
     mountPath: /etc/traefik/bot-wrangler/
     type: configMap
+
+additionalArguments:
+  - --entryPoints.web.http.redirections.to=websecure
+  - --entryPoints.web.http.redirections.scheme=https
+  - --entryPoints.web.http.redirections.permanent=true
