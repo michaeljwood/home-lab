@@ -9,8 +9,10 @@ gatewayClass:
 providers:
   kubernetesCRD:
     enabled: true
+    ingressClass: "internal"
   kubernetesIngress:
     enabled: true
+    ingressClass: "internal"
   kubernetesGateway:
     enabled: true
 
@@ -34,9 +36,8 @@ tlsStore:
 
 ports:
   web:
-    http:
-      middlewares:
-        - "network-bot-wrangler@kubernetescrd"
+    redirectTo:
+      port: "websecure"
   websecure:
     http:
       middlewares:
@@ -59,6 +60,3 @@ ingressRoute:
     matchRule: Host(`traefik.internal.mjwood.org`)
     entryPoints:
       - web
-
-additionalArguments:
-  - "--providers.kubernetescrd.ingressclass=internal"
