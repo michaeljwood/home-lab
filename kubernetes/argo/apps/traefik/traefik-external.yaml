@@ -18,7 +18,7 @@ spec:
       targetRevision: main
     - repoURL: https://traefik.github.io/charts
       chart: traefik
-      targetRevision: 40.2.0
+      targetRevision: 40.3.0
       helm:
         releaseName: traefik-external
         valueFiles:
