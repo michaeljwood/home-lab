@@ -3,7 +3,7 @@ kind: Cluster
 metadata:
   name: immich-postgresql
 spec:
-  imageName: ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0
+  imageName: ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.3.0
   instances: 1
 
   managed:
