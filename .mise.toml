@@ -38,6 +38,6 @@ run = [
 "aqua:siderolabs/talos" = "1.14.0"
 "aqua:yannh/kubeconform" = "0.8.0"
 "aqua:viaduct-ai/kustomize-sops" = "4.5.1"
-"kubeseal" = "0.39.1"
+"kubeseal" = "0.40.0"
 uv = "latest"
 k9s = "latest"
